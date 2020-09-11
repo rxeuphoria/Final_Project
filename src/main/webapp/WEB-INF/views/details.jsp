@@ -12,7 +12,7 @@
 	<ul>
 	<li>SERVINGS: ${recipe.servings }</li>
 	<li>PREPARE TIME: ${recipe.readyInMinutes} minutes</li>
-	<li><a href="${recipe.sourceUrl}">Recipe</a>
+	<li><a href="${recipe.sourceUrl}" target="_blank">Recipe</a>
 	</ul>
 </div>
 </body>
