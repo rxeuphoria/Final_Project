@@ -16,7 +16,7 @@ public class User {
 	private Double height;
 	private Double weight;
 	private Integer age;
-	private String activityLevel;
+	private Double activityLevel;
 	private Integer shoppingInterval;
 	
 	public User() {
@@ -95,11 +95,11 @@ public class User {
 		this.age = age;
 	}
 
-	public String getActivityLevel() {
+	public Double getActivityLevel() {
 		return activityLevel;
 	}
 
-	public void setActivityLevel(String activityLevel) {
+	public void setActivityLevel(Double activityLevel) {
 		this.activityLevel = activityLevel;
 	}
 
