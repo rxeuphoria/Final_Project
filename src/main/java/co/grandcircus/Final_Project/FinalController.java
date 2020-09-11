@@ -8,6 +8,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import co.grandcircus.Final_Project.api.FinalApi;
+import co.grandcircus.Final_Project.entity.Recipe;
+import co.grandcircus.Final_Project.entity.RecipesList;
+
 @Controller
 public class FinalController {
 

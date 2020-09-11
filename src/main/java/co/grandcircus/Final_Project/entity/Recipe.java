@@ -1,4 +1,4 @@
-package co.grandcircus.Final_Project;
+package co.grandcircus.Final_Project.entity;
 
 public class Recipe {
 

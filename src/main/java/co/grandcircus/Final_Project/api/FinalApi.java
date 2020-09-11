@@ -1,4 +1,4 @@
-package co.grandcircus.Final_Project;
+package co.grandcircus.Final_Project.api;
 
 import java.net.URI;
 
@@ -11,6 +11,9 @@ import org.springframework.http.client.ClientHttpRequestInterceptor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
+
+import co.grandcircus.Final_Project.entity.Recipe;
+import co.grandcircus.Final_Project.entity.RecipesList;
 
 
 @Service
