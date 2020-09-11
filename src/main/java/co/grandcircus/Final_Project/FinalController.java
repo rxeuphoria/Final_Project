@@ -106,47 +106,82 @@ public class FinalController {
 								@RequestParam("age") Integer age,
 								@RequestParam("activity") Double level,
 								@RequestParam("interval") Integer interval) {
-		double BMR=0,TEE=0;
+		double BMR=0,TEE=0,carbs=0,protein=0,fats=0;
+		double wallet=0,totalCarbs=0,totalProtein=0,totalFats=0;
 	if(gender.equals("F")) {
 		if(height_unit.contentEquals("centimeter") && weight_unit.equals("kilogram")) {
-			BMR=655 +(9.6*weight) + (1.8 * height) - (4.7 * age);
+			BMR=655.1 +(9.563*weight) + (1.850 * height) - (4.676 * age);
 		}
 		if(height_unit.contentEquals("centimeter") && weight_unit.contentEquals("pound")) {
-			BMR=655 +(9.6*(weight/2.205)) + (1.8 * height) - (4.7 * age);
+			BMR=655.1 +(9.563*(weight/2.205)) + (1.850 * height) - (4.676 * age);
 		}
 		if(height_unit.contentEquals("inches") && weight_unit.contentEquals("kilogram")) {
-			BMR=655 +(9.6 * weight) + (1.8 * (height/0.394)) - (4.7 * age);
+			BMR=655.1 +(9.563 * weight) + (1.850 * (height/0.394)) - (4.676 * age);
 		}
 		if(height_unit.equals("inches") && weight_unit.equals("pound")) {
-			BMR=655 +(9.6*(weight/2.205)) + (1.8  * (height/0.394)) - (4.7 * age);
+			BMR=655.1 +(9.563*(weight/2.205)) + (1.850  * (height/0.394)) - (4.676 * age);
 		}
 		
 		TEE=BMR*level;
 		
+		TEE=BMR*level;
+		carbs=(TEE*0.4)/4;
+		protein=(TEE*0.3)/4;
+		fats=(TEE*0.3)/9;
+		
+		wallet=TEE*interval;
+		totalCarbs=carbs*interval;
+		totalProtein=protein*interval;
+		totalFats=fats*interval;
+	
+		
       model.addAttribute("TEE",TEE);
+      model.addAttribute("carbs",carbs);
+      model.addAttribute("protein",protein);
+      model.addAttribute("fats",fats);
+      model.addAttribute("wallet",wallet);
+      model.addAttribute("totalCarbs",totalCarbs);
+      model.addAttribute("totalProtein",totalProtein);
+      model.addAttribute("totalFats",totalFats);
+
 	}
 
 	if(gender.equals("M")) {
 		if(height_unit.contentEquals("centimeter") && weight_unit.equals("kilogram")) {
-			BMR=66 +(13.7*weight) + (5 * height) - (6.8 * age);
+			BMR=66.47 +(13.75*weight) + (5.003* height) - (6.755 * age);
 		}
 		if(height_unit.contentEquals("centimeter") && weight_unit.contentEquals("pound")) {
-			BMR=66 +(13.7* (weight/2.205)) + (5* height) - (6.8 * age);
+			BMR=66.47 +(13.75* (weight/2.205)) + (5.003* height) - (6.755* age);
 		}
 		if(height_unit.contentEquals("inches") && weight_unit.contentEquals("kilogram")) {
-			BMR=66 +(13.7* weight) + (5 * (height/0.394)) - (6.8 * age);
+			BMR=66.47 +(13.75* weight) + (5.003* (height/0.394)) - (6.755 * age);
 		}
 		if(height_unit.equals("inches") && weight_unit.equals("pound")) {
-			BMR= (66 + (13.7 * (weight/2.205)) + (5 * (height/0.394)) - (6.8 * age));
+			BMR= (66.47 + (13.75 * (weight/2.205)) + (5.003 * (height/0.394)) - (6.755 * age));
 		}
 		
 		TEE=BMR*level;
+		carbs=(TEE*0.4)/4;
+		protein=(TEE*0.3)/4;
+		fats=(TEE*0.3)/9;
+		
+		wallet=TEE*interval;
+		totalCarbs=carbs*interval;
+		totalProtein=protein*interval;
+		totalFats=fats*interval;
 		
       model.addAttribute("TEE",TEE);
+      model.addAttribute("carbs",carbs);
+      model.addAttribute("protein",protein);
+      model.addAttribute("fats",fats);
+      model.addAttribute("wallet",wallet);
+      model.addAttribute("totalCarbs",totalCarbs);
+      model.addAttribute("totalProtein",totalProtein);
+      model.addAttribute("totalFats",totalFats);
 	}
 
 	
-	 return "welcome";
+	 return "macros-details";
 	}
 	@RequestMapping("/showRecipes")
 	public String showRecipes(Model model,@RequestParam("minCarbs") Double minCarbs,

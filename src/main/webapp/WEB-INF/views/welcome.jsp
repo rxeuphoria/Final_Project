@@ -53,7 +53,7 @@
 			<button type="submit">Check TEE</button>
 		</form><br><br><br>
 		
-		<p> Your TEE is ${TEE}</p>
+		
 	<form action="/logout">
 	<button type="submit">Logout</button>
 	</form>
