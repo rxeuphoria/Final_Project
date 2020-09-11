@@ -131,13 +131,13 @@ public class FinalController {
 			BMR=66 +(13.7*weight) + (5 * height) - (6.8 * age);
 		}
 		if(height_unit.contentEquals("centimeter") && weight_unit.contentEquals("pound")) {
-			BMR=66 +(13.7*2.205*weight) + (5* height) - (6.8 * age);
+			BMR=66 +(13.7* (weight/2.205)) + (5* height) - (6.8 * age);
 		}
 		if(height_unit.contentEquals("inches") && weight_unit.contentEquals("kilogram")) {
-			BMR=66 +(13.7* weight) + (5 *.394 * height) - (6.8 * age);
+			BMR=66 +(13.7* weight) + (5 * (height/0.394)) - (6.8 * age);
 		}
 		if(height_unit.equals("inches") && weight_unit.equals("pound")) {
-			BMR=66 +(13.7*2.205*weight) + (5 *.394 * height) - (6.8 * age);
+			BMR= (66 + (13.7 * (weight/2.205)) + (5 * (height/0.394)) - (6.8 * age));
 		}
 		
 		TEE=BMR*level;
