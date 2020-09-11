@@ -18,7 +18,7 @@ public class FinalController {
 	@Autowired
 	FinalApi api;
 	
-	@RequestMapping("/")
+	@RequestMapping("/home")
 	public String addNutrients() {
 		return "home";
 	}

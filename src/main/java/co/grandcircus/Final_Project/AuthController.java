@@ -39,7 +39,7 @@ public class AuthController {
 		Optional<User> foundUser =userDao.findByEmailAndPassword(email, password);
 		if(foundUser.isPresent()) {
 			session.setAttribute("user", foundUser.get());
-			return "redirect:/";
+			return "redirect:/home";
 		}else {
 			model.addAttribute("message","Incorrect email and password");
 			return "login";
@@ -90,7 +90,7 @@ public class AuthController {
 		// A flash message will only show on the very next page. Then it will go away.
 		// It is useful with redirects since you can't add attributes to the mav.
 		redir.addFlashAttribute("message", "Thanks for signing up!");
-		return "redirect:/";
+		return "redirect:/home";
 	}
 
 	
