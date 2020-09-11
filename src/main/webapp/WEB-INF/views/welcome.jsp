@@ -16,7 +16,7 @@
 <body>
 <div class="container">
 	<h1>Welcome ${user.name}</h1>
-	<a href="/add-values">See your Profile</a><br><br>
+	<a href="/home">See your Profile</a><br><br>
 	<form action="/logout">
 	<button type="submit">Logout</button>
 	</form>

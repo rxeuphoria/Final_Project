@@ -1,10 +1,8 @@
 package co.grandcircus.Final_Project;
 
-import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,19 +11,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import co.grandcircus.Final_Project.api.FinalApi;
 import co.grandcircus.Final_Project.dao.UserDao;
-import co.grandcircus.Final_Project.entity.Recipe;
-import co.grandcircus.Final_Project.entity.RecipesList;
 import co.grandcircus.Final_Project.entity.User;
 
-@Controller
-public class FinalController {
 
-	@Autowired
-	FinalApi api;
-	
-	
+
+@Controller
+public class AuthController {
+
 	@Autowired
 	UserDao userDao;
 	@Autowired
@@ -46,7 +39,7 @@ public class FinalController {
 		Optional<User> foundUser =userDao.findByEmailAndPassword(email, password);
 		if(foundUser.isPresent()) {
 			session.setAttribute("user", foundUser.get());
-			return "redirect:/";
+			return "redirect:/home";
 		}else {
 			model.addAttribute("message","Incorrect email and password");
 			return "login";
@@ -54,10 +47,6 @@ public class FinalController {
 	}
 
 
-	@RequestMapping("/home")
-	public String addNutrients() {
-		return "home";
-	}
 	@RequestMapping("/logout")
 	public String logout(RedirectAttributes redir) {
 		// invalidate clears the current user session and starts a new one.
@@ -101,24 +90,8 @@ public class FinalController {
 		// A flash message will only show on the very next page. Then it will go away.
 		// It is useful with redirects since you can't add attributes to the mav.
 		redir.addFlashAttribute("message", "Thanks for signing up!");
-		return "redirect:/";
+		return "redirect:/home";
 	}
 
 	
-	@RequestMapping("/showRecipes")
-	public String showRecipes(Model model,@RequestParam("minCarbs") Double minCarbs,
-								@RequestParam("maxCarbs") Double maxCarbs,
-								@RequestParam("number") Integer number) {
-		RecipesList[] recipes= api.showRecipesList(minCarbs, maxCarbs, number);
-		model.addAttribute("recipes",recipes);
-		return "show-recipes";
-	}
-	
-	@RequestMapping("/showdetails")
-	public String detailsRecipes(Model model,@RequestParam("id") Long id) {
-		Recipe recipe=api.showDetails(id);
-		model.addAttribute("recipe",recipe);
-		return "details";
-	}
-
 }
