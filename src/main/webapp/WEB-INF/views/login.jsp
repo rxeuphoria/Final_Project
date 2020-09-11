@@ -15,9 +15,9 @@
 	
 	<form action="/login-submit">
 		<p>
-			<label>Email:</label> <input type="email" name="email"/>
+			<label for="email">Email:</label> <input type="email" name="email"/>
 		</p>		<p>
-			<label>Password:</label> <input type="password" name="password" required minlength="2" />
+			<label for="password">Password:</label> <input type="password" name="password" required minlength="2" />
 		</p>
 		<p>
 			<button>Submit</button>

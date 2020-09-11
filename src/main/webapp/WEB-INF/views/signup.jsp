@@ -18,6 +18,9 @@
 			<label for="name">Your Name:</label> <input id="name" name="name" value="<c:out value="${ param.name }"/>" required minlength="2" autocomplete="off"/>
 		</p>
 		<p>
+			<label for="email">Email:</label> <input  type="email" name="email" value="<c:out value="${ param.email }"/>" required minlength="2" />
+		</p>
+		<p>
 			<label for="password">Password:</label> <input id="password" type="password" name="password" required minlength="2" />
 		</p>
 		<p>
