@@ -58,16 +58,8 @@ public class FinalController {
 	public String addNutrients() {
 		return "home";
 	}
-	@RequestMapping("/logout")
-	public String logout(RedirectAttributes redir) {
-		// invalidate clears the current user session and starts a new one.
-		session.invalidate();
-		
-		// A flash message will only show on the very next page. Then it will go away.
-		// It is useful with redirects since you can't add attributes to the mav.
-		redir.addFlashAttribute("message", "Logged out.");
-		return "redirect:/";
-	}
+	
+	
 	
 	@RequestMapping("/signup")
 	public String showSignupForm() {
@@ -105,6 +97,57 @@ public class FinalController {
 	}
 
 	
+	@RequestMapping("/calculations")
+	public String performCalc(Model model,@RequestParam("gender") String gender,
+								@RequestParam("height") Double height,
+								@RequestParam("height_unit")String height_unit,
+								@RequestParam("weight") Double weight,
+								@RequestParam("weight_unit") String weight_unit,
+								@RequestParam("age") Integer age,
+								@RequestParam("activity") Double level,
+								@RequestParam("interval") Integer interval) {
+		double BMR=0,TEE=0;
+	if(gender.equals("F")) {
+		if(height_unit.contentEquals("centimeter") && weight_unit.equals("kilogram")) {
+			BMR=655 +(9.6*weight) + (1.8 * height) - (4.7 * age);
+		}
+		if(height_unit.contentEquals("centimeter") && weight_unit.contentEquals("pound")) {
+			BMR=655 +(9.6*2.205*weight) + (1.8 * height) - (4.7 * age);
+		}
+		if(height_unit.contentEquals("inches") && weight_unit.contentEquals("kilogram")) {
+			BMR=655 +(9.6 * weight) + (1.8 *.394 * height) - (4.7 * age);
+		}
+		if(height_unit.equals("inches") && weight_unit.equals("pound")) {
+			BMR=655 +(9.6*2.205*weight) + (1.8 *.394 * height) - (4.7 * age);
+		}
+		
+		TEE=BMR*level;
+		
+      model.addAttribute("TEE",TEE);
+	}
+
+	if(gender.equals("M")) {
+		if(height_unit.contentEquals("centimeter") && weight_unit.equals("kilogram")) {
+			BMR=66 +(13.7*weight) + (5 * height) - (6.8 * age);
+		}
+		if(height_unit.contentEquals("centimeter") && weight_unit.contentEquals("pound")) {
+			BMR=66 +(13.7*2.205*weight) + (5* height) - (6.8 * age);
+		}
+		if(height_unit.contentEquals("inches") && weight_unit.contentEquals("kilogram")) {
+			BMR=66 +(13.7* weight) + (5 *.394 * height) - (6.8 * age);
+		}
+		if(height_unit.equals("inches") && weight_unit.equals("pound")) {
+			BMR=66 +(13.7*2.205*weight) + (5 *.394 * height) - (6.8 * age);
+		}
+		
+		TEE=BMR*level;
+		
+      model.addAttribute("TEE",TEE);
+	}
+
+	
+	 return "welcome";
+	}
 	@RequestMapping("/showRecipes")
 	public String showRecipes(Model model,@RequestParam("minCarbs") Double minCarbs,
 								@RequestParam("maxCarbs") Double maxCarbs,
@@ -120,5 +163,15 @@ public class FinalController {
 		model.addAttribute("recipe",recipe);
 		return "details";
 	}
-
+	@RequestMapping("/logout")
+	public String logout(RedirectAttributes redir) {
+		// invalidate clears the current user session and starts a new one.
+		session.invalidate();
+		
+		// A flash message will only show on the very next page. Then it will go away.
+		// It is useful with redirects since you can't add attributes to the mav.
+		redir.addFlashAttribute("message", "Logged out.");
+		return "redirect:/";
+	}
+	
 }
