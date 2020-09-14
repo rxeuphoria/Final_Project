@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import co.grandcircus.Final_Project.api.FinalApi;
+import co.grandcircus.Final_Project.dao.RecipesListDao;
 import co.grandcircus.Final_Project.dao.UserDao;
 import co.grandcircus.Final_Project.entity.Recipe;
 import co.grandcircus.Final_Project.entity.RecipesList;
@@ -25,6 +26,9 @@ public class FinalController {
 
 	@Autowired
 	FinalApi api;
+	
+	@Autowired
+	RecipesListDao listDao;
 	
 	
 	@Autowired
@@ -240,7 +244,14 @@ public class FinalController {
 	}
 	
 	
-	
+	@RequestMapping("/save-recipe")
+	public String saveRecipe(RecipesList recipeList) {
+		User user=(User)session.getAttribute("user");
+		user=userDao.findById(user.getId()).get();
+		recipeList.setUser(user);
+		listDao.save(recipeList);
+		return "";
+	}
 	
 	@RequestMapping("/logout")
 	public String logout(RedirectAttributes redir) {
