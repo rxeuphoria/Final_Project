@@ -1,5 +1,6 @@
 package co.grandcircus.Final_Project;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -139,10 +140,22 @@ public class FinalController {
       model.addAttribute("carbs",carbs);
       model.addAttribute("protein",protein);
       model.addAttribute("fats",fats);
+      
       model.addAttribute("wallet",wallet);
       model.addAttribute("totalCarbs",totalCarbs);
       model.addAttribute("totalProtein",totalProtein);
       model.addAttribute("totalFats",totalFats);
+      
+      User user=(User)session.getAttribute("user");
+      user=userDao.findById(user.getId()).get();
+      user.setGender(gender);
+      user.setHeight(height);
+      user.setWeight(weight);
+      user.setAge(age);
+      user.setActivityLevel(level);
+      user.setShoppingInterval(interval);
+    
+      userDao.save(user);
 
 	}
 
@@ -188,16 +201,20 @@ public class FinalController {
 								@RequestParam("maxCarbs") Double maxCarbs,
 								@RequestParam("number") Integer number) {
 		RecipesList[] recipes= api.showRecipesList(minCarbs, maxCarbs, number);
+		
+	
+	    for(int i=0;i<recipes.length;i++)
+	    	recipes[i].setRecipe(api.showDetails(recipes[i].getId()));
+		
+	    for(int i=0;i<recipes.length;i++)
+	    	recipes[i].setRecipeUrl(recipes[i].getRecipe().getSourceUrl());
+	  
+		
 		model.addAttribute("recipes",recipes);
 		return "show-recipes";
 	}
 	
-	@RequestMapping("/showdetails")
-	public String detailsRecipes(Model model,@RequestParam("id") Long id) {
-		Recipe recipe=api.showDetails(id);
-		model.addAttribute("recipe",recipe);
-		return "details";
-	}
+	
 	@RequestMapping("/logout")
 	public String logout(RedirectAttributes redir) {
 		// invalidate clears the current user session and starts a new one.
