@@ -148,7 +148,6 @@ public class FinalController {
       
       User user=(User)session.getAttribute("user");
       user=userDao.findById(user.getId()).get();
-      System.out.println("user"+user);
       user.setGender(gender);
       user.setHeight(height);
       user.setWeight(weight);

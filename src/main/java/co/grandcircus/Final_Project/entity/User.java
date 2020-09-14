@@ -18,6 +18,10 @@ public class User {
 	private Integer age;
 	private Double activityLevel;
 	private Integer shoppingInterval;
+	private Double totalCalories;
+	private Double totalCarbs;
+	private Double totalProtein;
+	private Double totalFats;
 	
 	public User() {
 		super();
@@ -110,13 +114,49 @@ public class User {
 	public void setShoppingInterval(Integer shoppingInterval) {
 		this.shoppingInterval = shoppingInterval;
 	}
+	
+	
+
+	public Double getTotalCalories() {
+		return totalCalories;
+	}
+
+	public void setTotalCalories(Double totalCalories) {
+		this.totalCalories = totalCalories;
+	}
+
+	public Double getTotalCarbs() {
+		return totalCarbs;
+	}
+
+	public void setTotalCarbs(Double totalCarbs) {
+		this.totalCarbs = totalCarbs;
+	}
+
+	public Double getTotalProtein() {
+		return totalProtein;
+	}
+
+	public void setTotalProtein(Double totalProtein) {
+		this.totalProtein = totalProtein;
+	}
+
+	public Double getTotalFats() {
+		return totalFats;
+	}
+
+	public void setTotalFats(Double totalFats) {
+		this.totalFats = totalFats;
+	}
 
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + ", gender="
 				+ gender + ", height=" + height + ", weight=" + weight + ", age=" + age + ", activityLevel="
-				+ activityLevel + ", shoppingInterval=" + shoppingInterval + "]";
+				+ activityLevel + ", shoppingInterval=" + shoppingInterval + ", totalCalories=" + totalCalories
+				+ ", totalCarbs=" + totalCarbs + ", totalProtein=" + totalProtein + ", totalFats=" + totalFats + "]";
 	}
+
 
 	
 	
