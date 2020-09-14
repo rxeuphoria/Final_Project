@@ -157,6 +157,11 @@ public class FinalController {
       user.setAge(age);
       user.setActivityLevel(level);
       user.setShoppingInterval(interval);
+      user.setTotalCalories(wallet);
+      user.setTotalCarbs(totalCarbs);
+      user.setTotalProtein(totalProtein);
+      user.setTotalFats(totalFats);
+  
     
       userDao.save(user);
 
@@ -204,6 +209,10 @@ public class FinalController {
       user.setAge(age);
       user.setActivityLevel(level);
       user.setShoppingInterval(interval);
+      user.setTotalCalories(wallet);
+      user.setTotalCarbs(totalCarbs);
+      user.setTotalProtein(totalProtein);
+      user.setTotalFats(totalFats);
     
       userDao.save(user);
 
