@@ -36,6 +36,6 @@
 		Don't have an account yet? <a href="/signup">Sign up here</a>.
 	</p>
 	
-	<link href="style.css" rel="stylesheet" />
+
 </body>
 </html>

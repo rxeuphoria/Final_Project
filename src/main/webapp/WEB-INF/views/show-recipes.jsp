@@ -44,8 +44,8 @@
 			<input type="hidden" name= "fat" value ="${recipes.fat}"/>
 			<input type="hidden" name= "protein" value ="${recipes.protein}"/>
 			<input type="hidden" name= "title" value ="${recipes.title}"/>
-			<input type="hidden" name= "recipeUrl" value ="${recipes.recipeUrl}"/>
-			<button type = "submit">Add</button>
+			<input type="hidden" name="recipeUrl" value="${recipes.recipe.sourceUrl}"/>
+				<button type = "submit">Add</button>
 			</form>
 			
 			

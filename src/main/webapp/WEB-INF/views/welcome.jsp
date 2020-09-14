@@ -16,7 +16,6 @@
 <body>
 <div class="container">
 	<h1>Welcome ${user.name}</h1>
-	<a href="/home">See your Profile</a><br><br>
 	<h2>Fill your profile</h2>
 		<form action="/calculations">
 			<label>Gender:</label>
