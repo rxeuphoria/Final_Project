@@ -23,6 +23,7 @@
 			<th>Carbohydrates</th>
 			<th>Fat</th>
 			<th>Protein</th>
+			<th>Serv</th>
 		</tr>
 			<c:forEach var="recipes" items="${recipes}">
 		<tr>
@@ -31,8 +32,14 @@
 			<td>${recipes.carbs}</td>
 			<td>${recipes.fat}</td>
 			<td>${recipes.protein}</td>
-			</tr>
-		</c:forEach>
+			<td><c:forEach var="recipe" items="${ recipes}">
+				${recipe.sourceUrl}
+	</c:forEach>
+			</td>
+			
+	</tr>
+	</c:forEach>
+		
 	</table>
 </div>
 </body>

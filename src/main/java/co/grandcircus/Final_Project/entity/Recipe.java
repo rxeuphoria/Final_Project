@@ -1,12 +1,23 @@
 package co.grandcircus.Final_Project.entity;
 
-public class Recipe {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
+@Entity
+public class Recipe {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String title;
 	private Integer servings;
 	private  Double readyInMinutes;
 	private String sourceUrl;
+	
+	
 	public Long getId() {
 		return id;
 	}

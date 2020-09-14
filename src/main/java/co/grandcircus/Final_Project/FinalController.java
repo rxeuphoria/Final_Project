@@ -189,6 +189,15 @@ public class FinalController {
 								@RequestParam("number") Integer number) {
 		RecipesList[] recipes= api.showRecipesList(minCarbs, maxCarbs, number);
 		model.addAttribute("recipes",recipes);
+		Recipe recipe[]=new Recipe[recipes.length];
+		for(int i=0;i<recipes.length;i++) {
+		recipe[i]=api.showDetails(recipes[i].getId());
+		}
+		for(int i=0;i<recipe.length;i++)
+		System.out.println(recipe[i].getSourceUrl());
+		model.addAttribute("recipe",recipe);
+
+		
 		return "show-recipes";
 	}
 	

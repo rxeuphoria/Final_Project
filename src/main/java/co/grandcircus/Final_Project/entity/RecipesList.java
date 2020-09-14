@@ -1,14 +1,27 @@
 package co.grandcircus.Final_Project.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
+@Entity
 public class RecipesList {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 	private Double calories;
 	private String carbs;
 	private String fat;
-	private Long id;
 	private String image;
 	private String protein;
 	private String title;
+	
+	@OneToOne
+	private Recipe recipe;
+
 	public Double getCalories() {
 		return calories;
 	}
@@ -51,11 +64,19 @@ public class RecipesList {
 	public void setTitle(String title) {
 		this.title = title;
 	}
+	
+	public Recipe getRecipe() {
+		return recipe;
+	}
+	public void setRecipe(Recipe recipe) {
+		this.recipe = recipe;
+	}
 	@Override
 	public String toString() {
 		return "RecipesList [calories=" + calories + ", carbs=" + carbs + ", fat=" + fat + ", id=" + id + ", image="
-				+ image + ", protein=" + protein + ", title=" + title + "]";
+				+ image + ", protein=" + protein + ", title=" + title + ", recipe=" + recipe + "]";
 	}
+	
 	
 	
 }
