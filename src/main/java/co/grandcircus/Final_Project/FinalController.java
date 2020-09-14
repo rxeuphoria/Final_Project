@@ -111,6 +111,7 @@ public class FinalController {
 		double wallet=0,totalCarbs=0,totalProtein=0,totalFats=0;
 	if(gender.equals("F")) {
 		if(height_unit.contentEquals("centimeter") && weight_unit.equals("kilogram")) {
+
 			BMR=655.1 +(9.563*weight) + (1.850 * height) - (4.676 * age);
 		}
 		if(height_unit.contentEquals("centimeter") && weight_unit.contentEquals("pound")) {
