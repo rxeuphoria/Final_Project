@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -18,10 +19,21 @@ public class RecipesList {
 	private String image;
 	private String protein;
 	private String title;
+	private String recipeUrl;
 	
 	@OneToOne
 	private Recipe recipe;
+	
+	@ManyToOne
+	private User user;
 
+	
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
 	public Double getCalories() {
 		return calories;
 	}
@@ -30,6 +42,13 @@ public class RecipesList {
 	}
 	public String getCarbs() {
 		return carbs;
+	}
+	
+	public String getRecipeUrl() {
+		return recipeUrl;
+	}
+	public void setRecipeUrl(String recipeUrl) {
+		this.recipeUrl = recipeUrl;
 	}
 	public void setCarbs(String carbs) {
 		this.carbs = carbs;
@@ -73,9 +92,11 @@ public class RecipesList {
 	}
 	@Override
 	public String toString() {
-		return "RecipesList [calories=" + calories + ", carbs=" + carbs + ", fat=" + fat + ", id=" + id + ", image="
-				+ image + ", protein=" + protein + ", title=" + title + ", recipe=" + recipe + "]";
+		return "RecipesList [id=" + id + ", calories=" + calories + ", carbs=" + carbs + ", fat=" + fat + ", image="
+				+ image + ", protein=" + protein + ", title=" + title + ", recipeUrl=" + recipeUrl + ", recipe="
+				+ recipe + "]";
 	}
+	
 	
 	
 	

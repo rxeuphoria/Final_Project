@@ -14,7 +14,7 @@ public class Recipe {
 	private Long id;
 	private String title;
 	private Integer servings;
-	private  Double readyInMinutes;
+	private  Integer readyInMinutes;
 	private String sourceUrl;
 	
 	
@@ -36,10 +36,10 @@ public class Recipe {
 	public void setServings(Integer servings) {
 		this.servings = servings;
 	}
-	public Double getReadyInMinutes() {
+	public Integer getReadyInMinutes() {
 		return readyInMinutes;
 	}
-	public void setReadyInMinutes(Double readyInMinutes) {
+	public void setReadyInMinutes(Integer readyInMinutes) {
 		this.readyInMinutes = readyInMinutes;
 	}
 	public String getSourceUrl() {
