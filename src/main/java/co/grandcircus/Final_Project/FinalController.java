@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import co.grandcircus.Final_Project.api.FinalApi;
+import co.grandcircus.Final_Project.dao.RecipeDao;
 import co.grandcircus.Final_Project.dao.RecipesListDao;
 import co.grandcircus.Final_Project.dao.UserDao;
 import co.grandcircus.Final_Project.entity.Recipe;
@@ -38,6 +39,9 @@ public class FinalController {
 	@Autowired
 	HttpSession session;
 
+	@Autowired
+	RecipeDao recipeDao;
+	
 	@RequestMapping("/")
 	public String welcomeOrLogin() {
 		if(session.getAttribute("user")!=null){
@@ -246,12 +250,18 @@ public class FinalController {
 	}
 	
 	@RequestMapping("/save-recipe")
-	public String saveRecipe(RecipesList recipeList) {
+	public String saveRecipe(RecipesList recipeList, Recipe recipe) {
 		User user=(User)session.getAttribute("user");
 		user=userDao.findById(user.getId()).get();
 		recipeList.setUser(user);
+		
+	//	recipeList.setCarbs(recipe.);
+		//recipe.setSourceUrl(recipeList.getRecipeUrl());
 		listDao.save(recipeList);
+		recipeDao.save(recipe);
 		return "";
+			
+		
 	}
 
 	
