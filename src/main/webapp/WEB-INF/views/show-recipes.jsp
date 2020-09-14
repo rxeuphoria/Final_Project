@@ -37,11 +37,7 @@
 			<td>${recipes.carbs}</td>
 			<td>${recipes.fat}</td>
 			<td>${recipes.protein}</td>
-<<<<<<< HEAD
-			<td><a href="/save-recipe">Add</a>
-=======
 			<td><a href="/save-recipe">Add</a></td>
->>>>>>> daf137d0184e4b477bfcf34937941873c30129aa
 			
 	</tr>
 	</c:forEach>

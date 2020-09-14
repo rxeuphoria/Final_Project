@@ -34,8 +34,6 @@ public class FinalController {
 	@Autowired
 	UserDao userDao;
 	
-	@Autowired
-	RecipesListDao listDao;
 
 	@Autowired
 	HttpSession session;
@@ -247,10 +245,6 @@ public class FinalController {
 		return "show-recipes";
 	}
 	
-<<<<<<< HEAD
-=======
-	
->>>>>>> daf137d0184e4b477bfcf34937941873c30129aa
 	@RequestMapping("/save-recipe")
 	public String saveRecipe(RecipesList recipeList) {
 		User user=(User)session.getAttribute("user");
@@ -259,10 +253,7 @@ public class FinalController {
 		listDao.save(recipeList);
 		return "";
 	}
-<<<<<<< HEAD
-	
-=======
->>>>>>> daf137d0184e4b477bfcf34937941873c30129aa
+
 	
 	@RequestMapping("/logout")
 	public String logout(RedirectAttributes redir) {
