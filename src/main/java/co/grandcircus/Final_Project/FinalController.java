@@ -1,5 +1,6 @@
 package co.grandcircus.Final_Project;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -58,16 +59,8 @@ public class FinalController {
 	public String addNutrients() {
 		return "home";
 	}
-	@RequestMapping("/logout")
-	public String logout(RedirectAttributes redir) {
-		// invalidate clears the current user session and starts a new one.
-		session.invalidate();
-		
-		// A flash message will only show on the very next page. Then it will go away.
-		// It is useful with redirects since you can't add attributes to the mav.
-		redir.addFlashAttribute("message", "Logged out.");
-		return "redirect:/";
-	}
+	
+	
 	
 	@RequestMapping("/signup")
 	public String showSignupForm() {
@@ -105,20 +98,150 @@ public class FinalController {
 	}
 
 	
+	@RequestMapping("/calculations")
+	public String performCalc(Model model,@RequestParam("gender") String gender,
+								@RequestParam("height") Double height,
+								@RequestParam("height_unit")String height_unit,
+								@RequestParam("weight") Double weight,
+								@RequestParam("weight_unit") String weight_unit,
+								@RequestParam("age") Integer age,
+								@RequestParam("activity") Double level,
+								@RequestParam("interval") Integer interval) {
+		double BMR=0,TEE=0,carbs=0,protein=0,fats=0;
+		double wallet=0,totalCarbs=0,totalProtein=0,totalFats=0;
+	if(gender.equals("F")) {
+		if(height_unit.contentEquals("centimeter") && weight_unit.equals("kilogram")) {
+
+			BMR=655.1 +(9.563*weight) + (1.850 * height) - (4.676 * age);
+		}
+		if(height_unit.contentEquals("centimeter") && weight_unit.contentEquals("pound")) {
+			BMR=655.1 +(9.563*(weight/2.205)) + (1.850 * height) - (4.676 * age);
+		}
+		if(height_unit.contentEquals("inches") && weight_unit.contentEquals("kilogram")) {
+			BMR=655.1 +(9.563 * weight) + (1.850 * (height/0.394)) - (4.676 * age);
+		}
+		if(height_unit.equals("inches") && weight_unit.equals("pound")) {
+			BMR=655.1 +(9.563*(weight/2.205)) + (1.850  * (height/0.394)) - (4.676 * age);
+		}
+		
+		TEE=BMR*level;
+		
+		TEE=BMR*level;
+		carbs=(TEE*0.4)/4;
+		protein=(TEE*0.3)/4;
+		fats=(TEE*0.3)/9;
+		
+		wallet=TEE*interval;
+		totalCarbs=carbs*interval;
+		totalProtein=protein*interval;
+		totalFats=fats*interval;
+	 
+		System.out.println("hello");
+		
+      model.addAttribute("TEE",TEE);
+      model.addAttribute("carbs",carbs);
+      model.addAttribute("protein",protein);
+      model.addAttribute("fats",fats);
+      
+      model.addAttribute("wallet",wallet);
+      model.addAttribute("totalCarbs",totalCarbs);
+      model.addAttribute("totalProtein",totalProtein);
+      model.addAttribute("totalFats",totalFats);
+      
+      User user=(User)session.getAttribute("user");
+      user=userDao.findById(user.getId()).get();
+
+      user.setGender(gender);
+      user.setHeight(height);
+      user.setWeight(weight);
+      user.setAge(age);
+      user.setActivityLevel(level);
+      user.setShoppingInterval(interval);
+    
+      userDao.save(user);
+
+	}
+
+	if(gender.equals("M")) {
+		if(height_unit.contentEquals("centimeter") && weight_unit.equals("kilogram")) {
+			BMR=66.47 +(13.75*weight) + (5.003* height) - (6.755 * age);
+		}
+		if(height_unit.contentEquals("centimeter") && weight_unit.contentEquals("pound")) {
+			BMR=66.47 +(13.75* (weight/2.205)) + (5.003* height) - (6.755* age);
+		}
+		if(height_unit.contentEquals("inches") && weight_unit.contentEquals("kilogram")) {
+			BMR=66.47 +(13.75* weight) + (5.003* (height/0.394)) - (6.755 * age);
+		}
+		if(height_unit.equals("inches") && weight_unit.equals("pound")) {
+			BMR= (66.47 + (13.75 * (weight/2.205)) + (5.003 * (height/0.394)) - (6.755 * age));
+		}
+		
+		TEE=BMR*level;
+		carbs=(TEE*0.4)/4;
+		protein=(TEE*0.3)/4;
+		fats=(TEE*0.3)/9;
+		
+		wallet=TEE*interval;
+		totalCarbs=carbs*interval;
+		totalProtein=protein*interval;
+		totalFats=fats*interval;
+		
+      model.addAttribute("TEE",TEE);
+      model.addAttribute("carbs",carbs);
+      model.addAttribute("protein",protein);
+      model.addAttribute("fats",fats);
+      model.addAttribute("wallet",wallet);
+      model.addAttribute("totalCarbs",totalCarbs);
+      model.addAttribute("totalProtein",totalProtein);
+      model.addAttribute("totalFats",totalFats);
+      
+      User user=(User)session.getAttribute("user");
+      user=userDao.findById(user.getId()).get();
+
+      user.setGender(gender);
+      user.setHeight(height);
+      user.setWeight(weight);
+      user.setAge(age);
+      user.setActivityLevel(level);
+      user.setShoppingInterval(interval);
+    
+      userDao.save(user);
+
+	}
+
+	
+	 return "macros-details";
+	}
 	@RequestMapping("/showRecipes")
 	public String showRecipes(Model model,@RequestParam("minCarbs") Double minCarbs,
 								@RequestParam("maxCarbs") Double maxCarbs,
 								@RequestParam("number") Integer number) {
 		RecipesList[] recipes= api.showRecipesList(minCarbs, maxCarbs, number);
+		
+	
+	    for(int i=0;i<recipes.length;i++)
+	    	recipes[i].setRecipe(api.showDetails(recipes[i].getId()));
+		
+	    for(int i=0;i<recipes.length;i++)
+	    	recipes[i].setRecipeUrl(recipes[i].getRecipe().getSourceUrl());
+	  
+		
 		model.addAttribute("recipes",recipes);
 		return "show-recipes";
 	}
 	
-	@RequestMapping("/showdetails")
-	public String detailsRecipes(Model model,@RequestParam("id") Long id) {
-		Recipe recipe=api.showDetails(id);
-		model.addAttribute("recipe",recipe);
-		return "details";
+	
+	
+	
+	@RequestMapping("/logout")
+	public String logout(RedirectAttributes redir) {
+		// invalidate clears the current user session and starts a new one.
+		session.invalidate();
+		
+		// A flash message will only show on the very next page. Then it will go away.
+		// It is useful with redirects since you can't add attributes to the mav.
+		redir.addFlashAttribute("message", "Logged out.");
+		return "redirect:/";
 	}
-
+	
 }

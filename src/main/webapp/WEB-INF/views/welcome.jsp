@@ -17,6 +17,43 @@
 <div class="container">
 	<h1>Welcome ${user.name}</h1>
 	<a href="/home">See your Profile</a><br><br>
+	<h2>Fill your profile</h2>
+		<form action="/calculations">
+			<label>Gender:</label>
+			<select name="gender">
+				<option value="M">M</option>
+				<option value="F">F</option>
+			</select><br><br>
+			<label>Height:</label>
+			<input type="number" name="height" step=".1"/>
+			<label>in:</label>
+			<select name="height_unit"> 
+				<option value="centimeter" selected="selected">centimeter</option>
+				<option value="inches">inches</option>
+			</select><br><br>
+			<label>Weight:</label>
+			<input type="number" name="weight" step=".1"/>
+			<label>in:</label>
+			<select name="weight_unit">
+				<option value="pound" selected="selected">pound</option>
+				<option value="kilogram">kilogram</option>
+			</select><br><br>
+			<label>Age:</label>
+			<input type="number" name="age"/><br><br>
+			<label>Activity Level:</label>
+			<select name="activity">
+				<option value="1.2" >Sedentary</option>
+				<option value="1.375">Lightly Active</option>
+				<option value="1.55">Moderately</option>
+				<option value="1.725">Very Active</option>
+				<option value="1.9">Extremly Active</option>
+			</select><br><br>
+			<label>Shopping Interval(in days):</label>
+			<input type="number" name="interval"/><br><br>
+			<button type="submit">Check TEE</button>
+		</form><br><br><br>
+		
+		
 	<form action="/logout">
 	<button type="submit">Logout</button>
 	</form>

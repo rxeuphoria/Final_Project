@@ -18,21 +18,28 @@
 	<h1>Here is Recipes List</h1>
 		<table class="table">
 		<tr>
+			<th>Image</th>
 			<th>Title</th>
+			<th>Prep Time</th>
 			<th>Calories</th>
-			<th>Carbohydrates</th>
+			<th>Carbs</th>
 			<th>Fat</th>
 			<th>Protein</th>
 		</tr>
 			<c:forEach var="recipes" items="${recipes}">
 		<tr>
-			<td><a href="/showdetails?id=${recipes.id}">${recipes.title}</a></td>
+
+			<td><img src="${recipes.image}"/></td>
+			<td><a href="${recipes.recipe.sourceUrl}">${recipes.title}</a></td>
+			<td>${recipes.recipe.readyInMinutes} min.</td>
 			<td>${recipes.calories}</td>
 			<td>${recipes.carbs}</td>
 			<td>${recipes.fat}</td>
 			<td>${recipes.protein}</td>
-			</tr>
-		</c:forEach>
+			
+	</tr>
+	</c:forEach>
+		
 	</table>
 </div>
 </body>

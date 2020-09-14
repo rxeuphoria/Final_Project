@@ -12,6 +12,16 @@ public class User {
 	private String name;
 	private String email;
 	private String password;
+	private String gender;
+	private Double height;
+	private Double weight;
+	private Integer age;
+	private Double activityLevel;
+	private Integer shoppingInterval;
+	private Double totalCalories;
+	private Double totalCarbs;
+	private Double totalProtein;
+	private Double totalFats;
 	
 	public User() {
 		super();
@@ -57,9 +67,97 @@ public class User {
 		this.password = password;
 	}
 
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public Double getHeight() {
+		return height;
+	}
+
+	public void setHeight(Double height) {
+		this.height = height;
+	}
+
+	public Double getWeight() {
+		return weight;
+	}
+
+	public void setWeight(Double weight) {
+		this.weight = weight;
+	}
+
+	public Integer getAge() {
+		return age;
+	}
+
+	public void setAge(Integer age) {
+		this.age = age;
+	}
+
+	public Double getActivityLevel() {
+		return activityLevel;
+	}
+
+	public void setActivityLevel(Double activityLevel) {
+		this.activityLevel = activityLevel;
+	}
+
+	public Integer getShoppingInterval() {
+		return shoppingInterval;
+	}
+
+	public void setShoppingInterval(Integer shoppingInterval) {
+		this.shoppingInterval = shoppingInterval;
+	}
+	
+	
+
+	public Double getTotalCalories() {
+		return totalCalories;
+	}
+
+	public void setTotalCalories(Double totalCalories) {
+		this.totalCalories = totalCalories;
+	}
+
+	public Double getTotalCarbs() {
+		return totalCarbs;
+	}
+
+	public void setTotalCarbs(Double totalCarbs) {
+		this.totalCarbs = totalCarbs;
+	}
+
+	public Double getTotalProtein() {
+		return totalProtein;
+	}
+
+	public void setTotalProtein(Double totalProtein) {
+		this.totalProtein = totalProtein;
+	}
+
+	public Double getTotalFats() {
+		return totalFats;
+	}
+
+	public void setTotalFats(Double totalFats) {
+		this.totalFats = totalFats;
+	}
+
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + "]";
+		return "User [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + ", gender="
+				+ gender + ", height=" + height + ", weight=" + weight + ", age=" + age + ", activityLevel="
+				+ activityLevel + ", shoppingInterval=" + shoppingInterval + ", totalCalories=" + totalCalories
+				+ ", totalCarbs=" + totalCarbs + ", totalProtein=" + totalProtein + ", totalFats=" + totalFats + "]";
 	}
+
+
+	
 	
 }
