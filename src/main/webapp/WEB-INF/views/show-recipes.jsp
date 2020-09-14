@@ -28,6 +28,7 @@
 		</tr>
 			<c:forEach var="recipes" items="${recipes}">
 		<tr>
+
 			<td><img src="${recipes.image}"/></td>
 			<td><a href="${recipes.recipe.sourceUrl}">${recipes.title}</a></td>
 			<td>${recipes.recipe.readyInMinutes} min.</td>
