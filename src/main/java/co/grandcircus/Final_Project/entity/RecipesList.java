@@ -9,6 +9,8 @@ public class RecipesList {
 	private String image;
 	private String protein;
 	private String title;
+	
+
 	public Double getCalories() {
 		return calories;
 	}
@@ -56,6 +58,10 @@ public class RecipesList {
 		return "RecipesList [calories=" + calories + ", carbs=" + carbs + ", fat=" + fat + ", id=" + id + ", image="
 				+ image + ", protein=" + protein + ", title=" + title + "]";
 	}
+	
+	
+	
+	
 	
 	
 }

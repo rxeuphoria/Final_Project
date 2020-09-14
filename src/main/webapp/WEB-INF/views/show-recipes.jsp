@@ -26,7 +26,7 @@
 		</tr>
 			<c:forEach var="recipes" items="${recipes}">
 		<tr>
-			<td><a href="/showdetails?id=${recipes.id}">${recipes.title}</a></td>
+			<td><a href="${recipes.id}">${recipes.title}</a></td>
 			<td>${recipes.calories}</td>
 			<td>${recipes.carbs}</td>
 			<td>${recipes.fat}</td>
