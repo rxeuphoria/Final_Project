@@ -134,7 +134,8 @@ public class FinalController {
 		totalCarbs=carbs*interval;
 		totalProtein=protein*interval;
 		totalFats=fats*interval;
-	
+	 
+		System.out.println("hello");
 		
       model.addAttribute("TEE",TEE);
       model.addAttribute("carbs",carbs);
@@ -148,6 +149,7 @@ public class FinalController {
       
       User user=(User)session.getAttribute("user");
       user=userDao.findById(user.getId()).get();
+
       user.setGender(gender);
       user.setHeight(height);
       user.setWeight(weight);
@@ -191,6 +193,19 @@ public class FinalController {
       model.addAttribute("totalCarbs",totalCarbs);
       model.addAttribute("totalProtein",totalProtein);
       model.addAttribute("totalFats",totalFats);
+      
+      User user=(User)session.getAttribute("user");
+      user=userDao.findById(user.getId()).get();
+
+      user.setGender(gender);
+      user.setHeight(height);
+      user.setWeight(weight);
+      user.setAge(age);
+      user.setActivityLevel(level);
+      user.setShoppingInterval(interval);
+    
+      userDao.save(user);
+
 	}
 
 	
@@ -213,6 +228,8 @@ public class FinalController {
 		model.addAttribute("recipes",recipes);
 		return "show-recipes";
 	}
+	
+	
 	
 	
 	@RequestMapping("/logout")
