@@ -1,8 +1,17 @@
+body {
+	background-image: url()
+}
+
 div { 
 	background-color:#E0FFFF
 	}
 
 h1 {
-	color:Red;text-align:center
+	color:Red;
+	text-align:center;
+	font-size: 3em;
+	border-bottom: 2px solid pink;
+	border-right:  2px solid pink;
+	width: 400px;
+	text-align: center;
 	}
-
