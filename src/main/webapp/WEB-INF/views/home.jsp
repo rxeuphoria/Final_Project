@@ -26,6 +26,14 @@
 		<input type="number" name="minCarbs"/><br><br>
 		<label>Maximum Carbs</label>
 		<input type="number" name="maxCarbs"/><br><br>
+		<label>Minimum Protein</label>
+		<input type="number" name="minProtein"/><br><br>
+		<label>Max Protein</label>
+		<input type="number" name="maxProtein"/><br><br>
+		<label>Min Fats</label>
+		<input type="number" name="minFats"/><br><br>
+		<label>Max Fats</label>
+		<input type="number" name="maxFats"/><br><br>
 		<label>Number of results</label>
 		<input type="number" name="number"/><br><br><br>
 		<button type="submit">Check Recipes</button>
