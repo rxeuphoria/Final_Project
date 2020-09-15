@@ -253,6 +253,15 @@ public class FinalController {
 		return "";
 	}
 	
+	@RequestMapping("/remove-recipe")
+	public String removeRecipe(RecipesList recipeList) {
+		User user=(User)session.getAttribute("user");
+		user=userDao.findById(user.getId()).get();
+		recipeList.setUser(user);
+		listDao.delete(recipeList);
+		return "";
+	}
+	
 	@RequestMapping("/logout")
 	public String logout(RedirectAttributes redir) {
 		// invalidate clears the current user session and starts a new one.
