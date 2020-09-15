@@ -261,8 +261,12 @@ public class FinalController {
 	@RequestMapping("/showRecipes")
 	public String showRecipes(Model model,@RequestParam("minCarbs") Double minCarbs,
 								@RequestParam("maxCarbs") Double maxCarbs,
+								@RequestParam("minProtein") Double minProtein,
+								@RequestParam("maxProtein") Double maxProtein,
+								@RequestParam("minFats") Double minFats,
+								@RequestParam("maxFats") Double maxFats,
 								@RequestParam("number") Integer number) {
-		RecipesList[] recipes= api.showRecipesList(minCarbs, maxCarbs, number);
+		RecipesList[] recipes= api.showRecipesList(minCarbs, maxCarbs, minProtein,maxProtein,minFats,maxFats,number);
 		
 	
 	    for(int i=0;i<recipes.length;i++)
@@ -288,12 +292,22 @@ public class FinalController {
 		recipe.setSourceUrl(recipeList.getRecipeUrl());
 		recipeList.setRecipe(recipe);
 		recipeDao.save(recipe);
-		String carbs=recipeList.getCarbs();
-		carbs=carbs.substring(0,carbs.length()-1);
-		 double updateCarbs=totalCarbs-Double.valueOf(carbs);
-		 totalCarbs=updateCarbs;
-		 System.out.println("total carbs"+totalCarbs);
-		model.addAttribute("updateCarbs",updateCarbs);
+		
+		Double carbsValue=listDao.findByTotalCarbs(user.getId());
+		Double proteinValue=listDao.findByTotalProtein();
+		Double fatsValue=listDao.findByTotalFats();
+		
+		Double carbsTotal=userDao.findByCarbs(user.getId());
+//		Double proteinTotal=userDao.findByProtein();
+//		Double fatsTotal=userDao.findByFats();
+		
+		Double leftCarbs=carbsTotal-carbsValue;
+	//	Double leftProtein=proteinTotal-proteinValue;
+	//	Double leftFats=fatsTotal-fatsValue;
+		
+		model.addAttribute("leftCarbs",leftCarbs);
+	//	model.addAttribute("leftProtein",leftProtein);
+	//	model.addAttribute("leftFats",leftFats);
 		return "cart";
 	}
 	

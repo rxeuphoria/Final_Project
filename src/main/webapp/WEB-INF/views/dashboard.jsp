@@ -7,10 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-  <ul>
-  	<li>${leftCarbs}</li>
-  	<li>${leftProtein}</li>
-  	<li>${leftFats}</li>
-  </ul>   
+
 </body>
 </html>

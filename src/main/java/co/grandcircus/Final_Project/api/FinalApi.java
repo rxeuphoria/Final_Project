@@ -32,10 +32,15 @@ private RestTemplate rt;
 		rt = new RestTemplateBuilder().additionalInterceptors(interceptor).build();
 	}
 
-  public RecipesList[] showRecipesList(Double minCarbs, Double maxCarbs,Integer number) {
+  public RecipesList[] showRecipesList(Double minCarbs, Double maxCarbs,Double minProtein,Double maxProtein,
+		  								Double minFats, Double maxFats,Integer number) {
 	  URI url = UriComponentsBuilder.fromHttpUrl("https://api.spoonacular.com/recipes/findByNutrients")
 			  .queryParam("minCarbs", minCarbs)
 			  .queryParam("maxCarbs", maxCarbs)
+			  .queryParam("minProtein",minProtein)
+			  .queryParam("maxProtein",maxProtein)
+			  .queryParam("minFats", minFats)
+			  .queryParam("maxFats", maxFats)
 			  .queryParam("number", number)
 			  .queryParam("apiKey", apiKey)
 			  .build().toUri();
