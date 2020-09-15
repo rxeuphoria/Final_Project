@@ -31,7 +31,7 @@
 		<tr>
 			
 			<td><img src="${recipes.image}"/></td>
-			<td><a href="/external-recipe?id=${recipes.id}">${recipes.title}</a></td>
+			<td><a href="/external-recipe?id=${recipes.id}" target="_blank">${recipes.title}</a></td>
 			<td>${recipes.recipe.readyInMinutes} min.</td>
 			<td>${recipes.calories}</td>
 			<td>${recipes.carbs}</td>
