@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import co.grandcircus.Final_Project.api.FinalApi;
-import co.grandcircus.Final_Project.dao.RecipeDao;
+//import co.grandcircus.Final_Project.dao.RecipeDao;
 import co.grandcircus.Final_Project.dao.RecipesListDao;
 import co.grandcircus.Final_Project.dao.UserDao;
 import co.grandcircus.Final_Project.entity.Recipe;
@@ -31,8 +31,8 @@ public class RecipeListController {
 	@Autowired
 	HttpSession session;
 
-	@Autowired
-	RecipeDao recipeDao;
+	//@Autowired
+//	RecipeDao recipeDao;
 
 	@RequestMapping("/external-recipe")
 	public String showExternalRecipe(Model model, @RequestParam("id") Long id) {
