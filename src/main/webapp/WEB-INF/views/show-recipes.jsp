@@ -18,7 +18,7 @@
 	<h1>Here is Recipes List</h1>
 		<table class="table">
 		<tr>
-			<th>Image</th>
+			<th></th>
 			<th>Title</th>
 			<th>Prep Time</th>
 			<th>Calories</th>
@@ -31,7 +31,7 @@
 		<tr>
 			
 			<td><img src="${recipes.image}"/></td>
-			<td><a href="${recipes.recipe.sourceUrl}">${recipes.title}</a></td>
+			<td><a href="/external-recipe?id=${recipes.id}">${recipes.title}</a></td>
 			<td>${recipes.recipe.readyInMinutes} min.</td>
 			<td>${recipes.calories}</td>
 			<td>${recipes.carbs}</td>
