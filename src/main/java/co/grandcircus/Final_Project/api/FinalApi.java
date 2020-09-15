@@ -46,7 +46,6 @@ private RestTemplate rt;
   public Recipe showDetails(Long id) {
 	  String url ="https://api.spoonacular.com/recipes/{id}/information?&apiKey={apiKey}";
 	  Recipe recipe=rt.getForObject(url, Recipe.class,id,apiKey);
-	  System.out.println("recipe");
 	  return recipe;
 	  
   }
