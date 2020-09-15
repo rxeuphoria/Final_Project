@@ -310,8 +310,7 @@ public class FinalController {
 	//	model.addAttribute("leftFats",leftFats);
 		return "cart";
 	}
-	
-<<<<<<< HEAD
+
 	@RequestMapping("/remove-recipe")
 	public String removeRecipe(RecipesList recipeList) {
 		User user=(User)session.getAttribute("user");
@@ -320,11 +319,7 @@ public class FinalController {
 		listDao.delete(recipeList);
 		return "";
 	}
-=======
-	
-	
 
->>>>>>> 6c0f87e26f52f4b9deed358141d08c79238ee375
 	
 	@RequestMapping("/logout")
 	public String logout(RedirectAttributes redir) {
