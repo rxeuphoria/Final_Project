@@ -265,13 +265,13 @@ public class FinalController {
 		RecipesList[] recipes= api.showRecipesList(minCarbs, maxCarbs, number);
 		
 	
-	    for(int i=0;i<recipes.length;i++)
+	   /* for(int i=0;i<recipes.length;i++)
 	    	recipes[i].setRecipe(api.showDetails(recipes[i].getId()));
 		
 	    for(int i=0;i<recipes.length;i++)
 	    	recipes[i].setRecipeUrl(recipes[i].getRecipe().getSourceUrl());
 	  
-		
+		*/
 		model.addAttribute("recipes",recipes);
 		return "show-recipes";
 	}
