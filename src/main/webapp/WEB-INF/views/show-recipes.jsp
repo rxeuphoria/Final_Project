@@ -18,7 +18,7 @@
 	<h1>Here is Recipes List</h1>
 		<table class="table">
 		<tr>
-			<th>Image</th>
+			<th></th>
 			<th>Title</th>
 			<th>Prep Time</th>
 			<th>Calories</th>
@@ -29,20 +29,35 @@
 		</tr>
 			<c:forEach var="recipes" items="${recipes}">
 		<tr>
-
+			
 			<td><img src="${recipes.image}"/></td>
-			<td><a href="${recipes.recipe.sourceUrl}">${recipes.title}</a></td>
+			<td><a href="/external-recipe?id=${recipes.id}">${recipes.title}</a></td>
 			<td>${recipes.recipe.readyInMinutes} min.</td>
 			<td>${recipes.calories}</td>
 			<td>${recipes.carbs}</td>
 			<td>${recipes.fat}</td>
 			<td>${recipes.protein}</td>
+<<<<<<< HEAD
 			<td> 
 			<p>
 			<a href="/save-recipe">Add</a>
 			/
 			<a href="/remove-recipe">Remove</a>
 			</p>
+=======
+			<td><form action = "/save-recipe">
+			<input type="hidden" name= "calories" value ="${recipes.calories}"/>
+			<input type="hidden" name= "image" value ="${recipes.image}"/>
+			<input type="hidden" name= "carbs" value ="${recipes.carbs}"/>
+			<input type="hidden" name= "fat" value ="${recipes.fat}"/>
+			<input type="hidden" name= "protein" value ="${recipes.protein}"/>
+			<input type="hidden" name= "title" value ="${recipes.title}"/>
+			<input type="hidden" name="recipeUrl" value="${recipes.recipe.sourceUrl}"/>
+				<button type = "submit">Add</button>
+			</form>
+			
+			
+>>>>>>> 6c0f87e26f52f4b9deed358141d08c79238ee375
 			</td>
 			
 	</tr>
