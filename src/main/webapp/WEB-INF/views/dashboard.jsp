@@ -16,7 +16,8 @@
 </head>
 <body>
 <center><h1>Welcome ${user.name}</h1></center>
-<h2>Profile</h2>
+<h2>Profile
+<a href="/edit"><button>Edit Profile</button></a></h2>
 <table class=table>
 	<tr>
 		<th>Gender</th>
@@ -33,7 +34,6 @@
 		<td>${interval} days</td>
 		</tr>
 	</table>
-
 
 <h2>Wallet</h2>
 	<ul>

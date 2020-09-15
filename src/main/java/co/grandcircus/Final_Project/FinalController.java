@@ -268,11 +268,11 @@ public class FinalController {
 		RecipesList[] recipes= api.showRecipesList(minCarbs, maxCarbs, minProtein,maxProtein,minFats,maxFats,number);
 		
 	
-	    for(int i=0;i<recipes.length;i++)
+	  /*  for(int i=0;i<recipes.length;i++)
 	    	recipes[i].setRecipe(api.showDetails(recipes[i].getId()));
 		
 	    for(int i=0;i<recipes.length;i++)
-	    	recipes[i].setRecipeUrl(recipes[i].getRecipe().getSourceUrl());
+	    	recipes[i].setRecipeUrl(recipes[i].getRecipe().getSourceUrl());*/
 	  
 		
 		model.addAttribute("recipes",recipes);
@@ -335,7 +335,6 @@ public class FinalController {
 		recipe.setTitle(recipeList.getTitle());
 		recipe.setSourceUrl(recipeList.getRecipeUrl());
 		recipeList.setRecipe(recipe);
-	//	recipeDao.save(recipe);
 		return "redirect:/show-data";
 	}
 	@RequestMapping("/delete-recipe")
@@ -346,6 +345,37 @@ public class FinalController {
 		listDao.deleteById(id);
 		return "redirect:/show-data";
 		
+	}
+	
+	@RequestMapping("/edit")
+	public String editProfile(Model model) {
+		User user=(User)session.getAttribute("user");
+		user=userDao.findById(user.getId()).get();
+		model.addAttribute("user",user);
+	   return "edit-profile";
+		
+	}
+	@PostMapping("/edit")
+	public String submitEdit(@RequestParam("id") Long id,
+							@RequestParam("email") String email,
+							@RequestParam("password") String password,
+							@RequestParam("height") Double height,
+							@RequestParam("weight") Double weight,
+							@RequestParam("age") Integer age,
+							@RequestParam("activity") Double level,
+							@RequestParam("interval") Integer shoppingInterval) {
+		User user=(User)session.getAttribute("user");
+		user=userDao.findById(user.getId()).get();
+		user.setEmail(email);
+		user.setPassword(password);
+		user.setHeight(height);
+		user.setWeight(weight);
+		user.setAge(age);
+		user.setActivityLevel(level);
+		user.setShoppingInterval(shoppingInterval);
+		userDao.save(user);
+		return "redirect:/show-data";
+	
 	}
 
 	

@@ -19,20 +19,6 @@ public class RecipeListController {
 	
 	@Autowired
 	FinalApi api;
-	
-	@Autowired
-	RecipesListDao listDao;
-	
-	
-	@Autowired
-	UserDao userDao;
-	
-
-	@Autowired
-	HttpSession session;
-
-	//@Autowired
-//	RecipeDao recipeDao;
 
 	@RequestMapping("/external-recipe")
 	public String showExternalRecipe(Model model, @RequestParam("id") Long id) {
