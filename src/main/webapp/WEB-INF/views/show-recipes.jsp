@@ -37,14 +37,14 @@
 			<td>${recipes.carbs}</td>
 			<td>${recipes.fat}</td>
 			<td>${recipes.protein}</td>
-<<<<<<< HEAD
+
 			<td> 
 			<p>
 			<a href="/save-recipe">Add</a>
 			/
 			<a href="/remove-recipe">Remove</a>
 			</p>
-=======
+
 			<td><form action = "/save-recipe">
 			<input type="hidden" name= "calories" value ="${recipes.calories}"/>
 			<input type="hidden" name= "image" value ="${recipes.image}"/>
@@ -57,7 +57,7 @@
 			</form>
 			
 			
->>>>>>> 6c0f87e26f52f4b9deed358141d08c79238ee375
+
 			</td>
 			
 	</tr>

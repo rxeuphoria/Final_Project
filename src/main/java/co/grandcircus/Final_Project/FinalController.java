@@ -1,6 +1,5 @@
 package co.grandcircus.Final_Project;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -61,7 +60,7 @@ public class FinalController {
 		Optional<User> foundUser =userDao.findByEmailAndPassword(email, password);
 		if(foundUser.isPresent()) {
 			session.setAttribute("user", foundUser.get());
-			return "welcome-login";
+			return "redirect:/show-data";
 		}else {
 			model.addAttribute("message","Incorrect email and password");
 			return "login";
@@ -231,7 +230,7 @@ public class FinalController {
 	}
 
 	
-	 return "macros-details";
+	 return "redirect:/show-data";
 	}
 	
 	@RequestMapping("/fetch-profile")
@@ -256,7 +255,7 @@ public class FinalController {
 		model.addAttribute("carbs",carbs);
 		model.addAttribute("protein",protein);
 		model.addAttribute("fats",fats);
-		return "profile";
+		return "";
 	}
 	@RequestMapping("/showRecipes")
 	public String showRecipes(Model model,@RequestParam("minCarbs") Double minCarbs,
@@ -280,8 +279,53 @@ public class FinalController {
 		return "show-recipes";
 	}
 	 
+	@RequestMapping("/show-data")
+	public String showData(Model model) {
+		showProfile(model);
+		User user=(User)session.getAttribute("user");
+		user=userDao.findById(user.getId()).get();
+	
+		Double carbsValue=listDao.findByTotalCarbs(user.getId());
+		Double proteinValue=listDao.findByTotalProtein(user.getId());
+		Double fatsValue=listDao.findByTotalFats(user.getId());
+		
+		Double carbsTotal=userDao.findByCarbs(user.getId());
+		Double proteinTotal=userDao.findByProtein(user.getId());
+		Double fatsTotal=userDao.findByFats(user.getId());
+		
+		if(carbsValue==null) {
+			carbsValue=0.0;
+		}
+		if(proteinValue==null) {
+			proteinValue=0.0;
+		}
+		if(fatsValue==null) {
+			fatsValue=0.0;
+		}
+		Double leftCarbs=0.0;
+		Double leftProtein=0.0;
+		Double leftFats=0.0;
+		if(carbsValue!=null && proteinValue!=null && fatsValue!=null) {
+		 leftCarbs=carbsTotal-carbsValue;
+		 leftProtein=proteinTotal-proteinValue;
+		leftFats=fatsTotal-fatsValue;
+		}
+	
+		model.addAttribute("leftCarbs",leftCarbs);
+		model.addAttribute("leftProtein",leftProtein);
+		model.addAttribute("leftFats",leftFats);
+		
+
+		List<RecipesList> list=listDao.findAllResults(user.getId());
+
+		model.addAttribute("list",list);
+		return "dashboard";
+		
+	}
+		
+	
 	@RequestMapping("/save-recipe")
-	public String saveRecipe(RecipesList recipeList, Recipe recipe,Model model) {
+		public String saveRecipeInList(RecipesList recipeList, Recipe recipe,Model model) {
 		User user=(User)session.getAttribute("user");
 		user=userDao.findById(user.getId()).get();
 		recipeList.setUser(user);
@@ -291,24 +335,17 @@ public class FinalController {
 		recipe.setTitle(recipeList.getTitle());
 		recipe.setSourceUrl(recipeList.getRecipeUrl());
 		recipeList.setRecipe(recipe);
-		recipeDao.save(recipe);
+	//	recipeDao.save(recipe);
+		return "redirect:/show-data";
+	}
+	@RequestMapping("/delete-recipe")
+	public String deleteRecipe(RecipesList recipeList,@RequestParam("id") Long id) {
+		User user=(User)session.getAttribute("user");
+		user=userDao.findById(user.getId()).get();
+		recipeList.setUser(user);
+		listDao.deleteById(id);
+		return "redirect:/show-data";
 		
-		Double carbsValue=listDao.findByTotalCarbs(user.getId());
-		Double proteinValue=listDao.findByTotalProtein();
-		Double fatsValue=listDao.findByTotalFats();
-		
-		Double carbsTotal=userDao.findByCarbs(user.getId());
-//		Double proteinTotal=userDao.findByProtein();
-//		Double fatsTotal=userDao.findByFats();
-		
-		Double leftCarbs=carbsTotal-carbsValue;
-	//	Double leftProtein=proteinTotal-proteinValue;
-	//	Double leftFats=fatsTotal-fatsValue;
-		
-		model.addAttribute("leftCarbs",leftCarbs);
-	//	model.addAttribute("leftProtein",leftProtein);
-	//	model.addAttribute("leftFats",leftFats);
-		return "cart";
 	}
 
 	@RequestMapping("/remove-recipe")

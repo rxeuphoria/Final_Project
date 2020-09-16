@@ -17,10 +17,10 @@ public interface UserDao extends JpaRepository<User, Long> {
 	
 	@Query("select totalCarbs from User where id=:id")
 	Double findByCarbs(@Param("id") Long userId);
-	//@Query("select totalProtein from User")
-	//Double findByProtein();
-	//@Query("select totalFats from User")
-	//Double findByFats();
+	@Query("select totalProtein from User where id=:id")
+	Double findByProtein(@Param("id") Long userId);
+	@Query("select totalFats from User where id=:id")
+	Double findByFats(@Param("id") Long userId);
 
 	
 
