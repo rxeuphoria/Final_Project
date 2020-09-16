@@ -23,6 +23,8 @@ import co.grandcircus.Final_Project.dao.UserDao;
 import co.grandcircus.Final_Project.entity.Recipe;
 import co.grandcircus.Final_Project.entity.RecipesList;
 import co.grandcircus.Final_Project.entity.User;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Controller
 public class FinalController {
@@ -48,11 +50,15 @@ public class FinalController {
 	double wallet=0,totalCarbs=0,totalProtein=0,totalFats=0;
 	double remainingCarbs=0,remainingProtein=0,remainingFats=0;
 	String plan=null;
-
-	
+  
+	int edit=0;
+	SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+	Date start = new Date();
 	@RequestMapping("/")
-	public String welcomeOrLogin() {
+	public String welcomeOrLogin(Model model) {
 		if(session.getAttribute("user")!=null){
+			System.out.println("min date"+start);
+			model.addAttribute("start",start);
 		return "welcome";
 		}else {
 			return "login";
@@ -294,10 +300,14 @@ public class FinalController {
       userDao.save(user);
 
 	}
-	
-
-	
+System.out.println("right");
+	if(edit==0)
 	 return "redirect:/show-data";
+	else
+	{
+		System.out.println("coming here");
+		return "";
+	}
 	}
 	
 	@RequestMapping("/fetch-profile")
@@ -441,29 +451,25 @@ public class FinalController {
 	   return "edit-profile";
 		
 	}
-	@PostMapping("/edit")
-	public String submitEdit(@RequestParam("id") Long id,
-							@RequestParam("email") String email,
-							@RequestParam("password") String password,
-							@RequestParam("height") Double height,
-							@RequestParam("weight") Double weight,
-							@RequestParam("age") Integer age,
-							@RequestParam("activity") Double level,
-							@RequestParam("interval") Integer shoppingInterval) {
-		User user=(User)session.getAttribute("user");
-		user=userDao.findById(user.getId()).get();
-		user.setEmail(email);
-		user.setPassword(password);
-		user.setHeight(height);
-		user.setWeight(weight);
-		user.setAge(age);
-		user.setActivityLevel(level);
-		user.setShoppingInterval(shoppingInterval);
-		userDao.save(user);
-		return "redirect:/show-data";
+		
+@RequestMapping("/edit-submit")
+public String editSubmit(Model model,@RequestParam("gender") String gender,
+		@RequestParam("height") Double height,
+		@RequestParam("height_unit")String height_unit,
+		@RequestParam("weight") Double weight,
+		@RequestParam("weight_unit") String weight_unit,
+		@RequestParam("age") Integer age,
+		@RequestParam("change") Double change, 
+		@RequestParam("activity") Double level, 
+		@RequestParam("datepickerStart") String startDate,
+		@RequestParam("datepickerEnd") String endDate) {
+	edit=1;
+	System.out.println("edited"+edit);
+	performCalc(model,gender,height,height_unit,weight,weight_unit,age,change,level, startDate,endDate);
+	edit=0;
+	return "edit-confirm";
 	
-
-	}
+}
 
 	
 	@RequestMapping("/logout")

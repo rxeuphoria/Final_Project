@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -55,10 +56,10 @@
 					<option value="-250">Loose .5 pound</option>
 					<option value="-500">Loose 1 pound</option>
 				</select><br><br>
-			Start Date: 
-			<input type="date" name="datepickerStart">
-			End Date:
-			<input type="date" name="datepickerEnd"><br><br>
+			<label>Start Date:</label> 
+			<input type="date" name="datepickerStart" max="${start}" required>
+			<label>End Date:</label>
+			<input type="date" name="datepickerEnd" required><br><br>
 
 			<button type="submit">Save</button>
 		</form>
