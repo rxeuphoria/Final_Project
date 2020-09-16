@@ -130,8 +130,7 @@ public class FinalController {
 								@RequestParam("activity") Double level, 
 								@RequestParam("datepickerStart") String startDate,
 								@RequestParam("datepickerEnd") String endDate) {
-		System.out.println(startDate);
-		System.out.println(endDate);
+	
 		
 		LocalDate start = LocalDate.parse(startDate);
 		LocalDate end = LocalDate.parse(endDate);

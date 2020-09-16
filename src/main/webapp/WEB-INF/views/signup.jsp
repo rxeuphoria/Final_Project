@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="/style.css" />
 </head>
 <body>
-	<h1>Sign up</h1>
+<center>	<h1>Sign up</h1>
 	
 	<p class="message"><c:out value="${ message }"/></p>
 	
@@ -29,6 +29,6 @@
 		<p>
 			<button>Sign me Up!</button>
 		</p>
-	</form>
+	</form></center>
 </body>
 </html>
