@@ -44,6 +44,7 @@ public class FinalController {
 	double BMR=0,TEE=0,carbs=0,protein=0,fats=0;
 	double wallet=0,totalCarbs=0,totalProtein=0,totalFats=0;
 	double remainingCarbs=0,remainingProtein=0,remainingFats=0;
+	String plan=null;
 
 	
 	@RequestMapping("/")
@@ -142,16 +143,26 @@ public class FinalController {
 		
 		TEE=BMR*level;
 		
-		if(change==500)
+		if(change==500) {
 			TEE=TEE+500;
-		if(change==250)
+			plan="Gain 1 pound";
+		}
+		if(change==250) {
 			TEE=TEE+250;
-		if(change==0)
+			plan="Gain 0.5 pound";
+		}
+		if(change==0) {
 			TEE=TEE+0;
-		if(change==-250)
+			plan="Maintain";
+		}
+		if(change==-250) {
 			TEE=TEE-250;
-		if(change==-500)
+			plan="Loose 0.5 pound";
+		}
+		if(change==-500) {
 			TEE=TEE-500;
+			plan="Loose 1 pound";
+		}
 		carbs=(TEE*0.4)/4;
 		protein=(TEE*0.3)/4;
 		fats=(TEE*0.3)/9;
@@ -161,7 +172,6 @@ public class FinalController {
 		totalProtein=protein*interval;
 		totalFats=fats*interval;
 	 
-		System.out.println("hello");
 		
       model.addAttribute("TEE",TEE);
       model.addAttribute("carbs",carbs);
@@ -184,6 +194,7 @@ public class FinalController {
       user.setWeight_unit(weight_unit);
       user.setWeight(weight);
       user.setAge(age);
+      user.setPlan(plan);
       user.setActivityLevel(level);
       user.setShoppingInterval(interval);
       user.setTotalCalories(wallet);
@@ -211,6 +222,26 @@ public class FinalController {
 		}
 		
 		TEE=BMR*level;
+		if(change==500) {
+			TEE=TEE+500;
+			plan="Gain 1 pound";
+		}
+		if(change==250) {
+			TEE=TEE+250;
+			plan="Gain 0.5 pound";
+		}
+		if(change==0) {
+			TEE=TEE+0;
+			plan="Maintain";
+		}
+		if(change==-250) {
+			TEE=TEE-250;
+			plan="Loose 0.5 pound";
+		}
+		if(change==-500) {
+			TEE=TEE-500;
+			plan="Loose 1 pound";
+		}
 		carbs=(TEE*0.4)/4;
 		protein=(TEE*0.3)/4;
 		fats=(TEE*0.3)/9;
@@ -240,6 +271,7 @@ public class FinalController {
       user.setAge(age);
       user.setActivityLevel(level);
       user.setShoppingInterval(interval);
+      user.setPlan(plan);
       user.setTotalCalories(wallet);
       user.setTotalCarbs(totalCarbs);
       user.setTotalProtein(totalProtein);
@@ -268,6 +300,7 @@ public class FinalController {
 		Double carbs=user.getTotalCarbs();
 		Double protein=user.getTotalProtein();
 		Double fats=user.getTotalFats();
+		String plan=user.getPlan();
 		model.addAttribute("gender",gender);
 		model.addAttribute("height",height);
 		model.addAttribute("height_unit",height_unit);
@@ -279,6 +312,7 @@ public class FinalController {
 		model.addAttribute("carbs",carbs);
 		model.addAttribute("protein",protein);
 		model.addAttribute("fats",fats);
+		model.addAttribute("plan",plan);
 		return "";
 	}
 	@RequestMapping("/showRecipes")

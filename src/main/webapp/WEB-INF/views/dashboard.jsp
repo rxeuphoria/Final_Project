@@ -37,6 +37,7 @@
 		<th>Daily Ideal Carbs</th>
 		<th>Daily Ideal Protein</th>
 		<th>Daily Ideal Fats</th>
+		<th>Plan</th>
 		</tr>
 	<tr>
 		<td>${gender}</td>
@@ -47,28 +48,9 @@
 		<td><fmt:formatNumber value="${carbs/interval}" pattern=".00"/>gm</td>
 		<td><fmt:formatNumber value="${protein/interval}" pattern=".00"/>gm</td>
 		<td><fmt:formatNumber value="${fats/interval}" pattern=".00"/>gm</td>
+		<td>${plan}</td>
 		</tr>
 	</table>
-
-
-
-<h2>Wallet</h2>
-	<ul>
-		<li>Carbs: <fmt:formatNumber value="${leftCarbs}" pattern=".00"/>gm</li>
-		<li>Protein: <fmt:formatNumber value="${leftProtein}" pattern=".00"/>gm</li>
-		<li>Fats: <fmt:formatNumber value="${leftFats}" pattern=".00"/>gm</li>
-	</ul>
-<a href="/home"><button>Check Recipes by Macros</button></a>    
-<h2>Recipes List</h2>
-<table>
-<c:forEach var="recipe" items="${list}">
-	<tr>
-	<td>${recipe.title}</td>
-	<td><a href="/delete-recipe?id=${recipe.id}" ><button>Delete</button></a></td>
-	</tr>
-	</c:forEach>
-
-
 
 <h2>Wallet</h2>
 	<ul>

@@ -24,7 +24,18 @@ public class User {
 	private Double totalCarbs;
 	private Double totalProtein;
 	private Double totalFats;
+	private String plan;
 	
+	
+	
+	public String getPlan() {
+		return plan;
+	}
+
+	public void setPlan(String plan) {
+		this.plan = plan;
+	}
+
 	public User() {
 		super();
 	}
@@ -175,8 +186,10 @@ public class User {
 				+ gender + ", height=" + height + ", height_unit=" + height_unit + ", weight=" + weight
 				+ ", weight_unit=" + weight_unit + ", age=" + age + ", activityLevel=" + activityLevel
 				+ ", shoppingInterval=" + shoppingInterval + ", totalCalories=" + totalCalories + ", totalCarbs="
-				+ totalCarbs + ", totalProtein=" + totalProtein + ", totalFats=" + totalFats + "]";
+				+ totalCarbs + ", totalProtein=" + totalProtein + ", totalFats=" + totalFats + ", plan=" + plan + "]";
 	}
+
+	
 
 	
 
