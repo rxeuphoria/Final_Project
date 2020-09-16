@@ -19,6 +19,7 @@ public class RecipeListController {
 	
 	@Autowired
 	FinalApi api;
+
 	
 	@Autowired
 	RecipesListDao listDao;
@@ -33,6 +34,7 @@ public class RecipeListController {
 
 	//@Autowired
 //	RecipeDao recipeDao;
+
 
 	@RequestMapping("/external-recipe")
 	public String showExternalRecipe(Model model, @RequestParam("id") Long id) {

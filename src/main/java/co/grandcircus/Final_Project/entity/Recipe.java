@@ -13,7 +13,6 @@ public class Recipe {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String title;
-	private Integer servings;
 	private  Integer readyInMinutes;
 	private String sourceUrl;
 	
@@ -30,12 +29,7 @@ public class Recipe {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public Integer getServings() {
-		return servings;
-	}
-	public void setServings(Integer servings) {
-		this.servings = servings;
-	}
+	
 	public Integer getReadyInMinutes() {
 		return readyInMinutes;
 	}
@@ -50,9 +44,10 @@ public class Recipe {
 	}
 	@Override
 	public String toString() {
-		return "Recipe [id=" + id + ", title=" + title + ", servings=" + servings + ", readyInMinutes=" + readyInMinutes
-				+ ", sourceUrl=" + sourceUrl + "]";
+		return "Recipe [id=" + id + ", title=" + title + ", readyInMinutes=" + readyInMinutes + ", sourceUrl="
+				+ sourceUrl + "]";
 	}
+	
 	
 	
 }

@@ -45,11 +45,11 @@
 				<option value="1.375">Lightly Active</option>
 				<option value="1.55">Moderately</option>
 				<option value="1.725">Very Active</option>
-				<option value="1.9">Extremly Active</option>
+				<option value="1.9">Extremely Active</option>
 			</select><br><br>
 			<label>Shopping Interval(in days):</label>
 			<input type="number" name="interval"/><br><br>
-			<button type="submit">Check TEE</button>
+			<button type="submit">Save</button>
 		</form><br><br><br>
 		
 		

@@ -5,18 +5,22 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here
-
 </title>
+<link href="style.css" rel="stylesheet" />
 </head>
 <body>
-<link href="style.css" rel="stylesheet" />
+
 
 <div>
 	
+
+<article>
+<header><a href="/show-data" class="homepage">@DashBoard</a>
+</header>
+</article>
 	<div class="mx-auto" style="width: 400px;">
   <h1>Enter calories amount</h1>
 </div>
-
 <div class="progress">
   <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
