@@ -19,7 +19,7 @@ public class User {
 	private String weight_unit;
 	private Integer age;
 	private Double activityLevel;
-	private Integer shoppingInterval;
+	private Long shoppingInterval;
 	private Double totalCalories;
 	private Double totalCarbs;
 	private Double totalProtein;
@@ -138,12 +138,12 @@ public class User {
 		this.activityLevel = activityLevel;
 	}
 
-	public Integer getShoppingInterval() {
+	public long getShoppingInterval() {
 		return shoppingInterval;
 	}
 
-	public void setShoppingInterval(Integer shoppingInterval) {
-		this.shoppingInterval = shoppingInterval;
+	public void setShoppingInterval(long interval) {
+		this.shoppingInterval = interval;
 	}
 	
 	

@@ -1,5 +1,8 @@
 package co.grandcircus.Final_Project;
 
+import java.time.LocalDate;
+import java.time.temporal.*;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -123,11 +126,20 @@ public class FinalController {
 								@RequestParam("weight") Double weight,
 								@RequestParam("weight_unit") String weight_unit,
 								@RequestParam("age") Integer age,
-								@RequestParam("activity") Double level,
-								@RequestParam("interval") Integer interval,
-								@RequestParam("change") Double change) {
-			if(gender.equals("F")) {
-		if(height_unit.contentEquals("cms") && weight_unit.equals("kg")) {
+								@RequestParam("change") Double change, 
+								@RequestParam("activity") Double level, 
+								@RequestParam("datepickerStart") String startDate,
+								@RequestParam("datepickerEnd") String endDate) {
+		System.out.println(startDate);
+		System.out.println(endDate);
+		
+		LocalDate start = LocalDate.parse(startDate);
+		LocalDate end = LocalDate.parse(endDate);
+		long interval = ChronoUnit.DAYS.between(start, end);
+		System.out.println(interval);
+		
+		if(gender.equals("F")) {
+		if(height_unit.contentEquals("centimeter") && weight_unit.equals("kilogram")) {
 
 			BMR=655.1 +(9.563*weight) + (1.850 * height) - (4.676 * age);
 		}
@@ -140,6 +152,8 @@ public class FinalController {
 		if(height_unit.equals("inches") && weight_unit.equals("pound")) {
 			BMR=655.1 +(9.563*(weight/2.205)) + (1.850  * (height/0.394)) - (4.676 * age);
 		}
+		
+	
 		
 		TEE=BMR*level;
 		
@@ -171,7 +185,7 @@ public class FinalController {
 		totalCarbs=carbs*interval;
 		totalProtein=protein*interval;
 		totalFats=fats*interval;
-	 
+	
 		
       model.addAttribute("TEE",TEE);
       model.addAttribute("carbs",carbs);
@@ -280,6 +294,7 @@ public class FinalController {
       userDao.save(user);
 
 	}
+	
 
 	
 	 return "redirect:/show-data";
@@ -295,7 +310,7 @@ public class FinalController {
 		Double weight=user.getWeight();
 		String weight_unit=user.getWeight_unit();
 		Integer age=user.getAge();
-		Integer shoppingInterval=user.getShoppingInterval();
+		Long shoppingInterval=user.getShoppingInterval();
 		Double cal=user.getTotalCalories();
 		Double carbs=user.getTotalCarbs();
 		Double protein=user.getTotalProtein();
@@ -324,14 +339,15 @@ public class FinalController {
 								@RequestParam("maxFats") Double maxFats,
 								@RequestParam("number") Integer number) {
 		RecipesList[] recipes= api.showRecipesList(minCarbs, maxCarbs, minProtein,maxProtein,minFats,maxFats,number);
-		
-	
-	/*  for(int i=0;i<recipes.length;i++)
+	  
+	/*
+	  for(int i=0;i<recipes.length;i++)
 	    	recipes[i].setRecipe(api.showDetails(recipes[i].getId()));
 	 	
 	    for(int i=0;i<recipes.length;i++)
-	    	recipes[i].setRecipeUrl(recipes[i].getRecipe().getSourceUrl());*/
-	  
+	    	recipes[i].setRecipeUrl(recipes[i].getRecipe().getSourceUrl());
+	  */
+
 		
 		model.addAttribute("recipes",recipes);
 		model.addAttribute("carbslimit",remainingCarbs);
