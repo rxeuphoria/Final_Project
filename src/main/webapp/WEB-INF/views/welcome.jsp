@@ -55,17 +55,14 @@
 					<option value="-250">Loose .5 pound</option>
 					<option value="-500">Loose 1 pound</option>
 				</select><br><br>
-			<br><br> 
 			Start Date: 
 			<input type="date" name="datepickerStart">
 			End Date:
-			<input type="date" name="datepickerEnd">
+			<input type="date" name="datepickerEnd"><br><br>
 
 			<button type="submit">Save</button>
 		</form>
-		<br> <br> <br>
-
-
+		<br> <br> 
 		<form action="/logout">
 			<button type="submit">Logout</button>
 		</form>
