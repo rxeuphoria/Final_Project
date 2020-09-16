@@ -335,7 +335,7 @@ public class FinalController {
 		recipe.setTitle(recipeList.getTitle());
 		recipe.setSourceUrl(recipeList.getRecipeUrl());
 		recipeList.setRecipe(recipe);
-		//recipeDao.save(recipe);
+		recipeDao.save(recipe);
 		return "redirect:/show-data";
 	}
 	@RequestMapping("/delete-recipe")
