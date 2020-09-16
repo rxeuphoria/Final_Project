@@ -123,7 +123,8 @@ public class FinalController {
 								@RequestParam("weight_unit") String weight_unit,
 								@RequestParam("age") Integer age,
 								@RequestParam("activity") Double level,
-								@RequestParam("interval") Integer interval) {
+								@RequestParam("interval") Integer interval,
+								@RequestParam("change") Double change) {
 			if(gender.equals("F")) {
 		if(height_unit.contentEquals("cms") && weight_unit.equals("kg")) {
 
@@ -141,7 +142,16 @@ public class FinalController {
 		
 		TEE=BMR*level;
 		
-		TEE=BMR*level;
+		if(change==500)
+			TEE=TEE+500;
+		if(change==250)
+			TEE=TEE+250;
+		if(change==0)
+			TEE=TEE+0;
+		if(change==-250)
+			TEE=TEE-250;
+		if(change==-500)
+			TEE=TEE-500;
 		carbs=(TEE*0.4)/4;
 		protein=(TEE*0.3)/4;
 		fats=(TEE*0.3)/9;

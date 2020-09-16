@@ -47,6 +47,13 @@
 				<option value="1.725">Very Active</option>
 				<option value="1.9">Extremely Active</option>
 			</select><br><br>
+				<select name="change">
+					<option value="500">Gain 1 Pound</option>
+					<option value="250">Gain .5 pound</option>
+					<option value="0">Maintain</option>
+					<option value="-250">Loose .5 pound</option>
+					<option value="-500">Loose 1 pound</option>
+				</select>
 			<label>Shopping Interval(in days):</label>
 			<input type="number" name="interval"/><br><br>
 			<button type="submit">Save</button>
