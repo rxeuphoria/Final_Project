@@ -138,7 +138,7 @@ public class FinalController {
 		System.out.println(interval);
 		
 		if(gender.equals("F")) {
-		if(height_unit.contentEquals("centimeter") && weight_unit.equals("kilogram")) {
+		if(height_unit.contentEquals("cms") && weight_unit.equals("kg")) {
 
 			BMR=655.1 +(9.563*weight) + (1.850 * height) - (4.676 * age);
 		}
@@ -152,9 +152,10 @@ public class FinalController {
 			BMR=655.1 +(9.563*(weight/2.205)) + (1.850  * (height/0.394)) - (4.676 * age);
 		}
 		
-	
+	System.out.println("interval"+interval);
 		
 		TEE=BMR*level;
+		System.out.println("TEE"+TEE);
 		
 		if(change==500) {
 			TEE=TEE+500;

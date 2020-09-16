@@ -14,6 +14,7 @@
 
 </head>
 <body>
+<center>
 	<h1>Login</h1>
 	
 
@@ -37,6 +38,6 @@
 		Don't have an account yet? <a href="/signup">Sign up here</a>.
 	</p>
 	
-
+</center>
 </body>
 </html>

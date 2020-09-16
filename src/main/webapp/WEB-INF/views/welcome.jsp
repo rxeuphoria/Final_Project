@@ -36,7 +36,7 @@
 				name="weight" step=".1" /> <label>in:</label> <select
 				name="weight_unit">
 				<option value="pound" selected="selected">pound</option>
-				<option value="kgs">kilogram</option>
+				<option value="kg">kilogram</option>
 			</select><br> <br> <label>Age:</label> <input type="number"
 				name="age" /><br> <br> <label>Activity Level:</label> <select
 				name="activity">
