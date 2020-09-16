@@ -16,8 +16,6 @@
 </head>
 <body>
 
-<center><h1>Welcome ${user.name}</h1></center>
-<h2>Profile</h2>
 
 <form action="/logout">
 	<button type="submit">Logout</button>
