@@ -21,7 +21,7 @@
 		<h1>Welcome ${user.name}</h1>
 		<h2>Fill your profile</h2>
 		<form action="/calculations">
-			<label>Gender:</label> <select name="gender">
+			<label>Gender you most closely identify with:</label> <select name="gender">
 				<option value="M">M</option>
 				<option value="F">F</option>
 			</select><br><br>
