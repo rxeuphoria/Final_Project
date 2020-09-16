@@ -48,6 +48,14 @@ Wallet :</b> <b>Carbs:</b> <fmt:formatNumber value="${carbslimit}" pattern=".00"
 			<td>${recipes.carbs}</td>
 			<td>${recipes.fat}</td>
 			<td>${recipes.protein}</td>
+
+			<td> 
+			<p>
+			<a href="/save-recipe">Add</a>
+			/
+			<a href="/remove-recipe">Remove</a>
+			</p>
+
 			<td><form action = "/save-recipe">
 			<input type="hidden" name= "calories" value ="${recipes.calories}"/>
 			<input type="hidden" name= "image" value ="${recipes.image}"/>
@@ -58,6 +66,9 @@ Wallet :</b> <b>Carbs:</b> <fmt:formatNumber value="${carbslimit}" pattern=".00"
 			<input type="hidden" name="recipeUrl" value="${recipes.recipe.sourceUrl}"/>
 				<button type = "submit">Add</button>
 			</form>			
+			
+			
+
 			</td>
 	</tr>
 	</c:forEach>		

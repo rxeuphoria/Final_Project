@@ -15,6 +15,10 @@
 
 </head>
 <body>
+
+<center><h1>Welcome ${user.name}</h1></center>
+<h2>Profile</h2>
+
 <form action="/logout">
 	<button type="submit">Logout</button>
 	</form>
@@ -22,6 +26,7 @@
 <center><h1>Welcome ${user.name}</h1></center>
 <h2>Profile
 <a href="/edit"><button>Edit Profile</button></a></h2>
+
 <table class=table>
 	<tr>
 		<th>Gender</th>
@@ -45,6 +50,8 @@
 		</tr>
 	</table>
 
+
+
 <h2>Wallet</h2>
 	<ul>
 		<li>Carbs: <fmt:formatNumber value="${leftCarbs}" pattern=".00"/>gm</li>
@@ -60,6 +67,25 @@
 	<td><a href="/delete-recipe?id=${recipe.id}" ><button>Delete</button></a></td>
 	</tr>
 	</c:forEach>
+
+
+
+<h2>Wallet</h2>
+	<ul>
+		<li>Carbs: <fmt:formatNumber value="${leftCarbs}" pattern=".00"/>gm</li>
+		<li>Protein: <fmt:formatNumber value="${leftProtein}" pattern=".00"/>gm</li>
+		<li>Fats: <fmt:formatNumber value="${leftFats}" pattern=".00"/>gm</li>
+	</ul>
+<a href="/home"><button>Check Recipes by Macros</button></a>    
+<h2>Recipes List</h2>
+<table>
+<c:forEach var="recipe" items="${list}">
+	<tr>
+	<td>${recipe.title}</td>
+	<td><a href="/delete-recipe?id=${recipe.id}" ><button>Delete</button></a></td>
+	</tr>
+	</c:forEach>
+
 </table>
 </body>
 </html>

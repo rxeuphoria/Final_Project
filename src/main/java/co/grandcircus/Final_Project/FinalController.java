@@ -366,7 +366,11 @@ public class FinalController {
 		recipe.setTitle(recipeList.getTitle());
 		recipe.setSourceUrl(recipeList.getRecipeUrl());
 		recipeList.setRecipe(recipe);
+
+	//	recipeDao.save(recipe);
+
 		recipeDao.save(recipe);
+
 		return "redirect:/show-data";
 	}
 	@RequestMapping("/delete-recipe")
@@ -377,6 +381,16 @@ public class FinalController {
 		listDao.deleteById(id);
 		return "redirect:/show-data";
 		
+	}
+
+
+	@RequestMapping("/remove-recipe")
+	public String removeRecipe(RecipesList recipeList) {
+		User user=(User)session.getAttribute("user");
+		user=userDao.findById(user.getId()).get();
+		recipeList.setUser(user);
+		listDao.delete(recipeList);
+		return "";
 	}
 	
 	@RequestMapping("/edit")
@@ -408,6 +422,7 @@ public class FinalController {
 		userDao.save(user);
 		return "redirect:/show-data";
 	
+
 	}
 
 	
