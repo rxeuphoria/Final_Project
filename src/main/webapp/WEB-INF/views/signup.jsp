@@ -9,7 +9,9 @@
 <link rel="stylesheet" href="/style.css" />
 </head>
 <body>
-<center>	<h1>Sign up</h1>
+<center>
+<img src="macgro.png" height="200" width="200"/>
+<h1>Sign up</h1>
 	
 	<p class="message"><c:out value="${ message }"/></p>
 	
