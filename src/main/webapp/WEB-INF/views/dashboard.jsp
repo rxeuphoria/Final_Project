@@ -29,13 +29,19 @@
 		<th>Weight</th>
 		<th>Age</th>
 		<th>Shopping Interval</th>
+		<th>Daily Ideal Carbs</th>
+		<th>Daily Ideal Protein</th>
+		<th>Daily Ideal Fats</th>
 		</tr>
 	<tr>
 		<td>${gender}</td>
-		<td>${height}</td>
-		<td>${weight}</td>
+		<td>${height}${height_unit}</td>
+		<td>${weight}${weight_unit}</td>
 		<td>${age}</td>
 		<td>${interval} days</td>
+		<td><fmt:formatNumber value="${carbs/interval}" pattern=".00"/>gm</td>
+		<td><fmt:formatNumber value="${protein/interval}" pattern=".00"/>gm</td>
+		<td><fmt:formatNumber value="${fats/interval}" pattern=".00"/>gm</td>
 		</tr>
 	</table>
 

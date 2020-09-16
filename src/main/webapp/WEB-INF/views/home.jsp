@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+     <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+      
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,6 +18,10 @@
 
 <article>
 <header><a href="/show-data" class="homepage">@DashBoard</a>
+
+<p> <b>Wallet :</b> <b>Carbs:</b> <fmt:formatNumber value="${carbslimit}" pattern=".00"/>gm  ,
+			<b>Protein :</b> <fmt:formatNumber value="${proteinlimit}" pattern=".00"/>gm  ,
+			 <b>Fats:</b> <fmt:formatNumber value="${fatslimit}" pattern=".00"/>gm</p>
 </header>
 </article>
 	<div class="mx-auto" style="width: 400px;">
@@ -27,26 +33,25 @@
 
 	<form action="/showRecipes">
 		<label>Minimum Carbs</label>
-		<input type="number" name="minCarbs"/><br><br>
+		<input type="number" name="minCarbs" min="0" max="${carbslimit}"/><br><br>
 		<label>Maximum Carbs</label>
-		<input type="number" name="maxCarbs"/><br><br>
+		<input type="number" name="maxCarbs" max="${carbslimit}"/><br><br>
 		<label>Minimum Protein</label>
-		<input type="number" name="minProtein"/><br><br>
+		<input type="number" name="minProtein" min="0" max="${proteinlimit}"/><br><br>
 		<label>Max Protein</label>
-		<input type="number" name="maxProtein"/><br><br>
+		<input type="number" name="maxProtein" max="${proteinlimit}"/><br><br>
 		<label>Min Fats</label>
-		<input type="number" name="minFats"/><br><br>
+		<input type="number" name="minFats" min="0" max="${fatslimit}"/><br><br>
 		<label>Max Fats</label>
-		<input type="number" name="maxFats"/><br><br>
+		<input type="number" name="maxFats" max="${fatslimit}"/><br><br>
 		<label>Number of results</label>
-		<input type="number" name="number"/><br><br><br>
-		<button type="submit">Check Recipes</button>
-		
-
-		
-
-		
+		<input type="number" name="number" min ="0" max="20"/><br><br><br>
+		<button type="submit">Check Recipes</button>	
+	</form><br><br>
+	<form action="/logout">
+	<button type="submit">Logout</button>
 	</form>
+	
 </div>
 
 

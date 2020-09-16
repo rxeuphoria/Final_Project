@@ -27,7 +27,7 @@
 			<input type="number" name="height" step=".1"/>
 			<label>in:</label>
 			<select name="height_unit"> 
-				<option value="centimeter" selected="selected">centimeter</option>
+				<option value="cms" selected="selected">centimeter</option>
 				<option value="inches">inches</option>
 			</select><br><br>
 			<label>Weight:</label>
@@ -35,7 +35,7 @@
 			<label>in:</label>
 			<select name="weight_unit">
 				<option value="pound" selected="selected">pound</option>
-				<option value="kilogram">kilogram</option>
+				<option value="kg">kilogram</option>
 			</select><br><br>
 			<label>Age:</label>
 			<input type="number" name="age"/><br><br>

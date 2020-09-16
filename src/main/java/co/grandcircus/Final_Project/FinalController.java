@@ -43,6 +43,7 @@ public class FinalController {
 	
 	double BMR=0,TEE=0,carbs=0,protein=0,fats=0;
 	double wallet=0,totalCarbs=0,totalProtein=0,totalFats=0;
+	double remainingCarbs=0,remainingProtein=0,remainingFats=0;
 
 	
 	@RequestMapping("/")
@@ -69,7 +70,10 @@ public class FinalController {
 
 
 	@RequestMapping("/home")
-	public String addNutrients() {
+	public String addNutrients(Model model) {
+		model.addAttribute("carbslimit",remainingCarbs);
+		model.addAttribute("proteinlimit",remainingProtein);
+		model.addAttribute("fatslimit",remainingFats);
 		return "home";
 	}
 	
@@ -121,14 +125,14 @@ public class FinalController {
 								@RequestParam("activity") Double level,
 								@RequestParam("interval") Integer interval) {
 			if(gender.equals("F")) {
-		if(height_unit.contentEquals("centimeter") && weight_unit.equals("kilogram")) {
+		if(height_unit.contentEquals("cms") && weight_unit.equals("kg")) {
 
 			BMR=655.1 +(9.563*weight) + (1.850 * height) - (4.676 * age);
 		}
-		if(height_unit.contentEquals("centimeter") && weight_unit.contentEquals("pound")) {
+		if(height_unit.contentEquals("cms") && weight_unit.contentEquals("pound")) {
 			BMR=655.1 +(9.563*(weight/2.205)) + (1.850 * height) - (4.676 * age);
 		}
-		if(height_unit.contentEquals("inches") && weight_unit.contentEquals("kilogram")) {
+		if(height_unit.contentEquals("inches") && weight_unit.contentEquals("kg")) {
 			BMR=655.1 +(9.563 * weight) + (1.850 * (height/0.394)) - (4.676 * age);
 		}
 		if(height_unit.equals("inches") && weight_unit.equals("pound")) {
@@ -162,8 +166,12 @@ public class FinalController {
       User user=(User)session.getAttribute("user");
       user=userDao.findById(user.getId()).get();
 
+      System.out.println("height unit"+height_unit);
+      System.out.println("weight unit"+weight_unit);
       user.setGender(gender);
       user.setHeight(height);
+      user.setHeight_unit(height_unit);
+      user.setWeight_unit(weight_unit);
       user.setWeight(weight);
       user.setAge(age);
       user.setActivityLevel(level);
@@ -179,13 +187,13 @@ public class FinalController {
 	}
 
 	if(gender.equals("M")) {
-		if(height_unit.contentEquals("centimeter") && weight_unit.equals("kilogram")) {
+		if(height_unit.contentEquals("cms") && weight_unit.equals("kg")) {
 			BMR=66.47 +(13.75*weight) + (5.003* height) - (6.755 * age);
 		}
-		if(height_unit.contentEquals("centimeter") && weight_unit.contentEquals("pound")) {
+		if(height_unit.contentEquals("cms") && weight_unit.contentEquals("pound")) {
 			BMR=66.47 +(13.75* (weight/2.205)) + (5.003* height) - (6.755* age);
 		}
-		if(height_unit.contentEquals("inches") && weight_unit.contentEquals("kilogram")) {
+		if(height_unit.contentEquals("inches") && weight_unit.contentEquals("kg")) {
 			BMR=66.47 +(13.75* weight) + (5.003* (height/0.394)) - (6.755 * age);
 		}
 		if(height_unit.equals("inches") && weight_unit.equals("pound")) {
@@ -217,6 +225,8 @@ public class FinalController {
       user.setGender(gender);
       user.setHeight(height);
       user.setWeight(weight);
+      user.setHeight_unit(height_unit);
+      user.setWeight_unit(weight_unit);
       user.setAge(age);
       user.setActivityLevel(level);
       user.setShoppingInterval(interval);
@@ -239,7 +249,9 @@ public class FinalController {
 		user=userDao.findById(user.getId()).get();
 		String gender=user.getGender();
 		Double height=user.getHeight();
+		String height_unit=user.getHeight_unit();
 		Double weight=user.getWeight();
+		String weight_unit=user.getWeight_unit();
 		Integer age=user.getAge();
 		Integer shoppingInterval=user.getShoppingInterval();
 		Double cal=user.getTotalCalories();
@@ -248,7 +260,9 @@ public class FinalController {
 		Double fats=user.getTotalFats();
 		model.addAttribute("gender",gender);
 		model.addAttribute("height",height);
+		model.addAttribute("height_unit",height_unit);
 		model.addAttribute("weight",weight);
+		model.addAttribute("weight_unit",weight_unit);
 		model.addAttribute("age",age);
 		model.addAttribute("interval",shoppingInterval);
 		model.addAttribute("cal",cal);
@@ -268,14 +282,18 @@ public class FinalController {
 		RecipesList[] recipes= api.showRecipesList(minCarbs, maxCarbs, minProtein,maxProtein,minFats,maxFats,number);
 		
 	
-	  for(int i=0;i<recipes.length;i++)
+	/*  for(int i=0;i<recipes.length;i++)
 	    	recipes[i].setRecipe(api.showDetails(recipes[i].getId()));
 	 	
 	    for(int i=0;i<recipes.length;i++)
-	    	recipes[i].setRecipeUrl(recipes[i].getRecipe().getSourceUrl());
+	    	recipes[i].setRecipeUrl(recipes[i].getRecipe().getSourceUrl());*/
 	  
 		
 		model.addAttribute("recipes",recipes);
+		model.addAttribute("carbslimit",remainingCarbs);
+		model.addAttribute("proteinlimit",remainingProtein);
+		model.addAttribute("fatslimit",remainingFats);
+
 		return "show-recipes";
 	}
 	 
@@ -310,6 +328,9 @@ public class FinalController {
 		 leftProtein=proteinTotal-proteinValue;
 		leftFats=fatsTotal-fatsValue;
 		}
+	    remainingCarbs=leftCarbs;
+	    remainingProtein=leftProtein;
+	    remainingFats=leftFats;
 	
 		model.addAttribute("leftCarbs",leftCarbs);
 		model.addAttribute("leftProtein",leftProtein);

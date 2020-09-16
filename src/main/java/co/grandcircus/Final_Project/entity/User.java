@@ -14,7 +14,9 @@ public class User {
 	private String password;
 	private String gender;
 	private Double height;
+	private String height_unit;
 	private Double weight;
+	private String weight_unit;
 	private Integer age;
 	private Double activityLevel;
 	private Integer shoppingInterval;
@@ -66,6 +68,23 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+
+	public String getHeight_unit() {
+		return height_unit;
+	}
+
+	public void setHeight_unit(String height_unit) {
+		this.height_unit = height_unit;
+	}
+
+	public String getWeight_unit() {
+		return weight_unit;
+	}
+
+	public void setWeight_unit(String weight_unit) {
+		this.weight_unit = weight_unit;
+	}
 
 	public String getGender() {
 		return gender;
@@ -82,6 +101,7 @@ public class User {
 	public void setHeight(Double height) {
 		this.height = height;
 	}
+	
 
 	public Double getWeight() {
 		return weight;
@@ -152,10 +172,13 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + ", gender="
-				+ gender + ", height=" + height + ", weight=" + weight + ", age=" + age + ", activityLevel="
-				+ activityLevel + ", shoppingInterval=" + shoppingInterval + ", totalCalories=" + totalCalories
-				+ ", totalCarbs=" + totalCarbs + ", totalProtein=" + totalProtein + ", totalFats=" + totalFats + "]";
+				+ gender + ", height=" + height + ", height_unit=" + height_unit + ", weight=" + weight
+				+ ", weight_unit=" + weight_unit + ", age=" + age + ", activityLevel=" + activityLevel
+				+ ", shoppingInterval=" + shoppingInterval + ", totalCalories=" + totalCalories + ", totalCarbs="
+				+ totalCarbs + ", totalProtein=" + totalProtein + ", totalFats=" + totalFats + "]";
 	}
+
+	
 
 
 	
