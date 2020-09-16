@@ -15,6 +15,10 @@
 
 </head>
 <body>
+<form action="/logout">
+	<button type="submit">Logout</button>
+	</form>
+
 <center><h1>Welcome ${user.name}</h1></center>
 <h2>Profile
 <a href="/edit"><button>Edit Profile</button></a></h2>
@@ -50,7 +54,6 @@
 	<td><a href="/delete-recipe?id=${recipe.id}" ><button>Delete</button></a></td>
 	</tr>
 	</c:forEach>
-
 </table>
 </body>
 </html>

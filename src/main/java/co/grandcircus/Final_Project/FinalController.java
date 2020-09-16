@@ -268,11 +268,11 @@ public class FinalController {
 		RecipesList[] recipes= api.showRecipesList(minCarbs, maxCarbs, minProtein,maxProtein,minFats,maxFats,number);
 		
 	
-	  /*  for(int i=0;i<recipes.length;i++)
+	  for(int i=0;i<recipes.length;i++)
 	    	recipes[i].setRecipe(api.showDetails(recipes[i].getId()));
-		
+	 	
 	    for(int i=0;i<recipes.length;i++)
-	    	recipes[i].setRecipeUrl(recipes[i].getRecipe().getSourceUrl());*/
+	    	recipes[i].setRecipeUrl(recipes[i].getRecipe().getSourceUrl());
 	  
 		
 		model.addAttribute("recipes",recipes);
@@ -329,12 +329,13 @@ public class FinalController {
 		User user=(User)session.getAttribute("user");
 		user=userDao.findById(user.getId()).get();
 		recipeList.setUser(user);
-		
 		listDao.save(recipeList);
+		System.out.println(recipeList.getTitle());
 		recipe.setId(recipeList.getId());
 		recipe.setTitle(recipeList.getTitle());
 		recipe.setSourceUrl(recipeList.getRecipeUrl());
 		recipeList.setRecipe(recipe);
+		//recipeDao.save(recipe);
 		return "redirect:/show-data";
 	}
 	@RequestMapping("/delete-recipe")

@@ -49,7 +49,7 @@
 			</select><br><br>
 			<label>Shopping Interval(in days):</label>
 			<input type="number" name="interval"/><br><br>
-			<button type="submit">Check TEE</button>
+			<button type="submit">Save</button>
 		</form><br><br><br>
 		
 		

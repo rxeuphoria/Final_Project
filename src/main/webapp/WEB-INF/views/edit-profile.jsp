@@ -7,6 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
+<article>
+<header><a href="/show-data" class="homepage">@DashBoard</a>
+</header>
+</article>
+
 	<h1>Edit Profile</h1>
 	<form action="/edit" method="post">
 		<input type="hidden" name="id" value="${user.id}" /> <label>Email:</label>
