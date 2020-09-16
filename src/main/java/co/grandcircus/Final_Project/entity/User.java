@@ -27,7 +27,7 @@ public class User {
 	private String plan;
 	
 	
-	
+
 	public String getPlan() {
 		return plan;
 	}

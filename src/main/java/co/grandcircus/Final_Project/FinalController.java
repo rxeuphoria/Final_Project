@@ -401,8 +401,6 @@ public class FinalController {
 		recipe.setSourceUrl(recipeList.getRecipeUrl());
 		recipeList.setRecipe(recipe);
 
-	//	recipeDao.save(recipe);
-
 		recipeDao.save(recipe);
 
 		return "redirect:/show-data";
@@ -418,14 +416,6 @@ public class FinalController {
 	}
 
 
-	@RequestMapping("/remove-recipe")
-	public String removeRecipe(RecipesList recipeList) {
-		User user=(User)session.getAttribute("user");
-		user=userDao.findById(user.getId()).get();
-		recipeList.setUser(user);
-		listDao.delete(recipeList);
-		return "";
-	}
 	
 	@RequestMapping("/edit")
 	public String editProfile(Model model) {
