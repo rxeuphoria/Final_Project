@@ -31,6 +31,8 @@
 		<p>
 			<button>Sign me Up!</button>
 		</p>
-	</form></center>
+	</form></center><br><br><br>
+	<footer>&copy; Copyright 2020 All rights reserved </footer>
+	
 </body>
 </html>

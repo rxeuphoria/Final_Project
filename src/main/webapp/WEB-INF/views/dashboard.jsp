@@ -23,6 +23,7 @@
 	<button type="submit">Logout</button>
 	</form>
 
+<header><center><img src="macgro.png" height="200" width="200"/></center></header>
 <center><h1>Welcome ${user.name}</h1></center>
 <h2>Profile
 <a href="/edit"><button>Edit Profile</button></a></h2>
@@ -68,6 +69,9 @@
 	</tr>
 	</c:forEach>
 
-</table>
+</table><br><br><br>
+<footer>
+&copy; Copyright 2020 All rights reserved </footer>
+
 </body>
 </html>
