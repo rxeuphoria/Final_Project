@@ -141,7 +141,7 @@ public class FinalController {
 		LocalDate start = LocalDate.parse(startDate);
 		LocalDate end = LocalDate.parse(endDate);
 		long interval = ChronoUnit.DAYS.between(start, end);
-		System.out.println(interval);
+	
 		
 		if(gender.equals("F")) {
 		if(height_unit.contentEquals("cms") && weight_unit.equals("kg")) {
@@ -157,8 +157,6 @@ public class FinalController {
 		if(height_unit.equals("inches") && weight_unit.equals("pound")) {
 			BMR=655.1 +(9.563*(weight/2.205)) + (1.850  * (height/0.394)) - (4.676 * age);
 		}
-		
-	System.out.println("interval"+interval);
 		
 		TEE=BMR*level;
 		System.out.println("TEE"+TEE);
@@ -206,8 +204,6 @@ public class FinalController {
       User user=(User)session.getAttribute("user");
       user=userDao.findById(user.getId()).get();
 
-      System.out.println("height unit"+height_unit);
-      System.out.println("weight unit"+weight_unit);
       user.setGender(gender);
       user.setHeight(height);
       user.setHeight_unit(height_unit);
@@ -421,7 +417,6 @@ System.out.println("right");
 		user=userDao.findById(user.getId()).get();
 		recipeList.setUser(user);
 		listDao.save(recipeList);
-		System.out.println(recipeList.getTitle());
 		recipe.setId(recipeList.getId());
 		recipe.setTitle(recipeList.getTitle());
 		recipe.setSourceUrl(recipeList.getRecipeUrl());
@@ -464,7 +459,6 @@ public String editSubmit(Model model,@RequestParam("gender") String gender,
 		@RequestParam("datepickerStart") String startDate,
 		@RequestParam("datepickerEnd") String endDate) {
 	edit=1;
-	System.out.println("edited"+edit);
 	performCalc(model,gender,height,height_unit,weight,weight_unit,age,change,level, startDate,endDate);
 	edit=0;
 	return "edit-confirm";
