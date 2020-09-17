@@ -13,7 +13,7 @@
 </article>
 
 	<h1>Edit Profile</h1>
-	<form action="/edit-submit">
+	<form action="/edit-submit" >
 			<label>Gender:</label> <select name="gender">
 				<option value="M">M</option>
 				<option value="F">F</option>
@@ -53,7 +53,13 @@
 			End Date:
 			<input type="date" name="datepickerEnd"><br><br>
 
-			<button type="submit">Save</button>
+			<button type="submit" onclick="myFunction()">Save</button>
+			<script>
+function myFunction() {
+  confirm("New Interval started with  new updated values!!");
+}
+</script>
+			
 		</form>
 		<br> <br> 
 		<form action="/logout">
