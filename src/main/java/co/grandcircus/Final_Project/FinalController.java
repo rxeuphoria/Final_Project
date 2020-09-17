@@ -52,13 +52,13 @@ public class FinalController {
 	String plan=null;
   
 	int edit=0;
-	SimpleDateFormat formatter = new SimpleDateFormat("mm/dd/yyyy");
+	SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 	Date start = new Date();
+	String s=formatter.format(start);
 	@RequestMapping("/")
 	public String welcomeOrLogin(Model model) {
 		if(session.getAttribute("user")!=null){
-			System.out.println("min date"+start);
-			model.addAttribute("start",start);
+			model.addAttribute("start",s);
 		return "welcome";
 		}else {
 			return "login";
@@ -296,14 +296,8 @@ public class FinalController {
       userDao.save(user);
 
 	}
-System.out.println("right");
-	if(edit==0)
 	 return "redirect:/show-data";
-	else
-	{
-		System.out.println("coming here");
-		return "";
-	}
+	
 	}
 	
 	@RequestMapping("/fetch-profile")
@@ -443,6 +437,7 @@ System.out.println("right");
 		User user=(User)session.getAttribute("user");
 		user=userDao.findById(user.getId()).get();
 		model.addAttribute("user",user);
+		model.addAttribute("start",s);
 	   return "edit-profile";
 		
 	}
@@ -458,10 +453,164 @@ public String editSubmit(Model model,@RequestParam("gender") String gender,
 		@RequestParam("activity") Double level, 
 		@RequestParam("datepickerStart") String startDate,
 		@RequestParam("datepickerEnd") String endDate) {
-	edit=1;
-	performCalc(model,gender,height,height_unit,weight,weight_unit,age,change,level, startDate,endDate);
-	edit=0;
-	return "redirect:/show-data";
+	LocalDate start = LocalDate.parse(startDate);
+	LocalDate end = LocalDate.parse(endDate);
+	long interval = ChronoUnit.DAYS.between(start, end);
+
+	
+	if(gender.equals("F")) {
+	if(height_unit.contentEquals("cms") && weight_unit.equals("kg")) {
+
+		BMR=655.1 +(9.563*weight) + (1.850 * height) - (4.676 * age);
+	}
+	if(height_unit.contentEquals("cms") && weight_unit.contentEquals("pound")) {
+		BMR=655.1 +(9.563*(weight/2.205)) + (1.850 * height) - (4.676 * age);
+	}
+	if(height_unit.contentEquals("inches") && weight_unit.contentEquals("kg")) {
+		BMR=655.1 +(9.563 * weight) + (1.850 * (height/0.394)) - (4.676 * age);
+	}
+	if(height_unit.equals("inches") && weight_unit.equals("pound")) {
+		BMR=655.1 +(9.563*(weight/2.205)) + (1.850  * (height/0.394)) - (4.676 * age);
+	}
+	
+	TEE=BMR*level;
+	System.out.println("TEE"+TEE);
+	
+	if(change==500) {
+		TEE=TEE+500;
+		plan="Gain 1 pound";
+	}
+	if(change==250) {
+		TEE=TEE+250;
+		plan="Gain 0.5 pound";
+	}
+	if(change==0) {
+		TEE=TEE+0;
+		plan="Maintain";
+	}
+	if(change==-250) {
+		TEE=TEE-250;
+		plan="Loose 0.5 pound";
+	}
+	if(change==-500) {
+		TEE=TEE-500;
+		plan="Loose 1 pound";
+	}
+	carbs=(TEE*0.4)/4;
+	protein=(TEE*0.3)/4;
+	fats=(TEE*0.3)/9;
+	
+	wallet=TEE*interval;
+	totalCarbs=carbs*interval;
+	totalProtein=protein*interval;
+	totalFats=fats*interval;
+
+	
+  model.addAttribute("TEE",TEE);
+  model.addAttribute("carbs",carbs);
+  model.addAttribute("protein",protein);
+  model.addAttribute("fats",fats);
+  
+  model.addAttribute("wallet",wallet);
+  model.addAttribute("totalCarbs",totalCarbs);
+  model.addAttribute("totalProtein",totalProtein);
+  model.addAttribute("totalFats",totalFats);
+  
+  User user=(User)session.getAttribute("user");
+  user=userDao.findById(user.getId()).get();
+
+  user.setGender(gender);
+  user.setHeight(height);
+  user.setHeight_unit(height_unit);
+  user.setWeight_unit(weight_unit);
+  user.setWeight(weight);
+  user.setAge(age);
+  user.setPlan(plan);
+  user.setActivityLevel(level);
+  user.setShoppingInterval(interval);
+  user.setTotalCalories(wallet);
+  user.setTotalCarbs(totalCarbs);
+  user.setTotalProtein(totalProtein);
+  user.setTotalFats(totalFats);
+
+
+  userDao.save(user);
+
+}
+
+if(gender.equals("M")) {
+	if(height_unit.contentEquals("cms") && weight_unit.equals("kg")) {
+		BMR=66.47 +(13.75*weight) + (5.003* height) - (6.755 * age);
+	}
+	if(height_unit.contentEquals("cms") && weight_unit.contentEquals("pound")) {
+		BMR=66.47 +(13.75* (weight/2.205)) + (5.003* height) - (6.755* age);
+	}
+	if(height_unit.contentEquals("inches") && weight_unit.contentEquals("kg")) {
+		BMR=66.47 +(13.75* weight) + (5.003* (height/0.394)) - (6.755 * age);
+	}
+	if(height_unit.equals("inches") && weight_unit.equals("pound")) {
+		BMR= (66.47 + (13.75 * (weight/2.205)) + (5.003 * (height/0.394)) - (6.755 * age));
+	}
+	
+	TEE=BMR*level;
+	if(change==500) {
+		TEE=TEE+500;
+		plan="Gain 1 pound";
+	}
+	if(change==250) {
+		TEE=TEE+250;
+		plan="Gain 0.5 pound";
+	}
+	if(change==0) {
+		TEE=TEE+0;
+		plan="Maintain";
+	}
+	if(change==-250) {
+		TEE=TEE-250;
+		plan="Loose 0.5 pound";
+	}
+	if(change==-500) {
+		TEE=TEE-500;
+		plan="Loose 1 pound";
+	}
+	carbs=(TEE*0.4)/4;
+	protein=(TEE*0.3)/4;
+	fats=(TEE*0.3)/9;
+	
+	wallet=TEE*interval;
+	totalCarbs=carbs*interval;
+	totalProtein=protein*interval;
+	totalFats=fats*interval;
+	
+  model.addAttribute("TEE",TEE);
+  model.addAttribute("carbs",carbs);
+  model.addAttribute("protein",protein);
+  model.addAttribute("fats",fats);
+  model.addAttribute("wallet",wallet);
+  model.addAttribute("totalCarbs",totalCarbs);
+  model.addAttribute("totalProtein",totalProtein);
+  model.addAttribute("totalFats",totalFats);
+  
+  User user=(User)session.getAttribute("user");
+  user=userDao.findById(user.getId()).get();
+
+  user.setGender(gender);
+  user.setHeight(height);
+  user.setWeight(weight);
+  user.setHeight_unit(height_unit);
+  user.setWeight_unit(weight_unit);
+  user.setAge(age);
+  user.setActivityLevel(level);
+  user.setShoppingInterval(interval);
+  user.setPlan(plan);
+  user.setTotalCalories(wallet);
+  user.setTotalCarbs(totalCarbs);
+  user.setTotalProtein(totalProtein);
+  user.setTotalFats(totalFats);
+
+  userDao.save(user);
+}
+		return "redirect:/show-data";
 	
 }
 

@@ -56,18 +56,26 @@
 					<option value="-250">Loose .5 pound</option>
 					<option value="-500">Loose 1 pound</option>
 				</select><br><br>
-				${start }
 			<label>Start Date:</label> 
-			<input type="date" name="datepickerStart" minDate="${start}" required>
+			<input type="date" name="datepickerStart" id="Test_Date" min="${start}" required>
 			<label>End Date:</label>
-			<input type="date" name="datepickerEnd" required><br><br>
+			<input type="date" name="datepickerEnd" id="Test_Date1" min="${start}" required><br><br>
 
-			<button type="submit">Save</button>
+			<button type="submit"  ondblclick="My_Date()">Save</button>
 		</form>
 		<br> <br> 
 		<form action="/logout">
 			<button type="submit">Logout</button>
 		</form>
 	</div>
+	<script> 
+            function My_Date() { 
+                var d = document.getElementById("Test_Date").min; 
+                document.getElementById("test").innerHTML = d; 
+                var e = document.getElementById("Test_Date1").min; 
+                document.getElementById("test").innerHTML = d; 
+            } 
+            
+        </script> 
 </body>
 </html>
