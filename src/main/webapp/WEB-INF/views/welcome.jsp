@@ -56,8 +56,9 @@
 					<option value="-250">Loose .5 pound</option>
 					<option value="-500">Loose 1 pound</option>
 				</select><br><br>
+				${start }
 			<label>Start Date:</label> 
-			<input type="date" name="datepickerStart" max="${start}" required>
+			<input type="date" name="datepickerStart" minDate="${start}" required>
 			<label>End Date:</label>
 			<input type="date" name="datepickerEnd" required><br><br>
 

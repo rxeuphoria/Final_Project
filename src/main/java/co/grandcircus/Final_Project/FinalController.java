@@ -52,7 +52,7 @@ public class FinalController {
 	String plan=null;
   
 	int edit=0;
-	SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+	SimpleDateFormat formatter = new SimpleDateFormat("mm/dd/yyyy");
 	Date start = new Date();
 	@RequestMapping("/")
 	public String welcomeOrLogin(Model model) {
