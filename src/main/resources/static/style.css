@@ -1,0 +1,10 @@
+@charset "ISO-8859-1";
+
+body{background-color:cyan};
+
+#dashboard{background-color:pink};
+
+.sizeOfImage{width: 50px;
+	height: 50px
+	
+}

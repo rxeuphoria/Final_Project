@@ -7,6 +7,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<link href="style.css" rel="stylesheet" />
+
 </head>
 <body>
 <article>

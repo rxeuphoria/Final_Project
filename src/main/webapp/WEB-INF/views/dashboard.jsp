@@ -16,7 +16,7 @@
 	<link rel="stylesheet" href="/style.css" />
 
 </head>
-<body id="dashboard">
+<body>
 
 
 <form action="/logout">
@@ -59,11 +59,12 @@
 		<li>Protein: <fmt:formatNumber value="${leftProtein}" pattern=".00"/>gm</li>
 		<li>Fats: <fmt:formatNumber value="${leftFats}" pattern=".00"/>gm</li>
 	</ul>
-<a href="/home"><button>Check Recipes by Macros</button></a>    
-<h2>Recipes List</h2>
+<a href="/home"><button>Check Recipes by Macros</button></a>  <br>  
+<br><h2>Recipes List</h2>
 <table>
 <c:forEach var="recipe" items="${list}">
 	<tr>
+	<td><img src="${recipe.image}" width="100" height="100"></td>
 	<td>${recipe.title}</td>
 	<td><a href="/delete-recipe?id=${recipe.id}" ><button>Delete</button></a></td>
 	</tr>
