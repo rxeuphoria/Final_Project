@@ -461,7 +461,7 @@ public String editSubmit(Model model,@RequestParam("gender") String gender,
 	edit=1;
 	performCalc(model,gender,height,height_unit,weight,weight_unit,age,change,level, startDate,endDate);
 	edit=0;
-	return "edit-confirm";
+	return "redirect:/show-data";
 	
 }
 
