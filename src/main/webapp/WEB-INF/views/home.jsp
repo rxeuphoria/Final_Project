@@ -23,6 +23,8 @@
 			<b>Protein :</b> <fmt:formatNumber value="${proteinlimit}" pattern=".00"/>gm  ,
 			 <b>Fats:</b> <fmt:formatNumber value="${fatslimit}" pattern=".00"/>gm</p>
 </header>
+<center><img src="macgro.png" height="200" width="200"/></center>
+
 </article>
 	<div class="mx-auto" style="width: 400px;">
   <h1>Enter calories amount</h1>
@@ -52,8 +54,7 @@
 	<button type="submit">Logout</button>
 	</form>
 	
-</div>
-
-
+</div><br><br><br>
+<footer>&copy; Copyright 2020 All rights reserved </footer>
 </body>
 </html>

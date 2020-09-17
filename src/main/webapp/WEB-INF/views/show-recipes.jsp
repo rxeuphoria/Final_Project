@@ -23,6 +23,8 @@
 Wallet :</b> <b>Carbs:</b> <fmt:formatNumber value="${carbslimit}" pattern=".00"/>gm  ,
 			<b>Protein :</b> <fmt:formatNumber value="${proteinlimit}" pattern=".00"/>gm  ,
 			 <b>Fats:</b> <fmt:formatNumber value="${fatslimit}" pattern=".00"/>gm</p>
+			 <center><img src="macgro.png" height="200" width="200"/></center></header>
+			 
 </header>
 </article>
 
@@ -56,10 +58,17 @@ Wallet :</b> <b>Carbs:</b> <fmt:formatNumber value="${carbslimit}" pattern=".00"
 			<input type="hidden" name= "fat" value ="${recipes.fat}"/>
 			<input type="hidden" name= "protein" value ="${recipes.protein}"/>
 			<input type="hidden" name= "title" value ="${recipes.title}"/>
+
 			<input type="hidden" name="extRecipeId" value="${recipes.id}"/>
-				<button type = "submit">Add</button>
-			</form>			
+				
 			
+				<button type = "submit" onclick="myFunction()">Add</button>
+			</form>			
+			<script>
+			function myFunction() {
+				  confirm("New recipe is added to your list");
+				}
+			</script>
 			
 
 			</td>
@@ -69,6 +78,7 @@ Wallet :</b> <b>Carbs:</b> <fmt:formatNumber value="${carbslimit}" pattern=".00"
 	<form action="/logout">
 	<button type="submit">Logout</button>
 	</form>
-</div>
+</div><br><br><br>
+<footer>&copy; Copyright 2020 All rights reserved </footer>
 </body>
 </html>

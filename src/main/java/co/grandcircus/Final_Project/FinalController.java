@@ -2,7 +2,9 @@ package co.grandcircus.Final_Project;
 
 import java.time.LocalDate;
 import java.time.temporal.*;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,7 +26,6 @@ import co.grandcircus.Final_Project.entity.Recipe;
 import co.grandcircus.Final_Project.entity.RecipesList;
 import co.grandcircus.Final_Project.entity.User;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 @Controller
 public class FinalController {
@@ -43,23 +44,34 @@ public class FinalController {
 
 	@Autowired
 	RecipeDao recipeDao;
-
-	double BMR = 0, TEE = 0, carbs = 0, protein = 0, fats = 0;
-	double wallet = 0, totalCarbs = 0, totalProtein = 0, totalFats = 0;
-	double remainingCarbs = 0, remainingProtein = 0, remainingFats = 0;
-	String plan = null;
-
-	int edit = 0;
-	SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+	
+	double BMR=0,TEE=0,carbs=0,protein=0,fats=0;
+	double wallet=0,totalCarbs=0,totalProtein=0,totalFats=0;
+	double remainingCarbs=0,remainingProtein=0,remainingFats=0;
+	String plan=null;
+  
+	int edit=0;
+	SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 	Date start = new Date();
-
+	String s=formatter.format(start);
+	Date newDate = addDays(start, 1);
+	String s1=formatter.format(newDate);
+	
+	public  Date addDays(Date date, int days) {
+		GregorianCalendar cal = new GregorianCalendar();
+		cal.setTime(date);
+		cal.add(Calendar.DATE, days);
+				
+		return cal.getTime();
+	}
+  
 	@RequestMapping("/")
 	public String welcomeOrLogin(Model model) {
-		if (session.getAttribute("user") != null) {
-			System.out.println("min date" + start);
-			model.addAttribute("start", start);
-			return "welcome";
-		} else {
+		if(session.getAttribute("user")!=null){
+			model.addAttribute("start",s);
+			model.addAttribute("end",s1);
+		return "welcome";
+		}else {
 			return "login";
 		}
 	}
@@ -280,15 +292,52 @@ public class FinalController {
 			userDao.save(user);
 
 		}
-		System.out.println("right");
-		if (edit == 0)
-			return "redirect:/show-data";
-		else {
-			System.out.println("coming here");
-			return "";
-		}
-	}
+		
+	
+		carbs=(TEE*0.4)/4;
+		protein=(TEE*0.3)/4;
+		fats=(TEE*0.3)/9;
+		
+		wallet=TEE*interval;
+		totalCarbs=carbs*interval;
+		totalProtein=protein*interval;
+		totalFats=fats*interval;
+		
+      model.addAttribute("TEE",TEE);
+      model.addAttribute("carbs",carbs);
+      model.addAttribute("protein",protein);
+      model.addAttribute("fats",fats);
+      model.addAttribute("wallet",wallet);
+      model.addAttribute("totalCarbs",totalCarbs);
+      model.addAttribute("totalProtein",totalProtein);
+      model.addAttribute("totalFats",totalFats);
+      
+      User user=(User)session.getAttribute("user");
+      user=userDao.findById(user.getId()).get();
 
+      user.setGender(gender);
+      user.setHeight(height);
+      user.setWeight(weight);
+      user.setHeight_unit(height_unit);
+      user.setWeight_unit(weight_unit);
+      user.setAge(age);
+      user.setActivityLevel(level);
+      user.setShoppingInterval(interval);
+      user.setPlan(plan);
+      user.setTotalCalories(wallet);
+      user.setTotalCarbs(totalCarbs);
+      user.setTotalProtein(totalProtein);
+      user.setTotalFats(totalFats);
+    
+      userDao.save(user);
+	
+	
+	 return "redirect:/show-data";
+}
+	
+
+
+	
 	@RequestMapping("/fetch-profile")
 	public String showProfile(Model model) {
 		User user = (User) session.getAttribute("user");
@@ -425,25 +474,188 @@ public class FinalController {
 
 	@RequestMapping("/edit")
 	public String editProfile(Model model) {
-		User user = (User) session.getAttribute("user");
-		user = userDao.findById(user.getId()).get();
-		model.addAttribute("user", user);
-		return "edit-profile";
 
+		User user=(User)session.getAttribute("user");
+		user=userDao.findById(user.getId()).get();
+		model.addAttribute("user",user);
+		model.addAttribute("start",s);
+		model.addAttribute("end",s1);
+	   return "edit-profile";
+		
 	}
+		
+@RequestMapping("/edit-submit")
+public String editSubmit(Model model,@RequestParam("gender") String gender,
+		@RequestParam("height") Double height,
+		@RequestParam("height_unit")String height_unit,
+		@RequestParam("weight") Double weight,
+		@RequestParam("weight_unit") String weight_unit,
+		@RequestParam("age") Integer age,
+		@RequestParam("change") Double change, 
+		@RequestParam("activity") Double level, 
+		@RequestParam("datepickerStart") String startDate,
+		@RequestParam("datepickerEnd") String endDate) {
+	LocalDate start = LocalDate.parse(startDate);
+	LocalDate end = LocalDate.parse(endDate);
+	long interval = ChronoUnit.DAYS.between(start, end);
 
-	@RequestMapping("/edit-submit")
-	public String editSubmit(Model model, @RequestParam("gender") String gender, @RequestParam("height") Double height,
-			@RequestParam("height_unit") String height_unit, @RequestParam("weight") Double weight,
-			@RequestParam("weight_unit") String weight_unit, @RequestParam("age") Integer age,
-			@RequestParam("change") Double change, @RequestParam("activity") Double level,
-			@RequestParam("datepickerStart") String startDate, @RequestParam("datepickerEnd") String endDate) {
-		edit = 1;
-		performCalc(model, gender, height, height_unit, weight, weight_unit, age, change, level, startDate, endDate);
-		edit = 0;
+	
+	if(gender.equals("F")) {
+	if(height_unit.contentEquals("cms") && weight_unit.equals("kg")) {
+
+		BMR=655.1 +(9.563*weight) + (1.850 * height) - (4.676 * age);
+	}
+	if(height_unit.contentEquals("cms") && weight_unit.contentEquals("pound")) {
+		BMR=655.1 +(9.563*(weight/2.205)) + (1.850 * height) - (4.676 * age);
+	}
+	if(height_unit.contentEquals("inches") && weight_unit.contentEquals("kg")) {
+		BMR=655.1 +(9.563 * weight) + (1.850 * (height/0.394)) - (4.676 * age);
+	}
+	if(height_unit.equals("inches") && weight_unit.equals("pound")) {
+		BMR=655.1 +(9.563*(weight/2.205)) + (1.850  * (height/0.394)) - (4.676 * age);
+	}
+	
+	TEE=BMR*level;
+	System.out.println("TEE"+TEE);
+	
+	if(change==500) {
+		TEE=TEE+500;
+		plan="Gain 1 pound";
+	}
+	if(change==250) {
+		TEE=TEE+250;
+		plan="Gain 0.5 pound";
+	}
+	if(change==0) {
+		TEE=TEE+0;
+		plan="Maintain";
+	}
+	if(change==-250) {
+		TEE=TEE-250;
+		plan="Loose 0.5 pound";
+	}
+	if(change==-500) {
+		TEE=TEE-500;
+		plan="Loose 1 pound";
+	}
+	carbs=(TEE*0.4)/4;
+	protein=(TEE*0.3)/4;
+	fats=(TEE*0.3)/9;
+	
+	wallet=TEE*interval;
+	totalCarbs=carbs*interval;
+	totalProtein=protein*interval;
+	totalFats=fats*interval;
+
+	
+  model.addAttribute("TEE",TEE);
+  model.addAttribute("carbs",carbs);
+  model.addAttribute("protein",protein);
+  model.addAttribute("fats",fats);
+  
+  model.addAttribute("wallet",wallet);
+  model.addAttribute("totalCarbs",totalCarbs);
+  model.addAttribute("totalProtein",totalProtein);
+  model.addAttribute("totalFats",totalFats);
+  
+  User user=(User)session.getAttribute("user");
+  user=userDao.findById(user.getId()).get();
+
+  user.setGender(gender);
+  user.setHeight(height);
+  user.setHeight_unit(height_unit);
+  user.setWeight_unit(weight_unit);
+  user.setWeight(weight);
+  user.setAge(age);
+  user.setPlan(plan);
+  user.setActivityLevel(level);
+  user.setShoppingInterval(interval);
+  user.setTotalCalories(wallet);
+  user.setTotalCarbs(totalCarbs);
+  user.setTotalProtein(totalProtein);
+  user.setTotalFats(totalFats);
+
+
+  userDao.save(user);
+
+}
+
+if(gender.equals("M")) {
+	if(height_unit.contentEquals("cms") && weight_unit.equals("kg")) {
+		BMR=66.47 +(13.75*weight) + (5.003* height) - (6.755 * age);
+	}
+	if(height_unit.contentEquals("cms") && weight_unit.contentEquals("pound")) {
+		BMR=66.47 +(13.75* (weight/2.205)) + (5.003* height) - (6.755* age);
+	}
+	if(height_unit.contentEquals("inches") && weight_unit.contentEquals("kg")) {
+		BMR=66.47 +(13.75* weight) + (5.003* (height/0.394)) - (6.755 * age);
+	}
+	if(height_unit.equals("inches") && weight_unit.equals("pound")) {
+		BMR= (66.47 + (13.75 * (weight/2.205)) + (5.003 * (height/0.394)) - (6.755 * age));
+	}
+	
+	TEE=BMR*level;
+	if(change==500) {
+		TEE=TEE+500;
+		plan="Gain 1 pound";
+	}
+	if(change==250) {
+		TEE=TEE+250;
+		plan="Gain 0.5 pound";
+	}
+	if(change==0) {
+		TEE=TEE+0;
+		plan="Maintain";
+	}
+	if(change==-250) {
+		TEE=TEE-250;
+		plan="Loose 0.5 pound";
+	}
+	if(change==-500) {
+		TEE=TEE-500;
+		plan="Loose 1 pound";
+	}
+	carbs=(TEE*0.4)/4;
+	protein=(TEE*0.3)/4;
+	fats=(TEE*0.3)/9;
+	
+	wallet=TEE*interval;
+	totalCarbs=carbs*interval;
+	totalProtein=protein*interval;
+	totalFats=fats*interval;
+	
+  model.addAttribute("TEE",TEE);
+  model.addAttribute("carbs",carbs);
+  model.addAttribute("protein",protein);
+  model.addAttribute("fats",fats);
+  model.addAttribute("wallet",wallet);
+  model.addAttribute("totalCarbs",totalCarbs);
+  model.addAttribute("totalProtein",totalProtein);
+  model.addAttribute("totalFats",totalFats);
+  
+  User user=(User)session.getAttribute("user");
+  user=userDao.findById(user.getId()).get();
+
+  user.setGender(gender);
+  user.setHeight(height);
+  user.setWeight(weight);
+  user.setHeight_unit(height_unit);
+  user.setWeight_unit(weight_unit);
+  user.setAge(age);
+  user.setActivityLevel(level);
+  user.setShoppingInterval(interval);
+  user.setPlan(plan);
+  user.setTotalCalories(wallet);
+  user.setTotalCarbs(totalCarbs);
+  user.setTotalProtein(totalProtein);
+  user.setTotalFats(totalFats);
+
+  userDao.save(user);
+}
 		return "redirect:/show-data";
+	
+}
 
-	}
 
 	@RequestMapping("/logout")
 	public String logout(RedirectAttributes redir) {

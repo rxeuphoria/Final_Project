@@ -35,6 +35,7 @@
 		Don't have an account yet? <a href="/signup">Sign up here</a>.
 	</p>
 	
-</center>
+</center><br><br><br>
+<footer>&copy; Copyright 2020 All rights reserved </footer>
 </body>
 </html>

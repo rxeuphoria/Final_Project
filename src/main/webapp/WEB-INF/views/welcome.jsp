@@ -18,6 +18,7 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 <body>
+<header><center><img src="macgro.png" height="200" width="200"/></center></header>
 	<div class="container">
 		<h1>Welcome ${user.name}</h1>
 		<h2>Fill your profile</h2>
@@ -57,16 +58,27 @@
 					<option value="-500">Loose 1 pound</option>
 				</select><br><br>
 			<label>Start Date:</label> 
-			<input type="date" name="datepickerStart" max="${start}" required>
+			<input type="date" name="datepickerStart" id="Test_Date" min="${start}" max="${start}" required>
 			<label>End Date:</label>
-			<input type="date" name="datepickerEnd" required><br><br>
+			<input type="date" name="datepickerEnd" id="Test_Date1" min="${end}" required><br><br>
 
-			<button type="submit">Save</button>
+			<button type="submit"  ondblclick="My_Date()">Save</button>
 		</form>
 		<br> <br> 
 		<form action="/logout">
 			<button type="submit">Logout</button>
 		</form>
-	</div>
+	</div><br><br><br>
+	<script> 
+            function My_Date() { 
+                var d = document.getElementById("Test_Date").min; 
+                document.getElementById("test").innerHTML = d; 
+                var e = document.getElementById("Test_Date1").min; 
+                document.getElementById("test").innerHTML = e; 
+            } 
+            
+        </script> 
+  <footer>&copy; Copyright 2020 All rights reserved</footer>
+        
 </body>
 </html>

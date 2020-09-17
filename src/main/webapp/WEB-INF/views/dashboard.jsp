@@ -16,13 +16,14 @@
 	<link rel="stylesheet" href="/style.css" />
 
 </head>
-<body id="dashboard">
+<body>
 
 
 <form action="/logout">
 	<button type="submit">Logout</button>
 	</form>
 
+<header><center><img src="macgro.png" height="200" width="200"/></center></header>
 <center><h1>Welcome ${user.name}</h1></center>
 <h2>Profile
 <a href="/edit"><button>Edit Profile</button></a></h2>
@@ -58,16 +59,20 @@
 		<li>Protein: <fmt:formatNumber value="${leftProtein}" pattern=".00"/>gm</li>
 		<li>Fats: <fmt:formatNumber value="${leftFats}" pattern=".00"/>gm</li>
 	</ul>
-<a href="/home"><button>Check Recipes by Macros</button></a>    
-<h2>Recipes List</h2>
+<a href="/home"><button>Check Recipes by Macros</button></a>  <br>  
+<br><h2>Recipes List</h2>
 <table>
 <c:forEach var="recipe" items="${list}">
 	<tr>
 	<td><a href="${recipe.recipeUrl}">${recipe.title}</a></td>
+	<td><img src="${recipe.image}" width="100" height="100"></td>
 	<td><a href="/delete-recipe?id=${recipe.id}" ><button>Delete</button></a></td>
 	</tr>
 	</c:forEach>
 
-</table>
+</table><br><br><br>
+<footer>
+&copy; Copyright 2020 All rights reserved </footer>
+
 </body>
 </html>
