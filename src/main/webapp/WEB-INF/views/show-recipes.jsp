@@ -49,14 +49,14 @@ Wallet :</b> <b>Carbs:</b> <fmt:formatNumber value="${carbslimit}" pattern=".00"
 			<td>${recipes.fat}</td>
 			<td>${recipes.protein}</td>
 
-			<td><form action = "/save-recipe">
+			<td><form action = "/save-recipe?id=${recipes.id}">
 			<input type="hidden" name= "calories" value ="${recipes.calories}"/>
 			<input type="hidden" name= "image" value ="${recipes.image}"/>
 			<input type="hidden" name= "carbs" value ="${recipes.carbs}"/>
 			<input type="hidden" name= "fat" value ="${recipes.fat}"/>
 			<input type="hidden" name= "protein" value ="${recipes.protein}"/>
 			<input type="hidden" name= "title" value ="${recipes.title}"/>
-			<input type="hidden" name="recipeUrl" value="${recipes.recipe.sourceUrl}"/>
+			<input type="hidden" name="extRecipeId" value="${recipes.id}"/>
 				<button type = "submit">Add</button>
 			</form>			
 			

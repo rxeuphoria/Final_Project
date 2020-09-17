@@ -15,8 +15,17 @@ public class Recipe {
 	private String title;
 	private  Integer readyInMinutes;
 	private String sourceUrl;
+	private Long extRecipeId;
 	
 	
+	
+	
+	public Long getExtRecipeId() {
+		return extRecipeId;
+	}
+	public void setExtRecipeId(Long extRecipeId) {
+		this.extRecipeId = extRecipeId;
+	}
 	public Long getId() {
 		return id;
 	}
@@ -45,8 +54,9 @@ public class Recipe {
 	@Override
 	public String toString() {
 		return "Recipe [id=" + id + ", title=" + title + ", readyInMinutes=" + readyInMinutes + ", sourceUrl="
-				+ sourceUrl + "]";
+				+ sourceUrl + ", extRecipeId=" + extRecipeId + "]";
 	}
+	
 	
 	
 	

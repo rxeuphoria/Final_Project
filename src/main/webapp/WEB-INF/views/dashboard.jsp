@@ -63,7 +63,7 @@
 <table>
 <c:forEach var="recipe" items="${list}">
 	<tr>
-	<td>${recipe.title}</td>
+	<td><a href="${recipe.recipeUrl}">${recipe.title}</a></td>
 	<td><a href="/delete-recipe?id=${recipe.id}" ><button>Delete</button></a></td>
 	</tr>
 	</c:forEach>
