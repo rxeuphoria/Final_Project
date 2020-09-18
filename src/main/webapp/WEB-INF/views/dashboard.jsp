@@ -23,7 +23,7 @@
 	<button type="submit">Logout</button>
 	</form>
 
-<header><center><img src="macgro.png" height="200" width="200"/></center></header>
+<center><img src="macgro.png" height="200" width="200"/></center>
 <center><h1>Welcome ${user.name}</h1></center>
 <h2>Profile
 <a href="/edit"><button>Edit Profile</button></a></h2>
@@ -64,7 +64,8 @@
 </div>Fats: <fmt:formatNumber value="${leftFats}" pattern=".00"/>gm</li>
 	</ul>
 	
-<a href="/home"><button>Check Recipes by Macros</button></a>  <br>  
+<a href="/home"><button>Check Recipes by Macros</button></a> 
+<a href="/ingredients-list"><button>Shopping list</button></a>
 <br><h2>Recipes List</h2>
 <table>
 <c:forEach var="recipe" items="${list}">
@@ -72,7 +73,8 @@
 	<td><img src="${recipe.image}" width="100" height="100"></td>
 	<td><a href="${recipe.recipeUrl}" target="_blank">${recipe.title}</a><br>
 	<p> Carbs: ${recipe.carbs} <br>Protein: ${recipe.protein}<br> Fats: ${recipe.fat}</p></td>
-	<td><a href="/delete-recipe?id=${recipe.id}" ><button>Delete</button></a></td>
+		<td><a href="/delete-recipe?id=${recipe.id}" ><button>Delete</button></a></td>
+		
 	</tr>
 	</c:forEach>
 

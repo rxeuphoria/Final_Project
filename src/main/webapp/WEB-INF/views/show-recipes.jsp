@@ -13,7 +13,7 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
 	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
 	crossorigin="anonymous">
-
+<link href="/style.css" rel="stylesheet" />
 </head>
 <body>
 
@@ -37,19 +37,17 @@ Wallet :</b> <b>Carbs:</b> <fmt:formatNumber value="${carbslimit}" pattern=".00"
 			<th>Carbs</th>
 			<th>Fat</th>
 			<th>Protein</th>
-			<th>Actions</th>
+			
 		</tr>
 			<c:forEach var="recipes" items="${recipes}">
 		<tr>
 			
 			<td><img src="${recipes.image}"/></td>
 			<td><a href="/external-recipe?id=${recipes.id}" target="_blank">${recipes.title}</a></td>
-	
 			<td>${recipes.calories}</td>
 			<td>${recipes.carbs}</td>
 			<td>${recipes.fat}</td>
 			<td>${recipes.protein}</td>
-
 			<td><form action = "/save-recipe?id=${recipes.id}">
 			<input type="hidden" name= "calories" value ="${recipes.calories}"/>
 			<input type="hidden" name= "image" value ="${recipes.image}"/>
