@@ -28,6 +28,8 @@ import co.grandcircus.Final_Project.entity.Ingredients;
 import co.grandcircus.Final_Project.entity.Recipe;
 import co.grandcircus.Final_Project.entity.RecipesList;
 import co.grandcircus.Final_Project.entity.User;
+
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 
 @Controller
@@ -97,9 +99,16 @@ public class FinalController {
 
 	@RequestMapping("/home")
 	public String addNutrients(Model model) {
+		DecimalFormat df = new DecimalFormat("0.0");
+	    String remainCarbs=df.format(remainingCarbs);
+	    String remainProtein=df.format(remainingProtein);
+	    String remainFats=df.format(remainingFats);
 		model.addAttribute("carbslimit", remainingCarbs);
 		model.addAttribute("proteinlimit", remainingProtein);
-		model.addAttribute("fatslimit", remainingFats);
+		model.addAttribute("fatslimit", remainingFats); 
+		model.addAttribute("carbsInWallet",remainCarbs);
+		model.addAttribute("proteinInWallet",remainProtein);
+		model.addAttribute("fatsInWallet",remainFats);
 		return "home";
 	}
 
@@ -382,16 +391,7 @@ public class FinalController {
 			@RequestParam("maxFats") Double maxFats, @RequestParam("number") Integer number) {
 		RecipesList[] recipes = api.showRecipesList(minCarbs, maxCarbs, minProtein, maxProtein, minFats, maxFats,
 				number);
-
-		/*
-		 * for(int i=0;i<recipes.length;i++)
-		 * recipes[i].setRecipe(api.showDetails(recipes[i].getId()));
-		 * 
-		 * for(int i=0;i<recipes.length;i++)
-		 * recipes[i].setRecipeUrl(recipes[i].getRecipe().getSourceUrl());
-		 */
-
-		model.addAttribute("recipes", recipes);
+	    model.addAttribute("recipes", recipes);
 		model.addAttribute("carbslimit", remainingCarbs);
 		model.addAttribute("proteinlimit", remainingProtein);
 		model.addAttribute("fatslimit", remainingFats);
@@ -419,6 +419,7 @@ public class FinalController {
 		model.addAttribute("ingredients",ingredients);
 		return "shopping-list";
 	}
+	
 	@RequestMapping("/show-data")
 	public String showData(Model model) {
 		showProfile(model);
@@ -460,10 +461,6 @@ public class FinalController {
 
 		List<RecipesList> list = listDao.findAllResults(user.getId());
 		model.addAttribute("list", list);
-		List<Ingredients> ing=new ArrayList<>();
-	//	for(int i=0;i<list.size();i++)
-		// ing.add(iDao.findById(list.get(0).getRecipe().getId()));
-		//System.out.println("recipe"+list.get(0).getRecipe());
 		return "dashboard";
 
 	}
