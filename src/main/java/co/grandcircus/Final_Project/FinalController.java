@@ -411,6 +411,7 @@ public class FinalController {
 		for(int i=0;i<recipesList.size();i++) {
 		  Recipe recipe=recipesList.get(i).getRecipe();
 		  recipeName.add(recipe);
+		  System.out.println(recipe);
 		  for(Ingredients ing:recipe.getExtendedIngredients()) {
 			   ingredients.add(ing);
 		  }
