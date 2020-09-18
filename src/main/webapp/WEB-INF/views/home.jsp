@@ -29,9 +29,6 @@
 	<div class="mx-auto" style="width: 400px;">
   <h1>Enter calories amount</h1>
 </div>
-<div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-</div>
 
 	<form action="/showRecipes">
 		<label>Minimum Carbs</label>
