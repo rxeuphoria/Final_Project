@@ -35,15 +35,15 @@
 
 	<form action="/showRecipes">
 		<label>Minimum Carbs</label>
-		<input type="number" name="minCarbs" min="0" max="${carbslimit}"/><br><br>
+		<input type="number" name="minCarbs" min="0" max="${carbslimit}" value="0"/><br><br>
 		<label>Maximum Carbs</label>
 		<input type="number" name="maxCarbs" max="${carbslimit}"/><br><br>
 		<label>Minimum Protein</label>
-		<input type="number" name="minProtein" min="0" max="${proteinlimit}"/><br><br>
+		<input type="number" name="minProtein" min="0" max="${proteinlimit}" value="0"/><br><br>
 		<label>Max Protein</label>
 		<input type="number" name="maxProtein" max="${proteinlimit}"/><br><br>
 		<label>Min Fats</label>
-		<input type="number" name="minFats" min="0" max="${fatslimit}"/><br><br>
+		<input type="number" name="minFats" min="0" max="${fatslimit}" value="0"/><br><br>
 		<label>Max Fats</label>
 		<input type="number" name="maxFats" max="${fatslimit}"/><br><br>
 		<label>Number of results</label>

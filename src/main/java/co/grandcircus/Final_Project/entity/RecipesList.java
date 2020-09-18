@@ -19,7 +19,7 @@ public class RecipesList {
 	private String image;
 	private String protein;
 	private String title;
-	private Long recipeApiId;
+
 	private String recipeUrl;
 
 	@OneToOne
@@ -27,16 +27,6 @@ public class RecipesList {
 
 	@ManyToOne
 	private User user;
-	
-	
-
-	public Long getRecipeApiId() {
-		return recipeApiId;
-	}
-
-	public void setRecipeApiId(Long recipeApiId) {
-		this.recipeApiId = recipeApiId;
-	}
 
 	public User getUser() {
 		return user;
@@ -121,11 +111,9 @@ public class RecipesList {
 	@Override
 	public String toString() {
 		return "RecipesList [id=" + id + ", calories=" + calories + ", carbs=" + carbs + ", fat=" + fat + ", image="
-				+ image + ", protein=" + protein + ", title=" + title + ", recipeApiId=" + recipeApiId + ", recipeUrl="
-				+ recipeUrl + ", recipe=" + recipe + ", user=" + user + "]";
+				+ image + ", protein=" + protein + ", title=" + title + ", recipeUrl=" + recipeUrl + ", recipe="
+				+ recipe + "]";
 	}
-
-	
 
 
 }

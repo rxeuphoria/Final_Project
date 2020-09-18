@@ -59,13 +59,15 @@
 		<li>Protein: <fmt:formatNumber value="${leftProtein}" pattern=".00"/>gm</li>
 		<li>Fats: <fmt:formatNumber value="${leftFats}" pattern=".00"/>gm</li>
 	</ul>
+	
 <a href="/home"><button>Check Recipes by Macros</button></a>  <br>  
 <br><h2>Recipes List</h2>
 <table>
 <c:forEach var="recipe" items="${list}">
 	<tr>
-	<td><a href="${recipe.recipeUrl}">${recipe.title}</a></td>
 	<td><img src="${recipe.image}" width="100" height="100"></td>
+	<td><a href="${recipe.recipeUrl}" target="_blank">${recipe.title}</a><br>
+	<p> Carbs: ${recipe.carbs} <br>Protein: ${recipe.protein}<br> Fats: ${recipe.fat}</p></td>
 	<td><a href="/delete-recipe?id=${recipe.id}" ><button>Delete</button></a></td>
 	</tr>
 	</c:forEach>

@@ -33,7 +33,6 @@ Wallet :</b> <b>Carbs:</b> <fmt:formatNumber value="${carbslimit}" pattern=".00"
 		<tr>
 			<th></th>
 			<th>Title</th>
-			<th>Prep Time</th>
 			<th>Calories</th>
 			<th>Carbs</th>
 			<th>Fat</th>
@@ -45,7 +44,7 @@ Wallet :</b> <b>Carbs:</b> <fmt:formatNumber value="${carbslimit}" pattern=".00"
 			
 			<td><img src="${recipes.image}"/></td>
 			<td><a href="/external-recipe?id=${recipes.id}" target="_blank">${recipes.title}</a></td>
-			<td>${recipes.recipe.readyInMinutes} min.</td>
+	
 			<td>${recipes.calories}</td>
 			<td>${recipes.carbs}</td>
 			<td>${recipes.fat}</td>
