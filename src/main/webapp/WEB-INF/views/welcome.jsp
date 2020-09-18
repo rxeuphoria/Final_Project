@@ -18,9 +18,9 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 <body>
-<header><center><img src="macgro.png" height="200" width="200"/></center></header>
+<header><center><h1>Welcome ${user.name}</h1>
+<img src="macgro.png" height="200" width="200"/></center></header>
 	<div class="container">
-		<h1>Welcome ${user.name}</h1>
 		<h2>Fill your profile</h2>
 		<form action="/calculations">
 			<label>Gender:</label> <select name="gender">

@@ -2,6 +2,7 @@ package co.grandcircus.Final_Project;
 
 import java.time.LocalDate;
 import java.time.temporal.*;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -19,9 +20,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import co.grandcircus.Final_Project.api.FinalApi;
+import co.grandcircus.Final_Project.dao.IngredientsDao;
 import co.grandcircus.Final_Project.dao.RecipeDao;
 import co.grandcircus.Final_Project.dao.RecipesListDao;
 import co.grandcircus.Final_Project.dao.UserDao;
+import co.grandcircus.Final_Project.entity.Ingredients;
 import co.grandcircus.Final_Project.entity.Recipe;
 import co.grandcircus.Final_Project.entity.RecipesList;
 import co.grandcircus.Final_Project.entity.User;
@@ -44,6 +47,9 @@ public class FinalController {
 
 	@Autowired
 	RecipeDao recipeDao;
+	
+	@Autowired
+	IngredientsDao iDao;
 	
 	double BMR=0,TEE=0,carbs=0,protein=0,fats=0;
 	double wallet=0,totalCarbs=0,totalProtein=0,totalFats=0;
@@ -393,6 +399,26 @@ public class FinalController {
 		return "show-recipes";
 	}
 
+	
+	@RequestMapping("/ingredients-list")
+	public String showShoppingList(Model model)
+	{
+		User user = (User) session.getAttribute("user");
+		user = userDao.findById(user.getId()).get();
+		List<RecipesList> recipesList=listDao.findAllResults(user.getId());
+		List<Ingredients> ingredients=new ArrayList<>();
+		List<Recipe> recipeName=new ArrayList<>();
+		for(int i=0;i<recipesList.size();i++) {
+		  Recipe recipe=recipesList.get(i).getRecipe();
+		  recipeName.add(recipe);
+		  for(Ingredients ing:recipe.getExtendedIngredients()) {
+			   ingredients.add(ing);
+		  }
+		}
+		model.addAttribute("recipe",recipeName);
+		model.addAttribute("ingredients",ingredients);
+		return "shopping-list";
+	}
 	@RequestMapping("/show-data")
 	public String showData(Model model) {
 		showProfile(model);
@@ -433,8 +459,11 @@ public class FinalController {
 		model.addAttribute("leftFats", leftFats);
 
 		List<RecipesList> list = listDao.findAllResults(user.getId());
-
 		model.addAttribute("list", list);
+		List<Ingredients> ing=new ArrayList<>();
+	//	for(int i=0;i<list.size();i++)
+		// ing.add(iDao.findById(list.get(0).getRecipe().getId()));
+		//System.out.println("recipe"+list.get(0).getRecipe());
 		return "dashboard";
 
 	}
@@ -446,19 +475,29 @@ public class FinalController {
 		recipeList.setUser(user);
 		Recipe targetRecipe = api.showDetails(extRecipeId);
 		model.addAttribute("targetRecipe", targetRecipe);
+	
 		recipe.setId(recipeList.getId());
-		System.out.println(recipe);
-		System.out.println(recipeList);
 		recipe.setExtRecipeId(extRecipeId);
 		recipe.setTitle(recipeList.getTitle());
+		
+	  List<Ingredients> ingredients=targetRecipe.getExtendedIngredients();
+	  recipe.setDairyFree(targetRecipe.isDairyFree());
+	  recipe.setGlutenFree(targetRecipe.isGlutenFree());
+	  recipe.setKetogenic(targetRecipe.isKetogenic());
+	  recipe.setVegan(targetRecipe.isVegan());
+	  recipe.setVegetarian(targetRecipe.isVegetarian());
+      for(int i=0;i<ingredients.size();i++) {
+    	    ingredients.get(i).setRecipe(recipe);
+      }
 		String url = targetRecipe.getSourceUrl();
-		System.out.println(url);
+    
 		recipeList.setRecipeUrl(url);
 		recipe.setSourceUrl(url);
 		recipeList.setRecipe(recipe);
 		recipeDao.save(recipe);
 		listDao.save(recipeList);
-
+		for(int i=0;i<ingredients.size();i++)
+		iDao.save(ingredients.get(i));
 		return "redirect:/show-data";
 	}
 
