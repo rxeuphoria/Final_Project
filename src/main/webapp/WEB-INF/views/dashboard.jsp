@@ -54,10 +54,14 @@
 	</table>
 
 <h2>Wallet</h2>
+
 	<ul>
-		<li>Carbs: <fmt:formatNumber value="${leftCarbs}" pattern=".00"/>gm</li>
-		<li>Protein: <fmt:formatNumber value="${leftProtein}" pattern=".00"/>gm</li>
-		<li>Fats: <fmt:formatNumber value="${leftFats}" pattern=".00"/>gm</li>
+		<li><div class=progress-bar style="--width" data-label="Carbohydrates">
+</div>Carbs: <fmt:formatNumber value="${leftCarbs}" pattern=".00"/>gm</li>
+		<li><div class=progress-bar style="--width" data-label="Proteins">
+</div>Protein: <fmt:formatNumber value="${leftProtein}" pattern=".00"/>gm</li>
+		<li><div class=progress-bar style="--width" data-label="Fats">
+</div>Fats: <fmt:formatNumber value="${leftFats}" pattern=".00"/>gm</li>
 	</ul>
 	
 <br><h2>Recipes List</h2>
