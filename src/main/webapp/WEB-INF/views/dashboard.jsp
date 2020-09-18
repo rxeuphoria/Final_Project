@@ -60,8 +60,6 @@
 		<li>Fats: <fmt:formatNumber value="${leftFats}" pattern=".00"/>gm</li>
 	</ul>
 	
-<a href="/home"><button>Check Recipes by Macros</button></a> 
-<a href="/ingredients-list"><button>Shopping list</button></a>
 <br><h2>Recipes List</h2>
 <table>
 <c:forEach var="recipe" items="${list}">
