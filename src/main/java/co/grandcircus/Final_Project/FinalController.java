@@ -62,23 +62,11 @@ public class FinalController {
 	SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 	Date start = new Date();
 	String s=formatter.format(start);
-	//Date newDate = addDays(start, 1);
-	//String s1=formatter.format(newDate);
-	
-	/*'public  Date addDays(Date date, int days) {
-		GregorianCalendar cal = new GregorianCalendar();
-		cal.setTime(date);
-		cal.add(Calendar.DATE, days);
-				
-		return cal.getTime();
-	}*/
-  
+
 	@RequestMapping("/")
 	public String welcomeOrLogin(Model model) {
 		if(session.getAttribute("user")!=null){
-			System.out.println("date"+s);
 			model.addAttribute("start",s);
-			//model.addAttribute("end",s1);
 		return "welcome";
 		}else {
 			return "login";
@@ -389,7 +377,9 @@ public class FinalController {
 	public String showRecipes(Model model, @RequestParam("minCarbs") Double minCarbs,
 			@RequestParam("maxCarbs") Double maxCarbs, @RequestParam("minProtein") Double minProtein,
 			@RequestParam("maxProtein") Double maxProtein, @RequestParam("minFats") Double minFats,
-			@RequestParam("maxFats") Double maxFats, @RequestParam("number") Integer number) {
+			@RequestParam("maxFats") Double maxFats, @RequestParam("number") Integer number,
+			@RequestParam("vegetarian") Boolean veg,
+			@RequestParam("vegan") Boolean vegan) {
 		RecipesList[] recipes = api.showRecipesList(minCarbs, maxCarbs, minProtein, maxProtein, minFats, maxFats,
 				number);
 		
