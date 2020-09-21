@@ -52,11 +52,11 @@
 			</select><br><br>
 				<label>Plan for the Interval:</label>
 				<select name="change" >
-					<option value="500" <c:if test="${user.plan=='Gain 1 pound'}"> selected </c:if>>Gain 1 Pound</option>
-					<option value="250" <c:if test="${user.plan=='Gain 0.5 pound'}"> selected </c:if>>Gain .5 pound</option>
+					<option value="500" <c:if test="${user.plan=='Gain 1 pound'}"> selected </c:if>>Gain 1 Pound/Gain 0.453 Kg</option>
+					<option value="250" <c:if test="${user.plan=='Gain 0.5 pound'}"> selected </c:if>>Gain .5 pound/Gain 0.23 Kg</option>
 					<option value="0" <c:if test="${user.plan=='Maintain'}"> selected </c:if>>Maintain</option>
-					<option value="-250" <c:if test="${user.plan=='Loose 0.5 pound'}"> selected </c:if>>Loose .5 pound</option>
-					<option value="-500" <c:if test="${user.plan=='Loose 1 pound'}"> selected </c:if>>Loose 1 pound</option>
+					<option value="-250" <c:if test="${user.plan=='Loose 0.5 pound'}"> selected </c:if>>Loose .5 pound/Loose 0.23 Kg</option>
+					<option value="-500" <c:if test="${user.plan=='Loose 1 pound'}"> selected </c:if>>Loose 1 pound/Loose 0.453 Kg</option>
 				</select><br><br>
 			<label>Start Date: </label>
 			<input type="date" name="datepickerStart" id="Test_Date" min="${start}" onchange="minEndValue()" required>
