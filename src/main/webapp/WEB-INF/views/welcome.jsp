@@ -58,7 +58,7 @@
 					<option value="-500">Loose 1 pound</option>
 				</select><br><br>
 			<label>Start Date:</label> 
-			<input type="date" name="datepickerStart" id="Test_Date" min="${start}" max="${start}" required>
+			<input type="date" name="datepickerStart" id="Test_Date" min="${start}" onchange="minEndValue()" required>
 			<label>End Date:</label>
 			<input type="date" name="datepickerEnd" id="Test_Date1" min="${end}" required><br><br>
 
@@ -76,6 +76,10 @@
                 var e = document.getElementById("Test_Date1").min; 
                 document.getElementById("test").innerHTML = e; 
             } 
+            function minEndValue(){
+            	var d=document.getElementById("Test_Date").value;
+            	document.getElementById("Test_Date1").min=d;
+            }
             
         </script> 
   <footer>&copy; Copyright 2020 All rights reserved</footer>

@@ -99,10 +99,10 @@ public class FinalController {
 
 	@RequestMapping("/home")
 	public String addNutrients(Model model) {
-		DecimalFormat df = new DecimalFormat("0.00");
-	    String remainCarbs=df.format(remainingCarbs-1);
-	    String remainProtein=df.format(remainingProtein-1);
-	    String remainFats=df.format(remainingFats-1);
+		
+	    int remainCarbs=(int)(remainingCarbs);
+	    int remainProtein=(int)(remainingProtein);
+	    int  remainFats=(int)(remainingFats);
 		model.addAttribute("carbslimit", remainingCarbs);
 		model.addAttribute("proteinlimit", remainingProtein);
 		model.addAttribute("fatslimit", remainingFats); 

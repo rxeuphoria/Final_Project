@@ -55,49 +55,49 @@
 			<td>${recipes.carbs}</td>
 			<td>${recipes.fat}</td>
 			<td>${recipes.protein}</td>
-			
+	
 			<c:choose>
-			<c:when test = "{recipes.recipe.vegan == true}">
-			<td>Vegan</td>
+			<c:when test = "${recipes.recipe.vegan == true}">
+			<td>Yes</td>
 			</c:when>
 			<c:otherwise>			 
-			<td>Not vegan</td>
+			<td>No</td>
 			</c:otherwise>
 			</c:choose>
 			
 			<c:choose>
-			<c:when test = "{recipes.recipe.vegatarian == true}">
-			<td>Vegatarian</td>
+			<c:when test = "${recipes.recipe.vegetarian == true}">
+			<td>Yes</td>
 			</c:when>
 			<c:otherwise>			 
-			<td>Not vegatarian</td>
+			<td>No</td>
 			</c:otherwise>
 			</c:choose>
 			
 			<c:choose>
-			<c:when test = "{recipes.recipe.glutenFree == true}">
-			<td>Gluten Free</td>
+			<c:when test = "${recipes.recipe.glutenFree == true}">
+			<td>Yes</td>
 			</c:when>
 			<c:otherwise>			 
-			<td>Not Gluten Free</td>
+			<td>No</td>
 			</c:otherwise>
 			</c:choose>
 			
 			<c:choose>
-			<c:when test = "{recipes.recipe.dairyFree == true}">
-			<td>Dairy Free</td>
+			<c:when test = "${recipes.recipe.dairyFree == true}">
+			<td>Yes</td>
 			</c:when>
 			<c:otherwise>			 
-			<td>Not Dairy Free</td>
+			<td>No</td>
 			</c:otherwise>
 			</c:choose>
 			
 			<c:choose>
-			<c:when test = "{recipes.recipe.ketogenic == true}">
-			<td>Ketogenic</td>
+			<c:when test = "${recipes.recipe.ketogenic == true}">
+			<td>Yes</td>
 			</c:when>
 			<c:otherwise>			 
-			<td>Not Ketogenic</td>
+			<td>No</td>
 			</c:otherwise>
 			</c:choose>
 			
