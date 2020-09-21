@@ -26,7 +26,7 @@
 <center><img src="macgro.png" height="200" width="200"/></center>
 <center><h1>Welcome ${user.name}</h1></center>
 <h2>Profile
-<a href="/edit"><button>Edit Profile</button></a></h2>
+<a href="/edit"><button>New Interval</button></a></h2>
 
 <table class=table>
 	<tr>

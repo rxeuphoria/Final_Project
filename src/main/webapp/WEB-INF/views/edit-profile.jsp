@@ -58,21 +58,28 @@
 					<option value="-250" <c:if test="${user.plan=='Loose 0.5 pound'}"> selected </c:if>>Loose .5 pound</option>
 					<option value="-500" <c:if test="${user.plan=='Loose 1 pound'}"> selected </c:if>>Loose 1 pound</option>
 				</select><br><br>
-			Start Date: 
-			<input type="date" name="datepickerStart" id="Test_Date" min="${start}"  max="${start}" required/>
-			End Date:
-			<input type="date" name="datepickerEnd" id="Test_Date1" min="${end}" required/><br><br>
-
-			<button type="submit" onclick="myFunction()" ondblclick="My_Date()">Save</button>
+			<label>Start Date: </label>
+			<input type="date" name="datepickerStart" id="Test_Date" min="${start}" onchange="minEndValue()" required>
+			<label>End Date:</label>
+			<input type="date" name="datepickerEnd" id="Test_Date1"  required><br><br>
+			<button type="submit" onclick="myFunction()">Save</button>
 			<script>
 function myFunction() {
   confirm("New Interval started with  new updated values!!");
 }
-function My_Date() { 
-    var d = document.getElementById("Test_Date").min; 
-    document.getElementById("test").innerHTML = d; 
-    var e = document.getElementById("Test_Date1").min; 
-    document.getElementById("test").innerHTML = d; 
+function minEndValue(){
+	var d=document.getElementById("Test_Date").value;
+	var c=new Date(d);
+	var end=document.getElementById("Test_Date1");
+	 c.setDate(c.getDate()+2);
+	 var y=c.getFullYear();
+	 var m=c.getMonth()+1;
+	 var dd=c.getDate();
+		if(m<10)
+			m="0"+m;
+		if(dd<10)
+			dd="0"+dd;
+		end.min=y+"-"+m+"-"+dd;          
 }
 </script>
 			

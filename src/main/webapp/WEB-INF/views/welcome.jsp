@@ -60,9 +60,9 @@
 			<label>Start Date:</label> 
 			<input type="date" name="datepickerStart" id="Test_Date" min="${start}" onchange="minEndValue()" required>
 			<label>End Date:</label>
-			<input type="date" name="datepickerEnd" id="Test_Date1" min="${end}" required><br><br>
+			<input type="date" name="datepickerEnd" id="Test_Date1"  required><br><br>
 
-			<button type="submit"  ondblclick="My_Date()">Save</button>
+			<button type="submit" >Save</button>
 		</form>
 		<br> <br> 
 		<form action="/logout">
@@ -70,15 +70,20 @@
 		</form>
 	</div><br><br><br>
 	<script> 
-            function My_Date() { 
-                var d = document.getElementById("Test_Date").min; 
-                document.getElementById("test").innerHTML = d; 
-                var e = document.getElementById("Test_Date1").min; 
-                document.getElementById("test").innerHTML = e; 
-            } 
+            
             function minEndValue(){
             	var d=document.getElementById("Test_Date").value;
-            	document.getElementById("Test_Date1").min=d;
+            	var c=new Date(d);
+            	var end=document.getElementById("Test_Date1");
+            	 c.setDate(c.getDate()+2);
+            	 var y=c.getFullYear();
+            	 var m=c.getMonth()+1;
+            	 var dd=c.getDate();
+					if(m<10)
+						m="0"+m;
+					if(dd<10)
+						dd="0"+dd;
+					end.min=y+"-"+m+"-"+dd;          
             }
             
         </script> 
