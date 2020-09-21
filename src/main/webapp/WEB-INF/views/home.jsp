@@ -12,9 +12,6 @@
 </head>
 <body>
 
-<a href="/show-data"><img src="macgro2" width="82" height="86" title="White flower" alt="Flower"></a>
-
-<div>
 	
 
 <article>
@@ -46,6 +43,12 @@
 		<input type="number" name="maxFats" max="${fatslimit}" value="${fatsInWallet}"/><br><br>
 		<label>Number of results</label>
 		<input type="number" name="number" min ="0" max="20"/><br><br><br>
+		<input type="checkbox" name="vegetarian" value="true">
+		<input type="hidden" name="vegetarian" value="false">
+		<label>Vegetarian</label>
+		<input type="checkbox" name="vegan" value="true">
+		<input type="hidden" name="vegan" value="false">
+		<label>Vegan</label>
 		<button type="submit">Check Recipes</button>	
 	</form><br><br>
 	<form action="/logout">

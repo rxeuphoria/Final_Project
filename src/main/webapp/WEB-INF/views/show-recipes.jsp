@@ -48,7 +48,6 @@
 		</tr>
 			<c:forEach var="recipes" items="${recipes}">
 		<tr>
-			
 			<td><img src="${recipes.image}"/></td>
 			<td><a href="/external-recipe?id=${recipes.id}" target="_blank">${recipes.title}</a></td>
 			<td>${recipes.calories}</td>
@@ -125,6 +124,7 @@
 			
 
 			</td>
+	
 			</tr>
 	</c:forEach>		
 	</table><br><br>
