@@ -20,7 +20,7 @@
 <div>
 <article>
 <header><a href="/show-data" class="homepage">@DashBoard</a><br>
-Wallet :</b> <b>Carbs:</b> <fmt:formatNumber value="${carbslimit}" pattern=".00"/>gm  ,
+<b>Wallet :</b> <b>Carbs:</b> <fmt:formatNumber value="${carbslimit}" pattern=".00"/>gm  ,
 			<b>Protein :</b> <fmt:formatNumber value="${proteinlimit}" pattern=".00"/>gm  ,
 			 <b>Fats:</b> <fmt:formatNumber value="${fatslimit}" pattern=".00"/>gm</p>
 			 <center><img src="macgro.png" height="200" width="200"/></center></header>
