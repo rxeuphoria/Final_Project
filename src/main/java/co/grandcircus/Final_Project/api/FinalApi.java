@@ -48,11 +48,12 @@ private RestTemplate rt;
 		return response;
 	}
   
-  public Recipe showDetails(Long id) {
+    public Recipe showDetails(Long id) {
 	  String url ="https://api.spoonacular.com/recipes/{id}/information?&apiKey={apiKey}";
 	  Recipe recipe=rt.getForObject(url, Recipe.class,id,apiKey);
 	  return recipe;
 	  
   }
+
   }
 

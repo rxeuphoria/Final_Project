@@ -37,6 +37,13 @@
 			<th>Carbs</th>
 			<th>Fat</th>
 			<th>Protein</th>
+			<th>Vegan</th>
+			<th>Vegatarian</th>
+			<th>Gluten Free</th>
+			<th>Dairy Free</th>
+			<th>Ketogenic</th>
+			
+			
 			
 		</tr>
 			<c:forEach var="recipes" items="${recipes}">
@@ -48,6 +55,55 @@
 			<td>${recipes.carbs}</td>
 			<td>${recipes.fat}</td>
 			<td>${recipes.protein}</td>
+			
+			<c:choose>
+			<c:when test = "{recipes.recipe.vegan == true}">
+			<td>Vegan</td>
+			</c:when>
+			<c:otherwise>			 
+			<td>Not vegan</td>
+			</c:otherwise>
+			</c:choose>
+			
+			<c:choose>
+			<c:when test = "{recipes.recipe.vegatarian == true}">
+			<td>Vegatarian</td>
+			</c:when>
+			<c:otherwise>			 
+			<td>Not vegatarian</td>
+			</c:otherwise>
+			</c:choose>
+			
+			<c:choose>
+			<c:when test = "{recipes.recipe.glutenFree == true}">
+			<td>Gluten Free</td>
+			</c:when>
+			<c:otherwise>			 
+			<td>Not Gluten Free</td>
+			</c:otherwise>
+			</c:choose>
+			
+			<c:choose>
+			<c:when test = "{recipes.recipe.dairyFree == true}">
+			<td>Dairy Free</td>
+			</c:when>
+			<c:otherwise>			 
+			<td>Not Dairy Free</td>
+			</c:otherwise>
+			</c:choose>
+			
+			<c:choose>
+			<c:when test = "{recipes.recipe.ketogenic == true}">
+			<td>Ketogenic</td>
+			</c:when>
+			<c:otherwise>			 
+			<td>Not Ketogenic</td>
+			</c:otherwise>
+			</c:choose>
+			
+			
+			
+			
 			<td><form action = "/save-recipe?id=${recipes.id}">
 			<input type="hidden" name= "calories" value ="${recipes.calories}"/>
 			<input type="hidden" name= "image" value ="${recipes.image}"/>
@@ -69,7 +125,10 @@
 			
 
 			</td>
-	</tr>
+			
+			
+			
+			</tr>
 	</c:forEach>		
 	</table><br><br>
 	<form action="/logout">
