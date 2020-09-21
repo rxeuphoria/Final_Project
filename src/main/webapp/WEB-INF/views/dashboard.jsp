@@ -26,7 +26,7 @@
 <center><img src="macgro.png" height="200" width="200"/></center>
 <center><h1>Welcome ${user.name}</h1></center>
 <h2>Profile
-<a href="/edit"><button>Edit Profile</button></a></h2>
+<a href="/edit"><button>New Interval</button></a></h2>
 
 <table class=table>
 	<tr>
@@ -71,6 +71,7 @@
 	<td><img src="${recipe.image}" width="100" height="100"></td>
 	<td><a href="${recipe.recipeUrl}" target="_blank">${recipe.title}</a><br>
 	<p> Carbs: ${recipe.carbs} <br>Protein: ${recipe.protein}<br> Fats: ${recipe.fat}</p></td>
+	<td><a href="/ingredients?id=${recipe.id}"><button>Check Ingredients</button></a></td>
 		<td><a href="/delete-recipe?id=${recipe.id}" ><button>Delete</button></a></td>
 		
 	</tr>

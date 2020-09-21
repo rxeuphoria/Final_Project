@@ -63,22 +63,23 @@ public class FinalController {
 	SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 	Date start = new Date();
 	String s=formatter.format(start);
-	Date newDate = addDays(start, 1);
-	String s1=formatter.format(newDate);
+	//Date newDate = addDays(start, 1);
+	//String s1=formatter.format(newDate);
 	
-	public  Date addDays(Date date, int days) {
+	/*'public  Date addDays(Date date, int days) {
 		GregorianCalendar cal = new GregorianCalendar();
 		cal.setTime(date);
 		cal.add(Calendar.DATE, days);
 				
 		return cal.getTime();
-	}
+	}*/
   
 	@RequestMapping("/")
 	public String welcomeOrLogin(Model model) {
 		if(session.getAttribute("user")!=null){
+			System.out.println("date"+s);
 			model.addAttribute("start",s);
-			model.addAttribute("end",s1);
+			//model.addAttribute("end",s1);
 		return "welcome";
 		}else {
 			return "login";
@@ -100,10 +101,10 @@ public class FinalController {
 
 	@RequestMapping("/home")
 	public String addNutrients(Model model) {
-		DecimalFormat df = new DecimalFormat("0.00");
-	    String remainCarbs=df.format(remainingCarbs-1);
-	    String remainProtein=df.format(remainingProtein-1);
-	    String remainFats=df.format(remainingFats-1);
+		
+	    int remainCarbs=(int)(remainingCarbs);
+	    int remainProtein=(int)(remainingProtein);
+	    int  remainFats=(int)(remainingFats);
 		model.addAttribute("carbslimit", remainingCarbs);
 		model.addAttribute("proteinlimit", remainingProtein);
 		model.addAttribute("fatslimit", remainingFats); 
@@ -429,6 +430,14 @@ public class FinalController {
 		return "shopping-list";
 	}
 	
+	@RequestMapping("/ingredients")
+	public String showIngredients(Model model,RecipesList recipeList,@RequestParam("id") Long id) {
+		Recipe recipe=recipeDao.findAllById(id);
+		List<Ingredients> ingredients=recipe.getExtendedIngredients();
+		model.addAttribute("ingredients",ingredients);
+		return "ingredients-list";
+	} 
+	
 	@RequestMapping("/show-data")
 	public String showData(Model model) {
 		showProfile(model);
@@ -524,7 +533,7 @@ public class FinalController {
 		user=userDao.findById(user.getId()).get();
 		model.addAttribute("user",user);
 		model.addAttribute("start",s);
-		model.addAttribute("end",s1);
+	//	model.addAttribute("end",s1);
 	   return "edit-profile";
 		
 	}
