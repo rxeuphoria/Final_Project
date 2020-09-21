@@ -63,48 +63,71 @@ public class FinalController {
 	SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 	Date start = new Date();
 	String s=formatter.format(start);
-	//Date newDate = addDays(start, 1);
-	//String s1=formatter.format(newDate);
+	Date newDate = addDays(start, 1);
+	String s1=formatter.format(newDate);
 	
-	/*'public  Date addDays(Date date, int days) {
+	public  Date addDays(Date date, int days) {
 		GregorianCalendar cal = new GregorianCalendar();
 		cal.setTime(date);
 		cal.add(Calendar.DATE, days);
 				
 		return cal.getTime();
-	}*/
+	}
   
 	@RequestMapping("/")
 	public String welcomeOrLogin(Model model) {
 		if(session.getAttribute("user")!=null){
-			System.out.println("date"+s);
 			model.addAttribute("start",s);
-			//model.addAttribute("end",s1);
+			model.addAttribute("end",s1);
 		return "welcome";
 		}else {
 			return "login";
 		}
+		
+		
+		
 	}
 
 	@RequestMapping("/login-submit")
 	public String submitLoginForm(Model model, @RequestParam("email") String email,
 			@RequestParam("password") String password) {
-		Optional<User> foundUser = userDao.findByEmailAndPassword(email, password);
-		if (foundUser.isPresent()) {
-			session.setAttribute("user", foundUser.get());
-			return "redirect:/show-data";
-		} else {
+		
+		User foundUser = userDao.findByEmail(email);
+		
+		byte[] decodedBytes = Base64.getDecoder().decode(foundUser.getPassword());
+		String decodedUserPasswordString = new String(decodedBytes);
+		
+			if (foundUser==null || !password.equals(decodedUserPasswordString)) {
+			
 			model.addAttribute("message", "Incorrect email and password");
 			return "login";
 		}
-	}
+			session.setAttribute("user", foundUser);
+			return "redirect:/show-data";
+			
+			
+			}
+		
+//		Optional<User> foundUser = userDao.findByEmailAndPassword(email, password);
+//		if (foundUser.isPresent()) {
+//			session.setAttribute("user", foundUser.get());
+//			return "redirect:/show-data";
+//		} else {
+//			model.addAttribute("message", "Incorrect email and password");
+//			return "login";
+//		}
+		
+	
+
+
+
 
 	@RequestMapping("/home")
 	public String addNutrients(Model model) {
-		
-	    int remainCarbs=(int)(remainingCarbs);
-	    int remainProtein=(int)(remainingProtein);
-	    int  remainFats=(int)(remainingFats);
+		DecimalFormat df = new DecimalFormat("0.00");
+	    String remainCarbs=df.format(remainingCarbs-1);
+	    String remainProtein=df.format(remainingProtein-1);
+	    String remainFats=df.format(remainingFats-1);
 		model.addAttribute("carbslimit", remainingCarbs);
 		model.addAttribute("proteinlimit", remainingProtein);
 		model.addAttribute("fatslimit", remainingFats); 
@@ -122,8 +145,13 @@ public class FinalController {
 	@PostMapping("/signup")
 	public String submitSignupForm(User user, @RequestParam("confirm-password") String confirmPassword, Model model,
 			RedirectAttributes redir) {
+		
+		
+		
 		// Find the matching user.
 		User existingUser = userDao.findByEmail(user.getEmail());
+		
+		
 		if (existingUser != null) {
 			// If user already exists, display an error message.
 			model.addAttribute("message", "A user with that email already exists.");
@@ -136,6 +164,8 @@ public class FinalController {
 			return "signup";
 		}
 
+		String encodedPassword = Base64.getEncoder().encodeToString(user.getPassword().getBytes());
+		user.setPassword(encodedPassword);
 		userDao.save(user);
 
 		// On successful sign-up, add the user to the session.
@@ -430,14 +460,6 @@ public class FinalController {
 		return "shopping-list";
 	}
 	
-	@RequestMapping("/ingredients")
-	public String showIngredients(Model model,RecipesList recipeList,@RequestParam("id") Long id) {
-		Recipe recipe=recipeDao.findAllById(id);
-		List<Ingredients> ingredients=recipe.getExtendedIngredients();
-		model.addAttribute("ingredients",ingredients);
-		return "ingredients-list";
-	} 
-	
 	@RequestMapping("/show-data")
 	public String showData(Model model) {
 		showProfile(model);
@@ -533,7 +555,7 @@ public class FinalController {
 		user=userDao.findById(user.getId()).get();
 		model.addAttribute("user",user);
 		model.addAttribute("start",s);
-	//	model.addAttribute("end",s1);
+		model.addAttribute("end",s1);
 	   return "edit-profile";
 		
 	}
