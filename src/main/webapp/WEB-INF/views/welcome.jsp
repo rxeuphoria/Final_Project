@@ -51,11 +51,11 @@
 			</select><br><br>
 				<label>Plan for the Interval:</label>
 				<select name="change">
-					<option value="500">Gain 1 Pound</option>
-					<option value="250">Gain .5 pound</option>
+					<option value="500">Gain 1 Pound/Gain 0.453 Kg</option>
+					<option value="250">Gain .5 pound/Gain 0.23 Kg</option>
 					<option value="0">Maintain</option>
-					<option value="-250">Loose .5 pound</option>
-					<option value="-500">Loose 1 pound</option>
+					<option value="-250">Loose .5 pound/Loose 0.23 Kg</option>
+					<option value="-500">Loose 1 pound/Loose 0.453 Kg</option>
 				</select><br><br>
 			<label>Start Date:</label> 
 			<input type="date" name="datepickerStart" id="Test_Date" min="${start}" onchange="minEndValue()" required>
