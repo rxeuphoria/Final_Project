@@ -428,6 +428,14 @@ public class FinalController {
 		return "shopping-list";
 	}
 	
+	@RequestMapping("/ingredients")
+	public String showIngredients(Model model,RecipesList recipeList,@RequestParam("id") Long id) {
+		Recipe recipe=recipeDao.findAllById(id);
+		List<Ingredients> ingredients=recipe.getExtendedIngredients();
+		model.addAttribute("ingredients",ingredients);
+		return "ingredients-list";
+	} 
+	
 	@RequestMapping("/show-data")
 	public String showData(Model model) {
 		showProfile(model);
