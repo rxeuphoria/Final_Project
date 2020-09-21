@@ -391,6 +391,13 @@ public class FinalController {
 			@RequestParam("maxFats") Double maxFats, @RequestParam("number") Integer number) {
 		RecipesList[] recipes = api.showRecipesList(minCarbs, maxCarbs, minProtein, maxProtein, minFats, maxFats,
 				number);
+		
+		
+		 for(int i=0;i<recipes.length;i++)
+		 recipes[i].setRecipe(api.showDetails(recipes[i].getId()));
+		 
+		
+		
 	    model.addAttribute("recipes", recipes);
 		model.addAttribute("carbslimit", remainingCarbs);
 		model.addAttribute("proteinlimit", remainingProtein);
