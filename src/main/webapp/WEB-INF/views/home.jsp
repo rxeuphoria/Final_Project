@@ -12,6 +12,7 @@
 </head>
 <body>
 
+<a href="/show-data"><img src="macgro2" width="82" height="86" title="White flower" alt="Flower"></a>
 
 <div>
 	
