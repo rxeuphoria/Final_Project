@@ -48,6 +48,7 @@
 		</tr>
 			<c:forEach var="recipes" items="${recipes}">
 		<tr>
+			<c:if test="${(veg==recipes.recipe. vegetarian)&&(vegan==recipes.recipe.vegan)&&(dairyFree==recipes.recipe.dairyFree)&&(glutenFree==recipes.recipe.glutenFree)&&(ketogenic==recipes.recipe.ketogenic)}">
 			<td><img src="${recipes.image}"/></td>
 			<td><a href="/external-recipe?id=${recipes.id}" target="_blank">${recipes.title}</a></td>
 			<td>${recipes.calories}</td>
@@ -124,7 +125,7 @@
 			
 
 			</td>
-	
+		</c:if>
 			</tr>
 	</c:forEach>		
 	</table><br><br>

@@ -411,7 +411,10 @@ public class FinalController {
 			@RequestParam("maxProtein") Double maxProtein, @RequestParam("minFats") Double minFats,
 			@RequestParam("maxFats") Double maxFats, @RequestParam("number") Integer number,
 			@RequestParam("vegetarian") Boolean veg,
-			@RequestParam("vegan") Boolean vegan) {
+			@RequestParam("vegan") Boolean vegan,
+			@RequestParam("dairyFree") Boolean dairyFree,
+			@RequestParam("glutenFree") Boolean glutenFree,
+			@RequestParam("ketogenic") Boolean ketogenic) {
 		RecipesList[] recipes = api.showRecipesList(minCarbs, maxCarbs, minProtein, maxProtein, minFats, maxFats,
 				number);
 		
@@ -420,12 +423,16 @@ public class FinalController {
 		 recipes[i].setRecipe(api.showDetails(recipes[i].getId()));
 		 
 		
-		
+		System.out.println("vege "+veg+"vegan"+vegan+"dairy"+dairyFree+"gluten"+glutenFree+"keto"+ketogenic);
 	    model.addAttribute("recipes", recipes);
 		model.addAttribute("carbslimit", remainingCarbs);
 		model.addAttribute("proteinlimit", remainingProtein);
 		model.addAttribute("fatslimit", remainingFats);
-
+		model.addAttribute("veg",veg);
+		model.addAttribute("vegan",vegan);
+		model.addAttribute("dairyFree",dairyFree);
+		model.addAttribute("glutenFree",glutenFree);
+		model.addAttribute("ketogenic",ketogenic);
 		return "show-recipes";
 	}
 

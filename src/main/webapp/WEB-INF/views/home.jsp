@@ -42,13 +42,22 @@
 		<label>Max Fats</label>
 		<input type="number" name="maxFats" max="${fatslimit}" value="${fatsInWallet}"/><br><br>
 		<label>Number of results</label>
-		<input type="number" name="number" min ="0" max="20"/><br><br><br>
+		<input type="number" name="number" min ="0" max="50"/><br><br>
 		<input type="checkbox" name="vegetarian" value="true">
 		<input type="hidden" name="vegetarian" value="false">
 		<label>Vegetarian</label>
 		<input type="checkbox" name="vegan" value="true">
 		<input type="hidden" name="vegan" value="false">
 		<label>Vegan</label>
+		<input type="checkbox" name="dairyFree" value="true">
+		<input type="hidden" name="dairyFree" value="false">
+		<label>Dairy Free</label>
+		<input type="checkbox" name="glutenFree" value="true">
+		<input type="hidden" name="glutenFree" value="false">
+		<label>Gluten Free</label>
+		<input type="checkbox" name="ketogenic" value="true">
+		<input type="hidden" name="ketogenic" value="false">
+		<label>Ketogenic</label><br><br>
 		<button type="submit">Check Recipes</button>	
 	</form><br><br>
 	<form action="/logout">
