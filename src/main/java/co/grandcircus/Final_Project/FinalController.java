@@ -452,14 +452,7 @@ public class FinalController {
 		model.addAttribute("diet",diet);
 		}
 		}
-		System.out.println("vegan"+vegan);
-		System.out.println("veg"+veg);
 		
-		System.out.println("dairy"+dairyFree);
-		
-		System.out.println("gluten"+glutenFree);
-		
-		System.out.println("diet"+diet);
 		return "show-recipes";
 		
 	}
@@ -476,7 +469,6 @@ public class FinalController {
 		for(int i=0;i<recipesList.size();i++) {
 		  Recipe recipe=recipesList.get(i).getRecipe();
 		  recipeName.add(recipe);
-		  System.out.println(recipe);
 		  for(Ingredients ing:recipe.getExtendedIngredients()) {
 			   ingredients.add(ing);
 		  }
@@ -770,8 +762,6 @@ if(gender.equals("M")) {
 		// invalidate clears the current user session and starts a new one.
 		session.invalidate();
 
-		// A flash message will only show on the very next page. Then it will go away.
-		// It is useful with redirects since you can't add attributes to the mav.
 		redir.addFlashAttribute("message", "Logged out.");
 		return "redirect:/";
 	}
