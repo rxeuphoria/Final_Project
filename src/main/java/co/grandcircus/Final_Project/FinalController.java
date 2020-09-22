@@ -210,11 +210,11 @@ public class FinalController {
 			}
 			if (change == -250) {
 				TEE = TEE - 250;
-				plan = "Loose 0.5 pound";
+				plan = "Lose 0.5 pound";
 			}
 			if (change == -500) {
 				TEE = TEE - 500;
-				plan = "Loose 1 pound";
+				plan = "Lose 1 pound";
 			}
 			carbs = (TEE * 0.4) / 4;
 			protein = (TEE * 0.3) / 4;
@@ -285,11 +285,11 @@ public class FinalController {
 			}
 			if (change == -250) {
 				TEE = TEE - 250;
-				plan = "Loose 0.5 pound";
+				plan = "Lose 0.5 pound";
 			}
 			if (change == -500) {
 				TEE = TEE - 500;
-				plan = "Loose 1 pound";
+				plan = "Lose 1 pound";
 			}
 			carbs = (TEE * 0.4) / 4;
 			protein = (TEE * 0.3) / 4;
@@ -633,11 +633,11 @@ public String editSubmit(Model model,@RequestParam("gender") String gender,
 	}
 	if(change==-250) {
 		TEE=TEE-250;
-		plan="Loose 0.5 pound";
+		plan="Lose 0.5 pound";
 	}
 	if(change==-500) {
 		TEE=TEE-500;
-		plan="Loose 1 pound";
+		plan="Lose 1 pound";
 	}
 	carbs=(TEE*0.4)/4;
 	protein=(TEE*0.3)/4;
@@ -710,11 +710,11 @@ if(gender.equals("M")) {
 	}
 	if(change==-250) {
 		TEE=TEE-250;
-		plan="Loose 0.5 pound";
+		plan="Lose 0.5 pound";
 	}
 	if(change==-500) {
 		TEE=TEE-500;
-		plan="Loose 1 pound";
+		plan="Lose 1 pound";
 	}
 	carbs=(TEE*0.4)/4;
 	protein=(TEE*0.3)/4;
