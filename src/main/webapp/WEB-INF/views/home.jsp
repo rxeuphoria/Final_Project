@@ -41,7 +41,7 @@
 		<input type="number" name="minFats" min="0" max="${fatslimit}" value="0"/><br><br>
 		<label>Max Fats</label>
 		<input type="number" name="maxFats" max="${fatslimit}" value="${fatsInWallet}"/><br><br>
-		<input type="hidden" name="number" min ="0" max="50" value="10"/>
+		<input type="hidden" name="number" min ="0" max="50" value="20"/>
 		<input type="radio" name="diet" value="vegetarian">
 		<label>Vegetarian</label>
 		<input type="radio" name="diet" value="vegan">
