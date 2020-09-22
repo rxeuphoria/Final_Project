@@ -17,7 +17,8 @@ import co.grandcircus.Final_Project.entity.RecipesList;
 
 @Service
 public class FinalApi {
-private RestTemplate rt;
+
+	private RestTemplate rt;
 
 	
 	@Value("${apiKey}")

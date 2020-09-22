@@ -43,12 +43,13 @@
 			<th>Dairy Free</th>
 			<th>Ketogenic</th>
 			
-			
+
 			
 		</tr>
+		<c:choose>
+		 <c:when test="${diet==null}">
 			<c:forEach var="recipes" items="${recipes}">
 		<tr>
-			<c:if test="${(veg==recipes.recipe. vegetarian)&&(glutenFree==recipes.recipe.glutenFree)}">
 			<td><img src="${recipes.image}"/></td>
 			<td><a href="/external-recipe?id=${recipes.id}" target="_blank">${recipes.title}</a></td>
 			<td>${recipes.calories}</td>
@@ -116,19 +117,99 @@
 				
 			
 				<button type = "submit" onclick="myFunction()">Add</button>
-			</form>			
-			<script>
+			</form>						
+
+			</td>
+		
+	</tr>
+	</c:forEach>
+	</c:when>
+	<c:otherwise>
+	<c:forEach var="recipes" items="${recipes}">
+	<c:if test="${((veg==true)&&(veg==recipes.recipe.vegetarian))||((vegan==true)&&(vegan==recipes.recipe.vegan))||((dairyFree==true)&&(dairyFree==recipes.recipe.dairyFree))||((glutenFree==true)&&(glutenFree==recipes.recipe.glutenFree))||((ketogenic==true))}">
+		<tr>
+			<td><img src="${recipes.image}"/></td>
+			<td><a href="/external-recipe?id=${recipes.id}" target="_blank">${recipes.title}</a></td>
+			<td>${recipes.calories}</td>
+			<td>${recipes.carbs}</td>
+			<td>${recipes.fat}</td>
+			<td>${recipes.protein}</td>
+	
+			<c:choose>
+			<c:when test = "${recipes.recipe.vegan == true}">
+			<td>Yes</td>
+			</c:when>
+			<c:otherwise>			 
+			<td>No</td>
+			</c:otherwise>
+			</c:choose>
+			
+			<c:choose>
+			<c:when test = "${recipes.recipe.vegetarian == true}">
+			<td>Yes</td>
+			</c:when>
+			<c:otherwise>			 
+			<td>No</td>
+			</c:otherwise>
+			</c:choose>
+			
+			<c:choose>
+			<c:when test = "${recipes.recipe.glutenFree == true}">
+			<td>Yes</td>
+			</c:when>
+			<c:otherwise>			 
+			<td>No</td>
+			</c:otherwise>
+			</c:choose>
+			
+			<c:choose>
+			<c:when test = "${recipes.recipe.dairyFree == true}">
+			<td>Yes</td>
+			</c:when>
+			<c:otherwise>			 
+			<td>No</td>
+			</c:otherwise>
+			</c:choose>
+			
+			<c:choose>
+			<c:when test = "${recipes.recipe.ketogenic == true}">
+			<td>Yes</td>
+			</c:when>
+			<c:otherwise>			 
+			<td>No</td>
+			</c:otherwise>
+			</c:choose>
+			
+			
+			
+			
+			<td><form action = "/save-recipe?id=${recipes.id}">
+			<input type="hidden" name= "calories" value ="${recipes.calories}"/>
+			<input type="hidden" name= "image" value ="${recipes.image}"/>
+			<input type="hidden" name= "carbs" value ="${recipes.carbs}"/>
+			<input type="hidden" name= "fat" value ="${recipes.fat}"/>
+			<input type="hidden" name= "protein" value ="${recipes.protein}"/>
+			<input type="hidden" name= "title" value ="${recipes.title}"/>
+
+			<input type="hidden" name="extRecipeId" value="${recipes.id}"/>
+				
+			
+				<button type = "submit" onclick="myFunction()">Add</button>
+			</form>						
+
+			</td>
+			</tr>
+			</c:if>
+			</c:forEach>
+		</c:otherwise>
+		</c:choose>	
+	</table><br><br>
+				<script>
 			function myFunction() {
 				  confirm("New recipe is added to your list");
 				}
 			</script>
-			
-
-			</td>
-		</c:if>
-			</tr>
-	</c:forEach>		
-	</table><br><br>
+	
 	<form action="/logout">
 	<button type="submit">Logout</button>
 	</form>

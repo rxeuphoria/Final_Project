@@ -411,30 +411,57 @@ public class FinalController {
 			@RequestParam("maxCarbs") Double maxCarbs, @RequestParam("minProtein") Double minProtein,
 			@RequestParam("maxProtein") Double maxProtein, @RequestParam("minFats") Double minFats,
 			@RequestParam("maxFats") Double maxFats, @RequestParam("number") Integer number,
-			@RequestParam("vegetarian") Boolean veg,
-			@RequestParam("vegan") Boolean vegan,
-			@RequestParam("dairyFree") Boolean dairyFree,
-			@RequestParam("glutenFree") Boolean glutenFree,
-			@RequestParam("ketogenic") Boolean ketogenic) {
+			@RequestParam(name="diet", required=false) String diet )
+		 {
+		Boolean veg=false,vegan=false,dairyFree=false,glutenFree=false,ketogenic=false;
 		RecipesList[] recipes = api.showRecipesList(minCarbs, maxCarbs, minProtein, maxProtein, minFats, maxFats,
 				number);
 		
 		
 		 for(int i=0;i<recipes.length;i++)
 		 recipes[i].setRecipe(api.showDetails(recipes[i].getId()));
-		 
+
 		
-		System.out.println("vege "+veg+"vegan"+vegan+"dairy"+dairyFree+"gluten"+glutenFree+"keto"+ketogenic);
-	    model.addAttribute("recipes", recipes);
+		 model.addAttribute("recipes", recipes);
 		model.addAttribute("carbslimit", remainingCarbs);
 		model.addAttribute("proteinlimit", remainingProtein);
 		model.addAttribute("fatslimit", remainingFats);
+		if(diet==null) {
+			System.out.println("diet null");
+		model.addAttribute("diet",diet);
+			
+		}else {
+		if(diet.equals("vegetarian")) {
+			veg=true;
 		model.addAttribute("veg",veg);
+		model.addAttribute("diet",diet);
+		}
+		if(diet.equals("vegan")) {
+			vegan=true;
 		model.addAttribute("vegan",vegan);
+		model.addAttribute("diet",diet);
+		}
+		if(diet.equals("dairyFree")) {
+			dairyFree=true;
 		model.addAttribute("dairyFree",dairyFree);
+		model.addAttribute("diet",diet);
+		}
+		if(diet.equals("glutenFree")) {
+			glutenFree=true;
 		model.addAttribute("glutenFree",glutenFree);
-		model.addAttribute("ketogenic",ketogenic);
+		model.addAttribute("diet",diet);
+		}
+		}
+		System.out.println("vegan"+vegan);
+		System.out.println("veg"+veg);
+		
+		System.out.println("dairy"+dairyFree);
+		
+		System.out.println("gluten"+glutenFree);
+		
+		System.out.println("diet"+diet);
 		return "show-recipes";
+		
 	}
 
 	
