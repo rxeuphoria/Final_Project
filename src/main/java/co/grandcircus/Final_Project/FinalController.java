@@ -124,6 +124,7 @@ public class FinalController {
 		model.addAttribute("fatsInWallet",remainFats);
 		return "home";
 	}
+	
 
 
 	@RequestMapping("/signup")
@@ -736,7 +737,6 @@ if(gender.equals("M")) {
 		return "redirect:/show-data";
 	
 }
-
 
 	@RequestMapping("/logout")
 	public String logout(RedirectAttributes redir) {

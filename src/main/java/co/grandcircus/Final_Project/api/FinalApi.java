@@ -1,12 +1,11 @@
 package co.grandcircus.Final_Project.api;
 
 import java.net.URI;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
-import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.client.ClientHttpRequestInterceptor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -54,6 +53,7 @@ private RestTemplate rt;
 	  return recipe;
 	  
   }
-
+    
+    
   }
 
