@@ -563,6 +563,14 @@ public class FinalController {
 		iDao.save(ingredients.get(i));
 		return "redirect:/show-data";
 	}
+	@RequestMapping("/external-recipe")
+	public String showExternalRecipe(Model model, @RequestParam("id") Long id) {
+		Recipe targetRecipe = api.showDetails(id);
+		model.addAttribute("targetRecipe", targetRecipe);
+		String url = targetRecipe.getSourceUrl();
+		return "redirect:" + url;
+	}
+
 
 	@RequestMapping("/delete-recipe")
 	public String deleteRecipe(RecipesList recipeList, @RequestParam("id") Long id) {

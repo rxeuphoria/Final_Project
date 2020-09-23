@@ -79,6 +79,10 @@
 	<a href="/home"><button>Check Recipes by Macros</button></a>
 	<a href="/ingredients-list"><button>Shopping list</button></a>
 	<br>
+	<c:choose>
+	<c:when test="${list=='[]'}">
+	</c:when>
+	<c:otherwise>
 	<h2>
 		<a href="#" data-toggle="tooltip"
 			title="Finally! What you're looking for.  These are your repeatable recipes that fit your macros, and repetition forms the basis for successful habits.  It's come a long way from strictly olive oil, bread, eggs, rice, and protein powder!  Why not make things you enjoy?  When you're burned out on a dish, just take it off the list and search for something new.">Recipe
@@ -101,6 +105,8 @@
 		</c:forEach>
 
 	</table>
+	</c:otherwise>
+	</c:choose>
 	<br>
 	<br>
 	<br>

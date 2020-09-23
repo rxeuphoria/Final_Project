@@ -18,8 +18,13 @@
 <header><a href="/show-data" class="homepage">@DashBoard</a><br>
 </header>
 </article>
-<table class="table">
-<tr><center><h1>Shopping List</h1></center>
+<table class="results">
+<c:choose>
+<c:when test="${ingredients=='[]'}">
+ <center><h2>No Shopping List found.Please add some recipes to the list.</h2></center>
+ </c:when>
+ <c:otherwise>
+<tr>
 	<th>Ingredients Name</th>
 	<th>Ingredients Amount</th>
 </tr>
@@ -29,6 +34,8 @@
 <td>${ing.original}</td>
 </tr>
 </c:forEach>
+</c:otherwise>
+</c:choose>
 </table>
 </body>
 </html>

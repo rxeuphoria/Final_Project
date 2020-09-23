@@ -17,7 +17,7 @@
 <body style="background-color:#AFEEEE;">
 <div>
 <header><a href="/show-data" class="homepage">@DashBoard</a><br></header>
-<table class="table">
+<table class="results">
 <tr>
 <th>Ingredient Name</th>
 <th>Ingredient Amount</th>
