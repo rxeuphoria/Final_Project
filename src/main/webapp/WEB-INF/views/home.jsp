@@ -20,8 +20,7 @@
 <p> <b>Wallet :</b> <b>Carbs:</b> <fmt:formatNumber value="${carbslimit}" pattern=".00"/>gm  ,
 			<b>Protein :</b> <fmt:formatNumber value="${proteinlimit}" pattern=".00"/>gm  ,
 			 <b>Fats:</b> <fmt:formatNumber value="${fatslimit}" pattern=".00"/>gm</p>
-
-
+</header>
 </article>
 	<div class="mx-auto" style="width: 400px;">
   <h1>Enter calories amount</h1>

@@ -18,17 +18,17 @@
 <body style="background-color:#AFEEEE;">
 
 <div>
+<form action="/logout"> <button type="submit" class="button button4" style="float: right">Logout</button></form>
 <article>
 <header><a href="/show-data" class="homepage">@DashBoard</a><br>
 <b>Wallet :</b> <b>Carbs:</b> <fmt:formatNumber value="${carbslimit}" pattern=".00"/>gm  ,
 			<b>Protein :</b> <fmt:formatNumber value="${proteinlimit}" pattern=".00"/>gm  ,
-			 <b>Fats:</b> <fmt:formatNumber value="${fatslimit}" pattern=".00"/>gm</p>
-			 <center><img src="macgro.png" height="200" width="200"/></center></header>
-			 
+			 <b>Fats:</b> <fmt:formatNumber value="${fatslimit}" pattern=".00"/>gm</p> 
 </header>
 </article>
-
-	<h1>Here is Recipes List</h1>
+<center>
+		<img src="macgro.png" height="100" width="100" /><br>
+		<h1>Recipes List</h1></center>
 		<table class="table">
 		<tr>
 			<th></th>
@@ -209,10 +209,6 @@
 				  confirm("New recipe is added to your list");
 				}
 			</script>
-	
-	<form action="/logout">
-	<button type="submit">Logout</button>
-	</form>
 </div><br><br><br>
 <footer>&copy; Copyright 2020 All rights reserved </footer>
 </body>

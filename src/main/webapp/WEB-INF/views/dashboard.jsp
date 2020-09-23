@@ -18,7 +18,7 @@
 <body style="background-color:#AFEEEE;">
 
 
-	<form action="/logout"> <button type="submit" class="button button4" style="float: right">Logout</button></form>
+	<form action="/logout"><button type="submit" class="button button4" style="float: right">Logout</button></form>
 	<a href="/home"><button class="button button4">Check Recipes by Macros</button></a>
 	<a href="/ingredients-list"><button class="button button4">Shopping list</button></a>
 	<a href="/edit"><button class="button button4">Adjust Goals</button></a>
@@ -33,7 +33,7 @@
 	
 	
 
-	<table class=table>
+	<table class="table table-hover table-dark">
 		<tr>
 			<th>Gender</th>
 			<th>Height</th>

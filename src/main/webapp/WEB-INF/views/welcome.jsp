@@ -7,20 +7,13 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>start your diet journey</title>
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
-	crossorigin="anonymous">
 <link href="/style.css" rel="stylesheet" />
-<link rel="stylesheet"
-	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script src=https://code.jquery.com/jquery-1.12.4.js></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 <body style="background-color:#AFEEEE;">
-	<header>
+<form action="/logout"> <button type="submit" class="button button4" style="float: right">Logout</button></form>
+	<header><a href="/show-data" class="homepage">@DashBoard</a><br>
+	
 		<center>
-			<h1>Welcome ${user.name}</h1>
 			<img src="macgro.png" height="100" width="100" />
 		</center>
 	</header>
@@ -71,9 +64,6 @@
 			<button type="submit">Save</button>
 		</form>
 		<br> <br>
-		<form action="/logout">
-			<button type="submit">Logout</button>
-		</form>
 	</div>
 	<br>
 	<br>

@@ -7,17 +7,17 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
-	crossorigin="anonymous">
 <link href="/style.css" rel="stylesheet" />
 
 </head>
 <body style="background-color:#AFEEEE;">
 <div>
+<form action="/logout"> <button type="submit" class="button button4" style="float: right">Logout</button></form>
 <header><a href="/show-data" class="homepage">@DashBoard</a><br></header>
-<img class="logo" src="macgro.png"/>
+<center>
+		<img src="macgro.png" height="100" width="100" />
+</center><br>
+
 <table class="results">
 <tr>
 <th>Ingredient Name</th>

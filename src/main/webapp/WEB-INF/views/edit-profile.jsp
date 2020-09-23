@@ -11,6 +11,7 @@
 
 </head>
 <body style="background-color:#AFEEEE;">
+<form action="/logout"> <button type="submit" class="button button4" style="float: right">Logout</button></form>
 <article>
 <header><a href="/show-data" class="homepage">@DashBoard</a>
 <center><img src="macgro.png" height="100" width="100"/></center>
@@ -68,7 +69,8 @@
 			<label>End Date:</label>
 			<input type="date" name="datepickerEnd" id="Test_Date1"  required><br><br>
 			<button type="submit" onclick="myFunction()">Save</button>
-			<script>
+	</form><br><br><br>
+				<script>
 function myFunction() {
   confirm("New Interval started with  new updated values!!");
 }
@@ -87,13 +89,6 @@ function minEndValue(){
 		end.min=y+"-"+m+"-"+dd;          
 }
 </script>
-			
-		</form>
-		<br> <br> 
-		<form action="/logout">
-			<button type="submit">Logout</button>
-		</form>
-	</form><br><br><br>
 	<footer>&copy; Copyright 2020 All rights reserved </footer>
 </body>
 </html>
