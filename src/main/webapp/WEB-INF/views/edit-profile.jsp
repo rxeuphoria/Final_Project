@@ -13,7 +13,7 @@
 <body style="background-color:#AFEEEE;">
 <article>
 <header><a href="/show-data" class="homepage">@DashBoard</a>
-<center><img src="macgro.png" height="200" width="200"/></center>
+<center><img src="macgro.png" height="100" width="100"/></center>
 
 </header>
 </article>

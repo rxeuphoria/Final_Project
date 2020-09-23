@@ -21,7 +21,7 @@
 	<header>
 		<center>
 			<h1>Welcome ${user.name}</h1>
-			<img src="macgro.png" height="200" width="200" />
+			<img src="macgro.png" height="100" width="100" />
 		</center>
 	</header>
 	<div class="container">

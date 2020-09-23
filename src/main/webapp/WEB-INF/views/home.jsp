@@ -16,12 +16,11 @@
 
 <article>
 <header><a href="/show-data" class="homepage">@DashBoard</a>
-
+<img class="logo" src="macgro.png"/>
 <p> <b>Wallet :</b> <b>Carbs:</b> <fmt:formatNumber value="${carbslimit}" pattern=".00"/>gm  ,
 			<b>Protein :</b> <fmt:formatNumber value="${proteinlimit}" pattern=".00"/>gm  ,
 			 <b>Fats:</b> <fmt:formatNumber value="${fatslimit}" pattern=".00"/>gm</p>
-</header>
-<center><img src="macgro.png" height="200" width="200"/></center>
+
 
 </article>
 	<div class="mx-auto" style="width: 400px;">

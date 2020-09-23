@@ -7,6 +7,11 @@
 	
 }
 
+.logo {float:right;
+      margin: auto 10px;
+	  width: 100px;
+	  height: 100px;}
+
 .results {margin-left: auto;
      margin-right: auto}
      

@@ -21,10 +21,9 @@
 	<form action="/logout">
 		<button type="submit">Logout</button>
 	</form>
-
-	<center>
-		<img src="macgro.png" height="200" width="200" />
-	</center>
+	
+		<img class="logo" src="macgro.png"/>
+	
 	<center>
 		<h1>Welcome ${user.name}</h1>
 	</center>
