@@ -60,9 +60,10 @@
 			<td>${plan}</td>
 		</tr>
 	</table>
-
+  <div>
+  <div class="bars">
 	<h2>Wallet</h2>
-
+   
 	<div class=progress-bar
 		style="--width: ${(carbs-leftCarbs)/carbs * 100}"
 		data-label="Carbohydrates: <fmt:formatNumber value="${leftCarbs}" pattern=".00"/>g left">
@@ -78,9 +79,9 @@
 	</div>
 	<br>
 
+	</div>
 	
-	
-	<br>
+	<div class="recipes">
 	<c:choose>
 	<c:when test="${list=='[]'}">
 	</c:when>
@@ -99,7 +100,7 @@
 						Carbs: ${recipe.carbs} <br>Protein: ${recipe.protein}<br>
 						Fats: ${recipe.fat}
 					</p></td>
-				<td><a href="/ingredients?id=${recipe.id}"><button>Check Ingredients</button></a></td>
+				<td><a href="/ingredients?id=${recipe.id}"><button>Ingredients</button></a></td>
 				<td><a href="/delete-recipe?id=${recipe.id}"><button>Delete</button></a></td>
 
 			</tr>
@@ -108,10 +109,7 @@
 	</table>
 	</c:otherwise>
 	</c:choose>
-	<br>
-	<br>
-	<br>
-	<footer> &copy; Copyright 2020 All rights reserved </footer>
-
+	</div>
+</div>
 </body>
 </html>
