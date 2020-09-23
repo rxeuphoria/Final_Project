@@ -391,7 +391,6 @@ public class FinalController {
 		model.addAttribute("proteinlimit", remainingProtein);
 		model.addAttribute("fatslimit", remainingFats);
 		if (diet == null) {
-			System.out.println("diet null");
 			model.addAttribute("diet", diet);
 
 		} else {
