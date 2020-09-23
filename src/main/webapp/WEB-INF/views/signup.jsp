@@ -8,7 +8,7 @@
 <title>Login</title>
 <link rel="stylesheet" href="/style.css" />
 </head>
-<body>
+<body background="cherry.jpg">
 	<center>
 		<img src="macgro.png" height="200" width="200" />
 		<h1>Sign up</h1>

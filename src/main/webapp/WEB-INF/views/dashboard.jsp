@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="/style.css" />
 
 </head>
-<body>
+<body style="background-color:#AFEEEE;">
 
 
 	<form action="/logout">

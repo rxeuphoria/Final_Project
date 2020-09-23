@@ -15,7 +15,7 @@
 	crossorigin="anonymous">
 <link href="/style.css" rel="stylesheet" />
 </head>
-<body>
+<body style="background-color:#AFEEEE;">
 
 <div>
 <article>

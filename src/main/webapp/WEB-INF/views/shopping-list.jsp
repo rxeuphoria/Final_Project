@@ -13,7 +13,7 @@
 	crossorigin="anonymous">
 	<link rel="stylesheet" href="/style.css" />
 </head>
-<body>
+<body style="background-color:#AFEEEE;">
 <article>
 <header><a href="/show-data" class="homepage">@DashBoard</a><br>
 </header>
