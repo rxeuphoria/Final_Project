@@ -39,7 +39,7 @@
 			<th>Height</th>
 			<th>Weight</th>
 			<th>Age</th>
-			<th><a href="#" data-toggle="tooltip"
+			<th><a href="" data-toggle="tooltip"
 				title="Shows current interval length based on dates selected">Interval</a></th>
 			<th>Daily Ideal Carbs</th>
 			<th>Daily Ideal Protein</th>
@@ -62,7 +62,8 @@
 	</table>
   <div>
   <div class="bars">
-	<h2>Wallet</h2>
+	<h2><a href="" data-toggle="tooltip"
+				title="Shows current balance of your macros. 'Spending' on recipes subtracts from the values.">Wallet</a></h2>
    
 	<div class=progress-bar
 		style="--width: ${(carbs-leftCarbs)/carbs * 100}"
