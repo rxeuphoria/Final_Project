@@ -18,17 +18,20 @@
 <body style="background-color:#AFEEEE;">
 
 
-	<form action="/logout">
-		<button type="submit">Logout</button>
-	</form>
-	
-		<img class="logo" src="macgro.png"/>
-	
+	<form action="/logout"> <button type="submit" class="button button4" style="float: right">Logout</button></form>
+	<a href="/home"><button class="button button4">Check Recipes by Macros</button></a>
+	<a href="/ingredients-list"><button class="button button4">Shopping list</button></a>
+	<a href="/edit"><button class="button button4">Adjust Goals</button></a>
 	<center>
-		<h1>Welcome ${user.name}</h1>
+		<img src="macgro.png" height="150" width="150" />
 	</center>
-	<h2>Profile</h2>
-	<a href="/edit"><button>Adjust Goals</button></a>
+	<br></br>
+
+	<center>
+		<h2>Your Profile</h2>
+	</center>
+	
+	
 
 	<table class=table>
 		<tr>
@@ -75,8 +78,8 @@
 	</div>
 	<br>
 
-	<a href="/home"><button>Check Recipes by Macros</button></a>
-	<a href="/ingredients-list"><button>Shopping list</button></a>
+	
+	
 	<br>
 	<c:choose>
 	<c:when test="${list=='[]'}">
@@ -96,8 +99,7 @@
 						Carbs: ${recipe.carbs} <br>Protein: ${recipe.protein}<br>
 						Fats: ${recipe.fat}
 					</p></td>
-				<td><a href="/ingredients?id=${recipe.id}"><button>Check
-							Ingredients</button></a></td>
+				<td><a href="/ingredients?id=${recipe.id}"><button>Check Ingredients</button></a></td>
 				<td><a href="/delete-recipe?id=${recipe.id}"><button>Delete</button></a></td>
 
 			</tr>
