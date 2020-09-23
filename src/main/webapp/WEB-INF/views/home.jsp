@@ -34,11 +34,6 @@
 			<b>Protein :</b> <fmt:formatNumber value="${proteinlimit}" pattern=".00"/>gm  ,
 			 <b>Fats:</b> <fmt:formatNumber value="${fatslimit}" pattern=".00"/>gm</p>
 </header>
-<<<<<<< HEAD
-=======
-
-
->>>>>>> macrosPageChanges
 </article>
 	<div class="mx-auto" style="width: 400px;">
   <h1>Enter macros details</h1>
@@ -57,24 +52,16 @@
 		<input type="number" name="minFats" min="0" max="${fatslimit}" value="0"/><br><br>
 		<label>Maximum Fats  </label>
 		<input type="number" name="maxFats" max="${fatslimit}" value="${fatsInWallet}"/><br><br>
-		<label>Number of results</label>
-		<input type="number" name="number" min ="0" max="50"/><br><br>
-		<input type="checkbox" name="vegetarian" value="true">
-		<input type="hidden" name="vegetarian" value="false">
+		<input type="hidden" name="number" min ="0" max="50" value="20"/>
+		<input type="radio" name="diet" value="vegetarian">
 		<label>Vegetarian</label>
-		<input type="checkbox" name="vegan" value="true">
-		<input type="hidden" name="vegan" value="false">
+		<input type="radio" name="diet" value="vegan">
 		<label>Vegan</label>
-		<input type="checkbox" name="dairyFree" value="true">
-		<input type="hidden" name="dairyFree" value="false">
+		<input type="radio" name="diet" value="dairyFree">
 		<label>Dairy Free</label>
-		<input type="checkbox" name="glutenFree" value="true">
-		<input type="hidden" name="glutenFree" value="false">
-		<label>Gluten Free</label>
-		<input type="checkbox" name="ketogenic" value="true">
-		<input type="hidden" name="ketogenic" value="false">
-		<label>Ketogenic</label><br><br>
-		<button type="submit" class="button button4">Check Recipes</button>	
+		<input type="radio" name="diet" value="glutenFree">
+		<label>Gluten Free</label><br><br><br>
+	<button type="submit" class="button button4">Check Recipes</button>	
 	</form>
 	</div>
 	
