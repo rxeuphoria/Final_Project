@@ -19,7 +19,7 @@
 
 </head>
 
-<body style="background-color:#AFEEEE;">
+<body background="cherry.jpg">
 
 	
 

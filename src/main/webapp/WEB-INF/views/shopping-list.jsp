@@ -9,7 +9,7 @@
 <title>shopping list</title>
 <link rel="stylesheet" href="/style.css" />
 </head>
-<body style="background-color:#AFEEEE;">
+<body background="cherry.jpg">
 <form action="/logout"> <button type="submit" class="button button4" style="float: right">Logout</button></form>
 <article>
 <header><a href="/show-data" class="homepage">@DashBoard</a><br>

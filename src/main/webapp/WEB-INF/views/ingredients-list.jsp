@@ -10,7 +10,7 @@
 <link href="/style.css" rel="stylesheet" />
 
 </head>
-<body style="background-color:#AFEEEE;">
+<body background="cherry.jpg">
 <div>
 <form action="/logout"> <button type="submit" class="button button4" style="float: right">Logout</button></form>
 <header><a href="/show-data" class="homepage">@DashBoard</a><br></header>
