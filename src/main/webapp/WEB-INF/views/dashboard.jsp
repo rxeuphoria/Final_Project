@@ -38,14 +38,13 @@
 			<th>Height</th>
 			<th>Weight</th>
 			<th>Age</th>
-			<th><a href="" data-toggle="tooltip"
-				title="Shows current interval length based on dates selected">Interval</a></th>
+			<th>Interval<a href="" data-toggle="tooltip"
+				title="Shows current interval length based on dates selected">(?)</a></th>
 			<th>Daily Ideal Carbs</th>
 			<th>Daily Ideal Protein</th>
 			<th>Daily Ideal Fats</th>
-			<th><a href="#" data-toggle="tooltip"
-				title="Not on track anymore? Changing bodies have changing needs.  Edit your profile to stay current and keep progressing.">Weekly
-					Goal</a></th>
+			<th>Weekly Goal<a href="" data-toggle="tooltip"
+				title="Not on track anymore? Changing bodies have changing needs.  Edit your profile to stay current and keep progressing.">(?)</a></th>
 		</tr>
 		<tr>
 			<td>${gender}</td>
@@ -61,8 +60,8 @@
 	</table>
   <div>
   <div class="bars">
-	<h2><a href="" data-toggle="tooltip"
-				title="Shows current balance of your macros. 'Spending' on recipes subtracts from the values.">Wallet</a></h2>
+	<h2>Wallet<a href="" data-toggle="tooltip"
+				title="Shows current balance of your macros. 'Spending' on recipes subtracts from the values.">(?)</a></h2>
    
 	<div class=progress-bar
 		style="--width: ${(carbs-leftCarbs)/carbs * 100}"
@@ -86,10 +85,9 @@
 	<c:when test="${list=='[]'}">
 	</c:when>
 	<c:otherwise>
-	<h2>
-		<a href="#" data-toggle="tooltip"
-			title="Finally! What you're looking for.  These are your repeatable recipes that fit your macros, and repetition forms the basis for successful habits.  It's come a long way from strictly olive oil, bread, eggs, rice, and protein powder!  Why not make things you enjoy?  When you're burned out on a dish, just take it off the list and search for something new.">Recipe
-			List</a>
+	<h2>Recipe List
+		<a href="" data-toggle="tooltip"
+			title="Finally! What you're looking for.  These are your repeatable recipes that fit your macros, and repetition forms the basis for successful habits.  It's come a long way from strictly olive oil, bread, eggs, rice, and protein powder!  Why not make things you enjoy?  When you're burned out on a dish, just take it off the list and search for something new.">(?)</a>
 	</h2>
 	<table>
 		<c:forEach var="recipe" items="${list}">
