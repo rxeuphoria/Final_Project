@@ -31,29 +31,29 @@
 			<label>Height:</label>
 			<input type="number" name="height" step=".1" value="${user.height}"/>
 			<label>in:</label>
-			<select name="height_unit"> 
+			<select name="height_unit">
 				<option value="cms" <c:if test="${user.height_unit=='cms'}"> selected </c:if>>centimeter</option>
-
 				<option value="inches" <c:if test="${user.height_unit=='inches'}"> selected </c:if>>inches</option>
 			</select><br> <br> <label>Weight:</label>
-			 <input type="number" name="weight" step=".1" value="${user.weight}"/> 
-			 <label>in:</label> 
+			 <input type="number" name="weight" step=".1" value="${user.weight}"/>
+			 <label>in:</label>
 			 <select name="weight_unit">
 				<option value="pound" <c:if test="${user.weight_unit=='pound'}"> selected </c:if>>pound</option>
 				<option value="kg" <c:if test="${user.weight_unit=='kg'}"> selected </c:if>>kilogram</option>
 			</select><br> <br>
+
 			 <label>Age:</label> 
 			 <input type="number"	name="age"  value="${user.age}"/><br> <br> 
 			 <label>Activity Level:<a href=""
 				data-toggle="tooltip"
 				title="The dirty secret here is that you're not as active as you think you are.  If you're unsure, select an activity level 1 lower than you feel could be correct.  You can always change it later if you start to exercise more or less!">(?)</a></label> 
+			 
 			 <select	name="activity">
 				<option value="1.2" <c:if test="${user.activityLevel=='1.2'}"> selected </c:if>>Sedentary</option>
 				<option value="1.375" <c:if test="${user.activityLevel=='1.375'}"> selected </c:if>>Lightly Active (1-2 workouts per week)</option>
 				<option value="1.55" <c:if test="${user.activityLevel=='1.55'}"> selected </c:if>>Moderately (3-5 workouts per week)</option>
 				<option value="1.725" <c:if test="${user.activityLevel=='1.725'}"> selected </c:if>>Very Active (6-7 workouts per week)</option>
 				<option value="1.9" <c:if test="${user.activityLevel=='1.9'}"> selected </c:if>>Extremely Active (2 workouts daily)</option>
-
 			</select><br><br>
 				<label>Weekly Goal<a href="" data-toggle="tooltip" title="The typical interval we recommend is 7 days, so these are what we calculate to weight gain/loss per week.">(?)</a></label>
 				<select name="change" >

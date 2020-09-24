@@ -39,19 +39,19 @@
   <h1>Enter macros details</h1>
 </div>
 
-	<div style="text-align:center;"><form action="/showRecipes">
-		<label>Minimum Carbs </label>
-		<input type="number" name="minCarbs" min="0" max="${carbslimit}" value="0"/><br><br>
-		<label>Maximum Carbs </label> 
-		<input type="number" name="maxCarbs" max="${carbslimit}" value="${carbsInWallet}"/><br><br>
-		<label>Minimum Protein</label>
-		<input type="number" name="minProtein" min="0" max="${proteinlimit}" value="0"/><br><br>
-		<label>Maximum Protein</label>
-		<input type="number" name="maxProtein" max="${proteinlimit}" value="${proteinInWallet}"/><br><br>
-		<label>Minimum Fats  </label>
-		<input type="number" name="minFats" min="0" max="${fatslimit}" value="0"/><br><br>
-		<label>Maximum Fats  </label>
-		<input type="number" name="maxFats" max="${fatslimit}" value="${fatsInWallet}"/><br><br>
+	<div class="macrosDetailsForm"><form action="/showRecipes" >
+		<p><label>Minimum Carbs </label>
+		<input type="number" name="minCarbs" min="0" max="${carbslimit}" value="0"/></p>
+		<p><label>Maximum Carbs </label> 
+		<input type="number" name="maxCarbs" max="${carbslimit}" value="${carbsInWallet}"/></p>
+		<p><label>Minimum Protein</label>
+		<input type="number" name="minProtein" min="0" max="${proteinlimit}" value="0"/></p>
+		<p><label>Maximum Protein</label>
+		<input type="number" name="maxProtein" max="${proteinlimit}" value="${proteinInWallet}"/></p>
+		<p><label>Minimum Fats  </label>
+		<input type="number" name="minFats" min="0" max="${fatslimit}" value="0"/></p>
+		<p><label>Maximum Fats  </label>
+		<input type="number" name="maxFats" max="${fatslimit}" value="${fatsInWallet}"/></p>
 		<input type="hidden" name="number" min ="0" max="50" value="20"/>
 		<input type="radio" name="diet" value="vegetarian">
 		<label>Vegetarian</label>

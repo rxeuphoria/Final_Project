@@ -72,6 +72,28 @@
 
 .recipes{float:right; width:700px}
 
+
 footer{ clear:both;}
 
 #main{color:white;font-weight:bold;background-color: #20a2df}
+
+
+/*.macrosDetailsForm {border: 2px solid red;}*/
+.macrosDetailsForm form {margin:0 auto;max-width: 23em; text-align: center;}
+.macrosDetailsForm p{display: flex;}
+.macrosDetailsForm label{flex: 1;text-align: left;}
+
+/*.editProfileForm form {margin:0 auto;max-width: 23em; text-align: center;}
+.editProfileForm p{display: flex;}
+.editProfileForm label{flex: 1;text-align: left;}*/
+
+
+
+
+
+
+
+
+
+
+
