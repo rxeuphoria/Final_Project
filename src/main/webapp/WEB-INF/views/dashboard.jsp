@@ -21,7 +21,6 @@
 	<a href="/ingredients-list"><button class="button button4">Shopping list</button></a>
 	<a href="/edit"><button class="button button4">Adjust Goals</button></a>
 	<center>
-	<h3 style="text-align:right;">${user.name}</h3>
 		<img src="macgro.png" height="150" width="150" />
 	</center>
 	<br></br>

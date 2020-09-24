@@ -59,46 +59,46 @@
 	
 			<c:choose>
 			<c:when test = "${recipes.recipe.vegan == true}">
-			<td>Yes</td>
+			<td>&check;</td>
 			</c:when>
 			<c:otherwise>			 
-			<td>No</td>
+			<td>-</td>
 			</c:otherwise>
 			</c:choose>
 			
 			<c:choose>
 			<c:when test = "${recipes.recipe.vegetarian == true}">
-			<td>Yes</td>
+			<td>&check;</td>
 			</c:when>
 			<c:otherwise>			 
-			<td>No</td>
+			<td>-</td>
 			</c:otherwise>
 			</c:choose>
 			
 			<c:choose>
 			<c:when test = "${recipes.recipe.glutenFree == true}">
-			<td>Yes</td>
+			<td>&check;</td>
 			</c:when>
 			<c:otherwise>			 
-			<td>No</td>
+			<td>-</td>
 			</c:otherwise>
 			</c:choose>
 			
 			<c:choose>
 			<c:when test = "${recipes.recipe.dairyFree == true}">
-			<td>Yes</td>
+			<td>&check;</td>
 			</c:when>
 			<c:otherwise>			 
-			<td>No</td>
+			<td>-</td>
 			</c:otherwise>
 			</c:choose>
 			
 			<c:choose>
 			<c:when test = "${recipes.recipe.ketogenic == true}">
-			<td>Yes</td>
+			<td>&check;</td>
 			</c:when>
 			<c:otherwise>			 
-			<td>No</td>
+			<td>-</td>
 			</c:otherwise>
 			</c:choose>
 			
@@ -137,46 +137,46 @@
 	
 			<c:choose>
 			<c:when test = "${recipes.recipe.vegan == true}">
-			<td>Yes</td>
+			<td>&check;</td>
 			</c:when>
 			<c:otherwise>			 
-			<td>No</td>
+			<td>-</td>
 			</c:otherwise>
 			</c:choose>
 			
 			<c:choose>
 			<c:when test = "${recipes.recipe.vegetarian == true}">
-			<td>Yes</td>
+			<td>&check;</td>
 			</c:when>
 			<c:otherwise>			 
-			<td>No</td>
+			<td>-</td>
 			</c:otherwise>
 			</c:choose>
 			
 			<c:choose>
 			<c:when test = "${recipes.recipe.glutenFree == true}">
-			<td>Yes</td>
+			<td>&check;</td>
 			</c:when>
 			<c:otherwise>			 
-			<td>No</td>
+			<td>-</td>
 			</c:otherwise>
 			</c:choose>
 			
 			<c:choose>
 			<c:when test = "${recipes.recipe.dairyFree == true}">
-			<td>Yes</td>
+			<td>&check;</td>
 			</c:when>
 			<c:otherwise>			 
-			<td>No</td>
+			<td>-</td>
 			</c:otherwise>
 			</c:choose>
 			
 			<c:choose>
 			<c:when test = "${recipes.recipe.ketogenic == true}">
-			<td>Yes</td>
+			<td>&check;</td>
 			</c:when>
 			<c:otherwise>			 
-			<td>No</td>
+			<td>-</td>
 			</c:otherwise>
 			</c:choose>
 			
