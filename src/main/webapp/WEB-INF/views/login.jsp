@@ -25,7 +25,7 @@
 			<label for="password">Password:</label> <input type="password" name="password" required minlength="2" />
 		</p>
 		<p>
-			<button>Submit</button>
+			<button class="button button4">Submit</button>
 		</p>
 	</form>
 	

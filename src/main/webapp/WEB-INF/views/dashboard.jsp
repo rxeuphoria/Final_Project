@@ -17,11 +17,11 @@
 </head>
 <body style="background-color:#AFEEEE;">
 
-
-	<form action="/logout"><button type="submit" class="button button4" style="float: right">Logout</button></form>
+    <form action="/logout"><button type="submit" class="button button4" style="float: right">Logout</button></form>
 	<a href="/ingredients-list"><button class="button button4">Shopping list</button></a>
 	<a href="/edit"><button class="button button4">Adjust Goals</button></a>
 	<center>
+	<h3 style="text-align:right;">${user.name}</h3>
 		<img src="macgro.png" height="150" width="150" />
 	</center>
 	<br></br>
@@ -100,8 +100,8 @@
 						Carbs: ${recipe.carbs} <br>Protein: ${recipe.protein}<br>
 						Fats: ${recipe.fat}
 					</p></td>
-				<td><a href="/ingredients?id=${recipe.id}"><button>Ingredients</button></a></td>
-				<td><a href="/delete-recipe?id=${recipe.id}"><button>Delete</button></a></td>
+				<td><a href="/ingredients?id=${recipe.id}"><button class="button button4">Ingredients</button></a></td>
+				<td><a href="/delete-recipe?id=${recipe.id}"><button class="button button4">Delete</button></a></td>
 
 			</tr>
 		</c:forEach>

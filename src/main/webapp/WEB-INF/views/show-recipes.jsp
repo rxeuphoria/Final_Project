@@ -116,7 +116,7 @@
 			<input type="hidden" name="extRecipeId" value="${recipes.id}"/>
 				
 			
-				<button type = "submit" onclick="myFunction()">Add</button>
+				<button type = "submit" onclick="myFunction()" class="button button4">Add</button>
 			</form>						
 
 			</td>

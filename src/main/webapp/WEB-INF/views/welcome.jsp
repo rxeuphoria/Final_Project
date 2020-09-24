@@ -60,7 +60,7 @@
 			<input type="date" name="datepickerEnd" id="Test_Date1" required><br>
 			<br>
 
-			<button type="submit">Save</button>
+			<button type="submit" class="button button4">Save</button>
 		</form>
 		<br> <br>
 	</div>

@@ -37,7 +37,7 @@
 					minlength="2" />
 			</p>
 			<p>
-				<button>Sign me Up!</button>
+				<button class="button button4">Sign me Up!</button>
 			</p>
 		</form>
 	</center>
