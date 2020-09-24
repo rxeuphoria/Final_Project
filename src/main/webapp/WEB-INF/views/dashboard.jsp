@@ -19,7 +19,6 @@
 
 
 	<form action="/logout"><button type="submit" class="button button4" style="float: right">Logout</button></form>
-	<a href="/home"><button class="button button4">Check Recipes by Macros</button></a>
 	<a href="/ingredients-list"><button class="button button4">Shopping list</button></a>
 	<a href="/edit"><button class="button button4">Adjust Goals</button></a>
 	<center>
@@ -81,7 +80,7 @@
 	<br>
 
 	</div>
-	
+	<div style="text-align:center;"><a href="/home"><button id="main" class="button button4">Add Recipes</button></a></div>
 	<div class="recipes">
 	<c:choose>
 	<c:when test="${list=='[]'}">
@@ -112,5 +111,6 @@
 	</c:choose>
 	</div>
 </div>
+<footer>&copy; Copyright 2020 All rights reserved </footer>
 </body>
 </html>

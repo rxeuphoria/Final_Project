@@ -13,7 +13,8 @@
 <body background="cherry.jpg">
 <form action="/logout"> <button type="submit" class="button button4" style="float: right">Logout</button></form>
 <article>
-<header><a href="/show-data" class="homepage">@DashBoard</a>
+<header>
+<a href="/show-data"><button class="button button4" >DashBoard </button></a>
 <center><img src="macgro.png" height="100" width="100"/></center>
 
 </header>

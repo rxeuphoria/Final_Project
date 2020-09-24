@@ -20,7 +20,7 @@
 <div>
 <form action="/logout"> <button type="submit" class="button button4" style="float: right">Logout</button></form>
 <article>
-<header><a href="/show-data" class="homepage">@DashBoard</a><br>
+<header><a href="/show-data"><button class="button button4" >DashBoard </button></a>
 <b>Wallet :</b> <b>Carbs:</b> <fmt:formatNumber value="${carbslimit}" pattern=".00"/>gm  ,
 			<b>Protein :</b> <fmt:formatNumber value="${proteinlimit}" pattern=".00"/>gm  ,
 			 <b>Fats:</b> <fmt:formatNumber value="${fatslimit}" pattern=".00"/>gm</p> 

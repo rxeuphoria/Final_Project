@@ -12,7 +12,7 @@
 <body background="cherry.jpg">
 <form action="/logout"> <button type="submit" class="button button4" style="float: right">Logout</button></form>
 <article>
-<header><a href="/show-data" class="homepage">@DashBoard</a><br>
+<header><a href="/show-data"><button class="button button4" >DashBoard </button></a>
 </header>
 </article>
 <center>
@@ -37,5 +37,6 @@
 </c:otherwise>
 </c:choose>
 </table>
+	<footer>&copy; Copyright 2020 All rights reserved </footer>
 </body>
 </html>
