@@ -1,7 +1,5 @@
 # Final_Project
 
-http://countdowndietapp-env.eba-zjnpetvn.us-east-2.elasticbeanstalk.com use the app here
-
 This is the final project we worked on in a 4-person collaborative effort over 2 weeks.  
 
 It started as an extension of an idea I had back in college for controlling my diet, and the lack of both discipline and money.
